@@ -73,6 +73,7 @@
                 <input type="button" id='random_button' value="Go!" class='btn btn-default'>
             </div>    
         </div>
+        
         <form action="" method="post">
             {% csrf_token %}
             <table class="table table-condensed" id='tabla_jugadas'>
@@ -82,8 +83,11 @@
                     </tr>
                 </thead>
             </table>
-            <input type="submit" class="btn btn-primary" id="submit_jugada" value="jugar">
+            <input type="submit" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
         </form>
     </div>
 </div>
+
 {% endblock %}
+
+

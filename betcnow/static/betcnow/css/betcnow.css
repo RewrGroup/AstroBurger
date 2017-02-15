@@ -388,3 +388,11 @@ background: #fff;
 .renglon-betcpot{
     padding: 10px 0px 0px 0px;
 }
+
+#delete_span{
+    color:#d9534f;
+}
+
+#submit_jugada{
+    font-weight:bold;
+}

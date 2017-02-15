@@ -40,7 +40,7 @@ function add_jugada(i) {            //Añadir jugada a la tabla de seleccionadas
     var cell1 = row.insertCell(0);       //Celda 1, la jugada    
     cell1.innerHTML = "<input type='text' name='jugadas[]' class='form-control' readonly=true value='" + i + "'/>";
     var cell2 = row.insertCell(1);      //Celda 2, el botón de delete
-    cell2.innerHTML = "<button type='button' class='btn btn-default' onclick='delete_row(this)'>Delete</button>";
+    cell2.innerHTML = "<button type='button' class='btn btn-default' onclick='delete_row(this)'><span id='delete_span' class='glyphicon glyphicon-remove'></span></button>";
 }
 
 function delete_row(elemento) {      //Recibe de parámetro un elemento de tipo Object
