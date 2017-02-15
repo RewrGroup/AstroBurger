@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+<html>
+<head>
+    {% block scripts %}
+    <script>
+        window.setTimeout(function(){
+            window.location.href = "/";
+        }, 5000);
+    </script>
+    {% endblock %}
+</head>
+<body>
+    {% block title %}{% trans "Logged out" %}{% endblock %}
+
+    {% block content %}
+        <p>{% trans "Successfully logged out" %}. See you soon!</p>
+    {% endblock %}
+    
+</body>
+</html>

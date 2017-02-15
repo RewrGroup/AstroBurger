@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script> var lista_status = {{lista_status}}</script>
+    <script src="{% static 'betcnow/js/betcpot.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+           llenar_matriz(0); 
+        });
+    </script>
+    <script>        
+        jQuery(function(){
+            $('.cientos').on("click", function(){
+                llenar_matriz(this.value);            
+            });
+        });        
+    </script>
+    <script>        
+        jQuery(function(){
+            $("#random_button").click(function(){
+                random_values();   
+            });
+        });
+        jQuery(function(){
+            $("#random_input").on('keyup', function (e) {
+                if (e.keyCode == 13) {
+                    random_values();                
+                }
+            });
+        });        
+    </script>
+    <script>
+        jQuery(function(){
+           $('#submit_jugada').click(function(){
+               if ($('#tabla_jugadas tr').length == 1){
+                   alert("Aren't you gonna play?");
+                   return false;
+               }               
+           }); 
+        });
+
+    </script>
+{% endblock %}
+
+{% block title%}Betcpot{% endblock %}
+{% block content %}
+
+<div class="row renglon-betcpot">
+    <div class="col-lg-6 col-md-7 col-sm-7 columnaMatriz">
+        <div class="btn-group btn-group-lg btn-matrix" id="matriz"></div>
+
+        <div class="botones-centena">
+            <input type="button" class="btn btn-default cientos" value='0'> 
+            <input type="button" class="btn btn-default cientos" value='100'>
+            <input type="button" class="btn btn-default cientos" value='200'>
+            <input type="button" class="btn btn-default cientos" value='300'>
+            <input type="button" class="btn btn-default cientos" value='400'>
+            <input type="button" class="btn btn-default cientos" value='500'>
+            <input type="button" class="btn btn-default cientos" value='600'>
+            <input type="button" class="btn btn-default cientos" value='700'>
+            <input type="button" class="btn btn-default cientos" value='800'>
+            <input type="button" class="btn btn-default cientos" value='900'>
+
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-5 col-sm-5 tabla">
+        <div class="row">
+            <div class="col-sm-10">
+                <input type="number" id='random_input' placeholder="random" class="form-control">        
+            </div>
+            <div class="col-sm-2">
+                <input type="button" id='random_button' value="Go!" class='btn btn-default'>
+            </div>    
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <table class="table table-condensed" id='tabla_jugadas'>
+                <thead>
+                    <tr>
+                        <th>Jugadas(<small id='cant_jugadas'>0</small>)</th>
+                    </tr>
+                </thead>
+            </table>
+            <input type="submit" class="btn btn-primary" id="submit_jugada" value="jugar">
+        </form>
+    </div>
+</div>
+{% endblock %}

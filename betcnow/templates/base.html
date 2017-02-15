@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>BETCnow</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'betcnow/css/betcnow.css' %}">
+    <link href="{% static 'betcnow/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <script src="{% static 'betcnow/js/ie-emulation-modes-warning.js' %}"></script>    
+    {% block scripts %}
+    {% endblock %}
+</head>
+<body>
+  <div class="container-fluid">  
+      <div class="main row">
+          <div class="col-xs-8 col-md-8 col-lg-8 ">
+              <div>
+                  <a href="{% url 'home' %}"><img src="{% static 'betcnow/img/logo2.png' %}" alt="Logo de BETCnow" title="Ir a BETCnow"></a>
+              </div>
+          </div>  
+            <div class="linea1">
+                    {% if user.is_authenticated %}
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li ><a class="col-xs-2 col-md-2 col-lg-2" href="signup.html"> <button type="button" id="D" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-sunglasses"></span >Overview</button></a></li>
+
+                            <li><a class="col-xs-2 col-md-2 col-lg-2"  href="{% url 'auth_logout' %}"> <button type="button" id="E" class="btn btn-default btn-md " ><span class="glyphicon glyphicon-log-out"></span> Loggout</button></a></li> 
+                        </ul>
+                    {% else %}
+                   <ul class="nav navbar-nav navbar-right ">
+                        <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'registration_register' %}"> <button type="button" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-user"></span >Sign Up</button></a></li>
+
+                        <li><a class="col-xs-2 col-md-2 col-lg-2"  href="{% url 'login' %}"> <button type="button" id="A" class="btn btn-default btn-md " ><span class="glyphicon glyphicon-log-in"></span> Login</button></a></li> 
+                    </ul>
+                    {% endif %}            
+            </div>        
+        </div>
+  </div>
+<nav class= "navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!-- boton responsive -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                  <span class="sr-only">Menu</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+            </button> 
+        </div>
+       <div class="collapse navbar-collapse" id="navbar-1">
+            <div class>
+               <ul class="nav navbar-nav">
+                    <li ><a href="{% url 'home' %}" ><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li ><a href="resultados.html" ><span class="glyphicon glyphicon-th"></span> Results</a></li>
+                    <li ><a href="detalles.html" ><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+              </ul>     
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'play' %}" id="B"> <b>PLAY NOW  </b><span  class="glyphicon glyphicon-bitcoin"></span></a></li> 
+                </ul>
+            </div>
+      </div>
+    </div>
+</nav>
+<center><h2 class="subtitulos">{% block title %}{% endblock %}</h2></center>
+
+<!-- AQUI VA EL CUERPO -->
+{% block content%}
+{% endblock %}
+<!-- aqui termina el cuerpo -->
+
+
+<div class="footer">  
+    <center><div class="panel-footer"><p class=text-muted>Copyright &copy; 2017. BETCnow. All right reserverd. DEVELOPED BY <B>REWR GROUP</B></p></div></center>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'betcnow/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'betcnow/js/ie10-viewport-bug-workaround.js' %}"></script>
+</body>
+</html>

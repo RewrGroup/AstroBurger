@@ -1,0 +1,390 @@
+body{
+  background: #fff;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+}
+
+/*INICIO*/
+.subtitulos{
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+    color: #4F8ED8;
+}
+
+.footer{
+    bottom: 0px;
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.navbar-default .container-fluid .row{
+background: #fff;
+}
+/*Propiedades del botón de SignUp*/
+
+.linea1 ul li a:hover{
+  background: #fff;
+}
+
+.linea1 ul li a{
+padding: 20px 5px 0px 0px;
+}
+.linea1 ul{
+  padding: 0px 30px 0px 0px;
+}
+.linea1 ul li a button{
+  color:#fff;
+  background: #4F8EDB;
+
+}
+
+/*Propiedades del botón de LogIn*/
+
+  #A{
+  background: #fff;
+  color:#4F8EDB;
+}
+/*Propiedades del menu*/
+
+.navbar-default{
+  background: #4F8ED8;
+  width: 100%;
+  margin: 0px 0px -20px 0px;
+  padding: 0;
+}
+
+.navbar-collapse .navbar-nav li a:hover{
+  color:#4F8EDB;
+  background: #fff;
+}
+
+.navbar-collapse .navbar-nav li a{
+  color:#fff;
+
+}
+
+.navbar-default .container-fluid .navbar-header button {
+  background: #fff;
+}
+
+.navbar-collapse .navbar-nav li{
+  border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+/*Propiedades de la pantalla pequeña*/
+
+@media screen and (max-width: 800px){
+
+  .btn-group-lg .ad{
+    display: none;
+  }
+  .btn-group-lg .fg{
+    display: none;
+  }
+  .linea1 ul li a{
+padding: 10px 5px 0px 0px;
+}
+.box{
+  margin: 0 auto;
+}
+
+.box2 ul li{
+  padding: 10px;
+  position: relative;
+  right: 220px;
+  top: 200px;
+  font-size: 12px;
+  line-height: .1;
+}
+
+.row .user{
+  display: none;
+}
+#po{
+  font-size: 25px;
+  position: absolute;
+  right: 80px;
+}
+
+.container{
+  position: relative;
+  right: 655px;
+  top: 330px;
+  
+}
+
+.container a{
+  width: 50px;
+
+}
+
+#gty{
+font-size: 25px;
+
+}
+#gtyb{
+  width: 70px;
+  height: 70px;
+}
+#gtyd{
+font-size: 25px;
+
+}
+#gtyc{
+  width: 70px;
+  height: 70px;
+}
+#gtyf{
+  font-size: 25px;
+}
+#gtye{
+  width: 70px;
+  height: 70px;
+}
+.mov li{
+  display: none;
+}
+
+.ert ul li {
+  position: relative;
+  left: 10px;
+  top: 10px;
+  display: inline-block;
+}
+
+}
+
+/*Botón PLAY NOW*/
+
+#B{
+  background: #5cb85c;
+}
+
+#B:hover{
+  color:#fff;
+}
+
+/*Botones de abajo*/
+
+.btn-group .btn-primary{
+  background:#4F8ED8;
+
+}
+.btn-group .df{
+  background: #5cb85c;
+}   
+/*FIN DE INICIO*/
+
+/*DETALLES*/
+
+.container button{
+background: #4F8ED8;
+color:#fff;
+}
+
+.container button:hover{
+color: #4F8ED8;
+background:#fff;
+}
+
+#C{
+color: #4F8ED8;
+font-style: bold;
+}
+
+/*FIN DE DETALLES*/
+
+/*Login*/
+
+#D{
+  background: #4F8ED8;
+  color:#fff;
+}
+
+#E{
+  background: #fff;
+  color: #4F8ED8;
+}
+
+
+
+.panel-group .row ul li{
+  list-style: none;
+}
+.box {
+
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  background:  linear-gradient(to bottom, #0066ff 0%, #6699ff 102%);
+  border:3px solid;
+  border-radius: 30px;
+  color: #fff;
+}
+
+
+.box2{
+  padding: 10px;
+  position: relative;
+  left: 200px;
+  bottom: 160px;
+  font-size: 20px;
+  display: block;
+}
+.box2 .container{
+  display: inline-block;
+}
+.user{
+  margin: 30px 0px 0px 0px;
+
+}
+
+.user img{
+  
+ width: 150px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  left: 40px;
+  bottom: 10px;
+}
+.container{
+  padding: 0;
+  margin right: 10px;
+}
+
+.container a{
+  background: #4da6ff;
+  color:#fff;
+
+  font-size: 20px;
+  padding: 10px 0px;
+  text-align: center;
+  width: 110px;
+ 
+  line-height: 50px;
+  border-radius: 50%;
+  box-shadow: 1px 3px 1px #fff;
+  display: inline-block;
+  position: relative;
+  left: 720px;
+  bottom: 300px;
+  cursor: pointer;
+}
+
+.container a span{
+font-size: 50px;
+position: center;
+top: 8px;
+left: 2px;
+
+}
+
+#poi{
+  color: green;
+
+}
+
+.container a:hover{
+  box-shadow: 0px 0px 0px;
+  padding-top: 7px; 
+}
+
+.mov{
+  position: absolute;
+  left: 622px;
+bottom: 25px;
+color: #fff;
+}
+
+
+
+
+.ert ul li button{
+  background: #4F8ED8;
+}
+.ert ul li {
+  position: relative;
+  left: 480px;
+  top: 10px;
+  display: inline-block;
+}
+.ert ul li a{
+  position: relative;
+  left: 15px;
+  
+  display: inline-block;
+}
+
+.ert ul li a:hover{
+  margin: 0px;
+background: #fff;
+}
+/*FIN DE LOGIN*/
+
+/*TESTIMONIOS*/
+
+#frd{
+  margin:    0px 0px 10px 50px;
+            padding : 10px;
+            width : 500px;
+            height : 500px;
+            overflow : auto;
+            position: absolute;
+            left: 360px;
+}
+
+
+/* Matriz de pago */
+
+/*matriz*/
+.btn-matrix > .btn:nth-child(10n+1) {
+  clear: left;
+  margin-left: 0;
+}
+.btn-matrix > .btn:nth-child(n) {
+  margin-top: 1px;
+}
+.btn-matrix > .btn:first-child {
+  border-bottom-left-radius: 0;
+}
+.btn-matrix > .btn:nth-child(10) {
+  border-top-right-radius: 4px !important;
+} 
+.btn-matrix > .btn:nth-last-child(10) {
+  border-bottom-left-radius: 4px !important;
+}
+.btn-matrix > .btn:last-child {
+  border-top-right-radius: 0;
+}
+
+.custom {
+    width: 60px !important;
+}
+
+/* Decorations */
+.btn-matrix {
+  margin: 20px;
+}
+
+.tabla{
+    padding: 20px 0px 0px 0px;
+ 
+}
+
+.columnaMatriz{
+    
+    padding: 0px 0px 0px 20px;
+    margin: 0px 0px 100px 50px;
+}
+
+.botones-centena{
+    padding: 0px 0px 0px 50px;
+}
+
+.renglon-betcpot{
+    padding: 10px 0px 0px 0px;
+}
