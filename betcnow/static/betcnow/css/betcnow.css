@@ -157,8 +157,17 @@ padding: 20px 5px 0px 0px;
 
     .tabla{
         width: 70%;
-        margin: 0px 0px 0px 100px;
+        margin: 0px 0px 0px 50px;
 
+    }
+    
+    .botones-centena{
+        padding: 0px 0px 0px 40px !important;
+        width: 45% !important;
+    }
+    
+    .cientos{
+        width: 45px;
     }
 
     .carousel-inner .active .img-corousel{
@@ -196,9 +205,9 @@ padding: 20px 5px 0px 0px;
         width: 60px !important;
     }
     
-    .columnaMatriz{
-        
-    padding: 0px 0px 0px 0px !important; 
+    .columnaMatriz{       
+    padding: 0px 0px 0px 0px !important;     
+    margin: 0px 0px 0px 20px !important;
 }
 
     
