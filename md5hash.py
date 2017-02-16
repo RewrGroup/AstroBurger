@@ -1,7 +1,7 @@
 import hashlib
 
 
-def hash(boxID, tipo_pago, amountUSD, user, orderID):
+def hash(boxID, tipo_pago, amount, user, orderID):
     # boxID = 8591
     coin_name = 'bitcoin'
     public_key = ''
@@ -16,7 +16,7 @@ def hash(boxID, tipo_pago, amountUSD, user, orderID):
         private_key = 'la-clave-para-las-membresias'
         period = '1 MONTH'
     webdev_key = ''
-    amount = 0
+    amountUSD = 0
     # period = '1 MINUTE'
     # amount_usd = 0.6
     language = 'en'

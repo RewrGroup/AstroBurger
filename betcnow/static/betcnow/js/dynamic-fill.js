@@ -1,5 +1,5 @@
 
-    function dynamic_fill(boxID, tipo_pago, amountUSD, user, orderID, hash){ //parámetros visibles en el browser del cliente
+    function dynamic_fill(boxID, tipo_pago, amount, user, orderID, hash){ //parámetros visibles en el browser del cliente
         var public_key;
         var period;
         if (tipo_pago == 'jugada'){ //Para pago de jugadas o Para pago de membresias
@@ -10,5 +10,5 @@
             public_key = ''; //El public key del box que voy a poner en el pago de memberias
             period = '1 MONTH';
         }        
-        cryptobox_show(boxID, 'bitcoin', public_key, 0, amountUSD, period, 'en', 'iframe_id', user, 'MANUAL', orderID, '', '', hash, 530, 230);
+        cryptobox_show(boxID, 'bitcoin', public_key, amount, 0, period, 'en', 'iframe_id', user, 'MANUAL', orderID, '', '', hash, 530, 230);
     }

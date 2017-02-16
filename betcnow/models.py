@@ -16,7 +16,7 @@ class Profile(models.Model):
 
 
 class Pote(models.Model):
-    valor_jugada = models.IntegerField()
+    valor_jugada = models.FloatField()
     STATUS_CHOICES = (
         ('1', 'Abierto'),
         ('0', 'Cerrado'),

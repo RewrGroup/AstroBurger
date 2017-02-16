@@ -29,7 +29,7 @@ def checkout(request):
         jugadas_procesadas = []
         jugadas_ocupadas = []
         jugadas = request.POST.getlist('jugadas[]')
-        amountUSD = 0
+        amount = 0
         for i in jugadas:
             jugada = Jugada.objects.get(pote=pote, numero=i)
             if jugada.status == '1':
@@ -37,7 +37,7 @@ def checkout(request):
                 jugada.jugador = request.user
                 jugada.save()
                 jugadas_procesadas.append(jugada)
-                amountUSD += pote.valor_jugada
+                amount += pote.valor_jugada
             else:
                 jugadas_ocupadas.append(jugada)
 
@@ -45,8 +45,8 @@ def checkout(request):
         tipo_pago = 'jugada'
         user = request.user.username
         orderID = 'pot' + str(pote)
-        md5 = md5hash.hash(boxID, tipo_pago, amountUSD, user, orderID)
-        variables = {'boxID': boxID, 'tipo_pago': tipo_pago, 'amountUSD': amountUSD, 'user': user, 'orderID': orderID,
+        md5 = md5hash.hash(boxID, tipo_pago, amount, user, orderID)
+        variables = {'boxID': boxID, 'tipo_pago': tipo_pago, 'amount': amount, 'user': user, 'orderID': orderID,
                      'md5': md5, 'jugadas_procesadas': jugadas_procesadas, 'jugadas_ocupadas': jugadas_ocupadas}
         if jugadas_ocupadas.__len__() > 0:
             is_taken = True

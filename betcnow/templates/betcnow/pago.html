@@ -9,7 +9,7 @@
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>id</th>
+                <th>Pot N°</th>
                 <th>Selected number</th>
                 <th>price</th>
             </tr>
@@ -18,7 +18,7 @@
             {% for i in jugadas_procesadas%}
             <tr>
                 <td>
-                    {{i.id}}
+                    {{i.pote.id}}
                 </td>
                 <td>
                     {{i.numero}}
@@ -36,7 +36,7 @@
                 <td>                    
                 </td>
                 <td>                    
-                    Total: {{amountUSD}}
+                    Total: {{amount}} Btc (+fees)
                 </td>
             </tr>
         </tfoot>
@@ -47,6 +47,6 @@
         <iframe id="iframe_id" style="border-radius:15px;border:1px solid #eee;padding:3px 6px;margin:10px;" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" width="530" height="230"></iframe>
     </div>
     <script type="text/javascript">
-        dynamic_fill({{boxID}}, '{{tipo_pago}}', {{amountUSD}}, '{{user}}', '{{orderID}}', '{{md5}}')
+        dynamic_fill({{boxID}}, '{{tipo_pago}}', {{amount}}, '{{user}}', '{{orderID}}', '{{md5}}')
     </script>
 {% endblock content %} 
