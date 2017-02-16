@@ -78,83 +78,127 @@ padding: 20px 5px 0px 0px;
 
 @media screen and (max-width: 800px){
 
-  .btn-group-lg .ad{
-    display: none;
-  }
-  .btn-group-lg .fg{
-    display: none;
-  }
-  .linea1 ul li a{
-padding: 10px 5px 0px 0px;
-}
-.box{
-  margin: 0 auto;
-}
+      .btn-group-lg .ad{
+        display: none;
+      }
+      .btn-group-lg .fg{
+        display: none;
+      }
+      .linea1 ul li a{
+    padding: 10px 5px 0px 0px;
+    }
+    .box{
+      margin: 0 auto;
+    }
 
-.box2 ul li{
-  padding: 10px;
-  position: relative;
-  right: 220px;
-  top: 200px;
-  font-size: 12px;
-  line-height: .1;
-}
+    .box2 ul li{
+      padding: 10px;
+      position: relative;
+      right: 220px;
+      top: 200px;
+      font-size: 12px;
+      line-height: .1;
+    }
 
-.row .user{
-  display: none;
-}
-#po{
-  font-size: 25px;
-  position: absolute;
-  right: 80px;
-}
+    .row .user{
+      display: none;
+    }
+    #po{
+      font-size: 25px;
+      position: absolute;
+      right: 80px;
+    }
 
-.container{
-  position: relative;
-  right: 655px;
-  top: 330px;
-  
-}
+    .container{
+      position: relative;
+      right: 655px;
+      top: 330px;
 
-.container a{
-  width: 50px;
+    }
 
-}
+    .container a{
+      width: 50px;
 
-#gty{
-font-size: 25px;
+    }
 
-}
-#gtyb{
-  width: 70px;
-  height: 70px;
-}
-#gtyd{
-font-size: 25px;
+    #gty{
+    font-size: 25px;
 
-}
-#gtyc{
-  width: 70px;
-  height: 70px;
-}
-#gtyf{
-  font-size: 25px;
-}
-#gtye{
-  width: 70px;
-  height: 70px;
-}
-.mov li{
-  display: none;
-}
+    }
+    #gtyb{
+      width: 70px;
+      height: 70px;
+    }
+    #gtyd{
+    font-size: 25px;
 
-.ert ul li {
-  position: relative;
-  left: 10px;
-  top: 10px;
-  display: inline-block;
-}
+    }
+    #gtyc{
+      width: 70px;
+      height: 70px;
+    }
+    #gtyf{
+      font-size: 25px;
+    }
+    #gtye{
+      width: 70px;
+      height: 70px;
+    }
+    .mov li{
+      display: none;
+    }
 
+    .ert ul li {
+      position: relative;
+      left: 10px;
+      top: 10px;
+      display: inline-block;
+    }
+
+    .tabla{
+        width: 70%;
+        margin: 0px 0px 0px 100px;
+
+    }
+
+    .carousel-inner .active .img-corousel{
+        height: 400px;
+    }
+    
+    
+    /* Matriz de pago pantalla pequeña*/
+
+    /*matriz*/
+    .btn-matrix > .btn:nth-child(5n+1) {
+      clear: left;
+      margin-left: 0;
+    }
+    .btn-matrix > .btn:nth-child(n) {
+      margin-top: 1px;
+    }
+    .btn-matrix > .btn:first-child {
+      border-bottom-left-radius: 0;
+    }
+    .btn-matrix > .btn:nth-child(4) {
+      border-top-right-radius: 4px !important;
+    } 
+    .btn-matrix > .btn:nth-last-child(4) {
+      border-bottom-left-radius: 4px !important;
+    }
+    .btn-matrix > .btn:last-child {
+      border-top-right-radius: 0;
+    }
+
+    .custom {
+        width: 60px !important;
+    }
+
+    /* Decorations */
+    .btn-matrix {
+      margin: 20px;
+    }
+    
+    
 }
 
 /*Botón PLAY NOW*/
