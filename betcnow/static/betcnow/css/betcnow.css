@@ -162,8 +162,9 @@ padding: 20px 5px 0px 0px;
     }
     
     .botones-centena{
+        background: blue;
         padding: 0px 0px 0px 40px !important;
-        width: 45% !important;
+        width: 80% !important;
     }
     
     .cientos{
