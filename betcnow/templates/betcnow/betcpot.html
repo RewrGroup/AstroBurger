@@ -74,19 +74,21 @@
             </div>    
         </div>
         
-        <form action="" method="post">
+        <form action="{% url 'check-out' %}" method="post">
             {% csrf_token %}
             <table class="table table-condensed" id='tabla_jugadas'>
                 <thead>
                     <tr>
-                        <th>Jugadas(<small id='cant_jugadas'>0</small>)</th>
+                        <th>Played numbers: <small id='cant_jugadas'>0</small></th>
                     </tr>
                 </thead>
             </table>
+            <input type="hidden" value='{{pote.id}}' name='pote'>
             <input type="submit" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
         </form>
     </div>
 </div>
+
 
 {% endblock %}
 

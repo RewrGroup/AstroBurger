@@ -22,7 +22,7 @@
               </div>
           </div>  
             <div class="linea1">
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
                         <ul class="nav navbar-nav navbar-right ">
                             <li ><a class="col-xs-2 col-md-2 col-lg-2" href="signup.html"> <button type="button" id="D" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-sunglasses"></span >Overview</button></a></li>
 
