@@ -169,6 +169,9 @@ padding: 20px 5px 0px 0px;
     /* Matriz de pago pantalla pequeña*/
 
     /*matriz*/
+    .btn-matrix{
+        width: 100%;
+    }
     .btn-matrix > .btn:nth-child(5n+1) {
       clear: left;
       margin-left: 0;

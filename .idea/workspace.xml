@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d47dfa0-057b-40a9-921f-6b28eede9ea9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/models.py" afterPath="$PROJECT_DIR$/betcnow/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/js/dynamic-fill.js" afterPath="$PROJECT_DIR$/betcnow/static/betcnow/js/dynamic-fill.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/pago.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/pago.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/views.py" afterPath="$PROJECT_DIR$/betcnow/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/md5hash.py" afterPath="$PROJECT_DIR$/md5hash.py" />
-    </list>
+    <list default="true" id="2d47dfa0-057b-40a9-921f-6b28eede9ea9" name="Default" comment="" />
     <ignored path="REWR.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
