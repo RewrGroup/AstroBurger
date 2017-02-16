@@ -182,10 +182,10 @@ padding: 20px 5px 0px 0px;
     .btn-matrix > .btn:first-child {
       border-bottom-left-radius: 0;
     }
-    .btn-matrix > .btn:nth-child(4) {
+    .btn-matrix > .btn:nth-child(5) {
       border-top-right-radius: 4px !important;
-    } 
-    .btn-matrix > .btn:nth-last-child(4) {
+    }
+    .btn-matrix > .btn:nth-last-child(5) {
       border-bottom-left-radius: 4px !important;
     }
     .btn-matrix > .btn:last-child {
@@ -195,11 +195,12 @@ padding: 20px 5px 0px 0px;
     .custom {
         width: 60px !important;
     }
+    
+    .columnaMatriz{
+        
+    padding: 0px 0px 0px 0px !important; 
+}
 
-    /* Decorations */
-    .btn-matrix {
-      margin: 20px;
-    }
     
     
 }
