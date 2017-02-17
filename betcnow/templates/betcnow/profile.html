@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!-- AQUI VA EL CUERPO -->
+<!-- BOTON DE OVERVIEW OVERVIEW OVERVIEW OVERVIEW OVERVIEW OVERVIEW OVERVIEW OverviewOVERVIEW OVERVIEW OVERVIEW -->
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <center><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Overview</a></h4></center>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+            <!-- cabecera de la informacion -->     
+                <div class="box">  
+                    <div class="container-fluid">
+                        <div class="row">
+                            <ul>
+                                <div class="col-xs-7 col-md-10 col-lg-10 saludo">
+                                    <li><h2 class="subtitulos">Hello, {{user}}</h2></li>
+                                </div>   
+                                <div class="col-xs-3 col-md-2 col-lg-2" >
+                                    <li>Hora del sistema</li>
+                                </div>
+                            </ul>
+
+                        </div>
+                    </div>
+<div class="container">
+                    <div class="row">
+                        <div class="col-xs-1 col-sm-3 col-md-3 col-lg-2 imagen-medalla">
+                            <img src="{% static 'betcnow/img/medalla.jpg' %}">
+                        </div>                        
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 info-user">
+                            <ul>
+                                <li>Username: {{user}}</li>
+                                <li>ID: {{user.pk}}</li>
+                                <li >membership: Free <a id="poi" href="upgrade.html">(upgrade)</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-2 fondo-botones-redondos">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-jugadas">
+                                    <div class="row botones-redondos">
+                                        <a   class="button" data-toggle="collapse" data-target="#misjugadas"><span class="glyphicon glyphicon-tower"></span ></a>
+                                    </div>
+                                    <div class="row caja-nombres-botones">
+                                        <h3>Plays</h3>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-referidos">
+                                    <div class="row botones-redondos">
+                                        <a  class="button" data-toggle="collapse" data-target="#misreferidos"><span class="glyphicon glyphicon-user"></span ></a>
+                                    </div>
+                                    <div class="row caja-nombres-botones">
+                                        <h3>Referrals</h3>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-trofeos">
+                                    <div class="row botones-redondos">                                      
+                                        <a  class="button" data-toggle="collapse" data-target="#mistrofeos"><span class="glyphicon glyphicon-star"></span ></a>                      
+                                    </div>
+                                    <div class="row caja-nombres-botones">
+                                        <h3>Trophys</h3>
+                                    </div>
+                                </div>                                                                
+                            </div>
+                        </div> 
+                    </div>
+</div>
+                </div> <!-- div del box -->
+            </div>
+        </div>  
+    </div>
+                             
+
+<div id="misjugadas" class="collapse">
+    Aqui se mostraran todas las jugadas.
+</div>
+
+<!-- DESPLIEGUE DE BOTON MIS REFERIDOS -->
+
+<div id="misreferidos" class="collapse">
+    Aqui se mostraran los referidos y las ganancias generadas al sponsor
+</div>
+
+<!-- DESPLIEGUE DE BOTON MIS TROFEOS -->
+
+<div id="mistrofeos" class="collapse">
+    aqui se mostraran los trofeos obtenidos 
+</div>
+</div>
+
+<!-- PANEL MY ACCOUNT -->
+
+  <div class="panel panel-default">
+          <div class="panel-heading">
+            <center><h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+              My Account</a>
+            </h4></center>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+<div class="ert">                              
+    <ul class="nav navbar-nav">          
+    <li><button type="button" class="btn btn-info " data-toggle="collapse" data-target="#cambioclave">Change Password</button>&nbsp&nbsp&nbsp&nbsp</li>          
+    <li><button type="button" class="btn btn-info " data-toggle="collapse" data-target="#cambiowallet">Change Wallet</button></li> 
+    </ul> 
+    <ul>
+    <li><a href="upgrade.html" ><button type="button" class="btn btn-info" id="zxc">Upgrade</button></a></li>            
+    </ul>
+</div> 
+
+<!-- DESPLIEGUE DE BOTON Change Password -->
+
+<center><div id="cambioclave" class="collapse">
+          <div class="form-group">
+           <label for="pwd">New Password:</label>
+             <input type="password" class="form-control" id="pwd">
+         </div>
+      <div class="form-group">
+        <label for="pwd">Confirm New Password:</label>
+        <input type="password" class="form-control" id="pwd">
+        <br><center><button type="button" class="btn btn-success">Success</button></center>
+      </div></center>
+
+</div>
+
+
+<!-- DESPLIEGUE DE Change Wallet -->
+
+<center><div id="cambiowallet" class="collapse">
+          <div class="form-group">
+           <label for="usr">New Wallet:</label>
+             <input type="text" class="form-control" id="usr">
+         </div>
+      <div class="form-group">
+        <label for="user1">Confirm New Wallet:</label>
+        <input type="user" class="form-control" id="user1">
+        <br><center><button type="button" class="btn btn-success">Success</button></center>
+      </div></center>
+      </div></center>
+
+</div>
+
+<!-- DESPLIEGUE DE BOTON MIS TROFEOS -->
+
+<div id="mistrofeos" class="collapse">
+    Aqui van imagenes de trofeos 
+</div>
+ 
+
+              </div>
+          </div>
+  </div>
+
+
+<!-- PANEL MY REFERALS TOOLS -->
+
+  <div class="panel panel-default">
+          <div class="panel-heading">
+            <center><h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+              My referals tools</a>
+            </h4></center>
+          </div>
+    <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+
+              Referals link: <br>
+              Banners: 
+
+            </div>
+    </div>
+  </div>
+</div>
+
+<!-- aqui termina el cuerpo -->
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from pinax.notifications.models import send
 from .models import Profile, User, Jugada, Pote
@@ -65,6 +65,11 @@ def jugada_timeout(request):
         'timeout': True
     }
     return JsonResponse(data)
+
+@login_required()
+def profile(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    return render(request, 'betcnow/profile.html', {'user': user})
 
 
 @csrf_exempt

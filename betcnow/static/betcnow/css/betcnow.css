@@ -7,6 +7,10 @@ body{
 }
 
 /*INICIO*/
+
+.row {
+    margin: 0px 0px 0px 0px;
+}
 .subtitulos{
     font-family: 'Lobster', cursive;
     font-size: 50px;
@@ -25,7 +29,6 @@ background: #fff;
 }
 
 .linea1 navbar-right{
-    background: red;
 }
 /*Propiedades del botón de SignUp*/
 
@@ -81,7 +84,11 @@ padding: 20px 5px 0px 0px;
 /*Propiedades de la pantalla pequeña*/
 
 @media screen and (max-width: 800px){
-
+    
+    .row {
+    margin: 0px 0px 0px 0px;
+    }
+    
       .btn-group-lg .ad{
         display: none;
       }
@@ -91,65 +98,51 @@ padding: 20px 5px 0px 0px;
       .linea1 ul li a{
     padding: 10px 5px 0px 0px;
     }
-    .box{
-      margin: 0 auto;
+    .saludo{
+        padding: 0;
+        margin: 0;
+    }
+    .saludo li h2{
+      font-size: 30px;
+        margin: 15px 0px 0px -38px;
+    }
+    .row .info-user{
+        font-size: 16px;
+        padding: 20px 0px 0px 0px;
     }
 
-    .box2 ul li{
-      padding: 10px;
-      position: relative;
-      right: 220px;
-      top: 200px;
-      font-size: 12px;
-      line-height: .1;
-    }
-
-    .row .user{
+    .row .imagen-medalla{
       display: none;
     }
-    #po{
-      font-size: 25px;
-      position: absolute;
-      right: 80px;
+    
+    .row .fondo-botones-redondos{
+        padding: 15px 0px 0px 30px;
+    }
+    
+    .row .botones-redondos{
+          padding: 10px 0px 0px 0px;
+          margin: 0px 0px 0px 0px;
+          text-align: center;
+          width: 55px; 
+          line-height: 40px;
+          border-radius: 50%;
+          box-shadow: 1px 3px 1px #fff;
+          cursor: pointer;
     }
 
-    .container{
-      position: relative;
-      right: 655px;
-      top: 330px;
-
+    .row .botones-redondos span{
+        color:#fff;
+        font-size: 35px;
+        position: center;   
+        top: 4px;
+        left: 1px;
     }
-
-    .container a{
-      width: 50px;
-
+    
+    .row .boton-jugadas h3, .boton-referidos h3, .boton-trofeos h3{
+        font-size: 15px;        
     }
-
-    #gty{
-    font-size: 25px;
-
-    }
-    #gtyb{
-      width: 70px;
-      height: 70px;
-    }
-    #gtyd{
-    font-size: 25px;
-
-    }
-    #gtyc{
-      width: 70px;
-      height: 70px;
-    }
-    #gtyf{
-      font-size: 25px;
-    }
-    #gtye{
-      width: 70px;
-      height: 70px;
-    }
-    .mov li{
-      display: none;
+    .caja-nombres-botones{
+        margin: -10px 0px 0px 0px;
     }
 
     .ert ul li {
@@ -162,7 +155,6 @@ padding: 20px 5px 0px 0px;
     .tabla{
         width: 70%;
         margin: 0px 0px 0px 50px;
-
     }
     
     .botones-centena{
@@ -183,7 +175,7 @@ padding: 20px 5px 0px 0px;
 
     /*matriz*/
     .btn-matrix{
-        width: 100%;
+        margin: 0px 0px 0px 0px;
     }
     .btn-matrix > .btn:nth-child(5n+1) {
       clear: left;
@@ -260,6 +252,10 @@ font-style: bold;
 
 /*Login*/
 
+.saludo li h2{
+    color: #fff;
+}
+
 #D{
   background: #4F8ED8;
   color:#fff;
@@ -278,7 +274,7 @@ font-style: bold;
 .box {
 
   width: 100%;
-  height: 300px;
+  height: 270px;
   margin: 0 auto;
   background:  linear-gradient(to bottom, #0066ff 0%, #6699ff 102%);
   border:3px solid;
@@ -287,61 +283,59 @@ font-style: bold;
 }
 
 
-.box2{
-  padding: 10px;
-  position: relative;
-  left: 200px;
-  bottom: 160px;
+.info-user{  
   font-size: 20px;
-  display: block;
+    padding: 0px 50px 0px 0px;
 }
-.box2 .container{
-  display: inline-block;
+.info-user li{
+    text-align: left;   
+    position: relative;
+    left: -40px;
 }
-.user{
+/*.boton-jugadas h3, .boton-trofeos h3{
+    padding: 0px 0px 0px 20px;
+        
+}
+.boton-referidos h3{
+    padding: 0px 0px 0px 5px;
+}*/
+
+.imagen-medalla{
   margin: 30px 0px 0px 0px;
 
 }
 
-.user img{
+.imagen-medalla img{
   
  width: 150px;
   display: block;
   border-radius: 50%;
   position: relative;
-  left: 40px;
-  bottom: 10px;
+  bottom: 30px;
 }
-.container{
+.caja-botones{
   padding: 0;
   margin right: 10px;
 }
 
-.container a{
+.botones-redondos{
   background: #4da6ff;
-  color:#fff;
-
-  font-size: 20px;
-  padding: 10px 0px;
+  padding: 10px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
   text-align: center;
-  width: 110px;
- 
-  line-height: 50px;
+  width: 100px; 
+  line-height: 70px;
   border-radius: 50%;
   box-shadow: 1px 3px 1px #fff;
-  display: inline-block;
-  position: relative;
-  left: 720px;
-  bottom: 300px;
   cursor: pointer;
 }
 
-.container a span{
-font-size: 50px;
-position: center;
-top: 8px;
-left: 2px;
-
+.botones-redondos span{
+    color:#fff;
+    font-size: 50px;
+    position: center;   
+    top: 8px;
+    left: 2px;
 }
 
 #poi{
@@ -349,7 +343,7 @@ left: 2px;
 
 }
 
-.container a:hover{
+.botones-redondos span:hover{
   box-shadow: 0px 0px 0px;
   padding-top: 7px; 
 }
