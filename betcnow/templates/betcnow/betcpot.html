@@ -4,10 +4,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script> var lista_status = {{lista_status}}</script>
     <script src="{% static 'betcnow/js/betcpot.js' %}"></script>
-    <script>
+<script>
+    if (window.close()){
+    alert('are you sure?')
+}
+</script>
+    <script>        
         $(document).ready(function(){
            llenar_matriz(0); 
-        });
+        });        
     </script>
     <script>        
         jQuery(function(){

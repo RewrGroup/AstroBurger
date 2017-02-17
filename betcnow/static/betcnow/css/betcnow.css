@@ -23,6 +23,10 @@ body{
 .navbar-default .container-fluid .row{
 background: #fff;
 }
+
+.linea1 navbar-right{
+    background: red;
+}
 /*Propiedades del botón de SignUp*/
 
 .linea1 ul li a:hover{
@@ -33,12 +37,12 @@ background: #fff;
 padding: 20px 5px 0px 0px;
 }
 .linea1 ul{
-  padding: 0px 30px 0px 0px;
+  padding: 0px 11px 0px 0px;
+    margin: 0px 0px 0px 0px;
 }
 .linea1 ul li a button{
   color:#fff;
   background: #4F8EDB;
-
 }
 
 /*Propiedades del botón de LogIn*/

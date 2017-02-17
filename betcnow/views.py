@@ -5,7 +5,7 @@ from .models import Profile, User, Jugada, Pote
 from registration.backends.default.views import ActivationView
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.template import RequestContext
+from django.http import JsonResponse
 import md5hash
 
 
@@ -40,7 +40,6 @@ def checkout(request):
                 amount += pote.valor_jugada
             else:
                 jugadas_ocupadas.append(jugada)
-
         boxID = 8591
         tipo_pago = 'jugada'
         user = request.user.username
@@ -48,13 +47,24 @@ def checkout(request):
         md5 = md5hash.hash(boxID, tipo_pago, amount, user, orderID)
         variables = {'boxID': boxID, 'tipo_pago': tipo_pago, 'amount': amount, 'user': user, 'orderID': orderID,
                      'md5': md5, 'jugadas_procesadas': jugadas_procesadas, 'jugadas_ocupadas': jugadas_ocupadas}
-        if jugadas_ocupadas.__len__() > 0:
-            is_taken = True
-            variables.update({'is_take': is_taken})
         return render(request, 'betcnow/pago.html', variables)
     else:
         return HttpResponse()
 
+
+def jugada_timeout(request):
+    numeros_jugadas = request.GET.getlist('jugadas[]', None)
+    pote = Pote.objects.get(id=request.GET.get('pote', None))
+    for i in numeros_jugadas:
+        jugada = Jugada.objects.get(pote=pote, numero=i)
+        if jugada.status == '2':
+            jugada.status = '1'
+            jugada.jugador = None
+            jugada.save()
+    data = {
+        'timeout': True
+    }
+    return JsonResponse(data)
 
 
 @csrf_exempt
