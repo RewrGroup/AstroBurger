@@ -35,12 +35,17 @@ function llenar_matriz(centena) {
 
 function add_jugada(i) {            //Añadir jugada a la tabla de seleccionadas
     var table = document.getElementById('tabla_jugadas');
-    document.getElementById('cant_jugadas').innerHTML = table.rows.length;  //El texto que dice cuantas jugadas has seleccionado
-    var row = table.insertRow(-1);  //Insertar al final
-    var cell1 = row.insertCell(0);       //Celda 1, la jugada    
-    cell1.innerHTML = "<input type='text' name='jugadas[]' class='form-control' readonly=true value='" + i + "'/>";
-    var cell2 = row.insertCell(1);      //Celda 2, el botón de delete
-    cell2.innerHTML = "<button type='button' class='btn btn-default' onclick='delete_row(this)'><span id='delete_span' class='glyphicon glyphicon-remove'></span></button>";
+    if (table.rows.length <= 8){
+        document.getElementById('cant_jugadas').innerHTML = table.rows.length;  //El texto que dice cuantas jugadas has seleccionado
+        var row = table.insertRow(-1);  //Insertar al final
+        var cell1 = row.insertCell(0);       //Celda 1, la jugada    
+        cell1.innerHTML = "<input type='text' name='jugadas[]' class='form-control' readonly=true value='" + i + "'/>";
+        var cell2 = row.insertCell(1);      //Celda 2, el botón de delete
+        cell2.innerHTML = "<button type='button' class='btn btn-default' onclick='delete_row(this)'><span id='delete_span' class='glyphicon glyphicon-remove'></span></button>";
+    }
+    else {
+        alert("Calm down! You can only play 8 numbers at once!");
+    }
 }
 
 function delete_row(elemento) {      //Recibe de parámetro un elemento de tipo Object
@@ -53,15 +58,42 @@ function delete_row(elemento) {      //Recibe de parámetro un elemento de tipo 
     $('#cant_jugadas').text(tr);
 }
 
-function random_values() {
-    var random_times = $("#random_input").val(); //Se lee el valor ingresado en la input
-    var x;  
-    if (random_times > 0 && random_times<=8){     //Se valida lo ingresado
-        for (var i=0; i < random_times; i++){      
-            var x = Math.floor((Math.random() * 1000) + 0);
-            add_jugada(x);                        //Se añade una jugada a la tabla, random_times cantidad de veces
+function random_values() {        
+    var table = document.getElementById('tabla_jugadas');   //La tabla donde se van reportando las jugadas seleccionadas
+    var random_times = $("#random_input").val(); //Se lee el valor ingresado en la input    
+    if (!random_times){
+        random_times = 1;
+    }
+    var numero; 
+    var jugadas_disponibles = [];
+    var disponible = true;
+    if (random_times > 0 && (random_times <= (9-table.rows.length))){     //Se valida lo ingresado
+        for (var i=0; i<1000; i++){
+            if (lista_status[i]==1){
+                disponible = true;
+                for (var j = 1, row; row = table.rows[j]; j++){   
+                    if (i == row.cells[0].children[0].value){
+                        disponible = false;
+                        break;
+                    }
+                }
+                if (disponible){
+                    jugadas_disponibles.push(i)
+                }
+            }
         }
-        centena = Math.trunc(x/100)*100;        //Se calcula la centena del numero random
+        var contador = 0;
+        while (contador < random_times){
+            numero = Math.floor((Math.random() * 1000) + 0);
+            for (var j=0; j<jugadas_disponibles.length; j++){
+                if(numero == jugadas_disponibles[j]){
+                    add_jugada(numero);       //Se añade una jugada a la tabla, random_times cantidad de veces        
+                    contador += 1;
+                    break;
+                }                
+            }                        
+        }
+        centena = Math.trunc(numero/100)*100;        //Se calcula la centena del numero random
         llenar_matriz(centena);     //Se actualiza la matríz
     }
     else {

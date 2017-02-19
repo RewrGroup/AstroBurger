@@ -52,17 +52,21 @@ def checkout(request):
         return HttpResponse()
 
 
-def jugada_timeout(request):
+def has_paid(request):
     numeros_jugadas = request.GET.getlist('jugadas[]', None)
     pote = Pote.objects.get(id=request.GET.get('pote', None))
+    paid = False
     for i in numeros_jugadas:
         jugada = Jugada.objects.get(pote=pote, numero=i)
         if jugada.status == '2':
             jugada.status = '1'
             jugada.jugador = None
             jugada.save()
+        else:
+            paid = True
+            break
     data = {
-        'timeout': True
+        'paid': paid
     }
     return JsonResponse(data)
 

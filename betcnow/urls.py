@@ -7,6 +7,6 @@ urlpatterns = [
     url(r'^play/$', views.play, name='play'),
     url(r'^gourl_callback.html/$', views.callback, name='callback'),
     url(r'^check-out/$', views.checkout, name='check-out'),
-    url(r'^jugada_timeout/$', views.jugada_timeout, name='timeout'),
+    url(r'^has_paid/$', views.has_paid, name='has_paid'),
     url(r'^user/(?P<pk>[0-9]+)/$', views.profile, name='profile')
 ]
