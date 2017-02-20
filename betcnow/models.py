@@ -38,6 +38,7 @@ class Jugada(models.Model):
         ('3', 'Pagado'),
     )
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='1')
+    orderID = models.CharField(max_length=100, blank=True, null=True)
     RESULTADO_CHOICES = (
         ('1', 'Primero'),
         ('2', 'Segundo'),

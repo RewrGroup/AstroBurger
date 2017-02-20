@@ -41,7 +41,7 @@
                if ($('#tabla_jugadas tr').length == 1){
                    alert("Aren't you gonna play?");
                    return false;
-               }               
+               }
            }); 
         });
 
@@ -79,7 +79,7 @@
             </div>    
         </div>
         
-        <form action="{% url 'check-out' %}" method="post">
+        <form action="{% url 'check-out' %}" method="post" target="_self">
             {% csrf_token %}
             <table class="table table-condensed" id='tabla_jugadas'>
                 <thead>
