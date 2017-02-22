@@ -91,6 +91,8 @@ def profile(request, pk):
     if request.user == user:
         perfil = Profile.objects.get(user=user)
         time = datetime.datetime.utcnow()
+        if request.method == "POST":
+            perfil.address = request.POST.get('input_wallet', None)
         return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time})
     else:
         response = HttpResponse()

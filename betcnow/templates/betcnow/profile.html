@@ -104,13 +104,23 @@
                 <div class="row botones-myaccount-group">                                              
                     <div class="col-xs-8 col-sm-4 col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3">
                         <a class="btn btn-info botones-myaccount" href="{% url 'auth_password_change' %}" target="_blank">Change Password</a>
-                    </div>
-                    <div class="col-xs-8 col-sm-4 col-md-2 col-lg-2" id="boton-change_wallet">
-                        <a class="btn btn-info botones-myaccount" href="#">Change Wallet</a>
-                    </div>
+                    </div>                                        
                     <div class="col-xs-8 col-sm-4 col-md-2 col-lg-2">
                         <a class="btn btn-info botones-myaccount" href="{% url 'membership' %}" target="_blank">Upgrade</a>                
-                    </div>
+                    </div>     
+                    <div class="col-xs-8 col-sm-4 col-md-2 col-lg-2" id="boton-change_wallet">
+                        <a class="btn btn-info botones-myaccount" href="#" data-toggle="collapse" data-target="#demo">Change Wallet</a>
+                    </div>                    
+                </div>
+                <div id="demo" class="col-lg-6 col-lg-offset-3 collapse">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <label for="input_wallet">ONLY Bitcoin wallet addresses allowed</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" value="{{perfil.address}}" name="input_wallet">
+                        </div>
+                        <input class="btn btn-info submit-color-betcnow form-control" type="submit" value="Change">
+                    </form>
                 </div>
             </div>
         </div> 
@@ -131,6 +141,12 @@
         </div>
     </div>
 </div>
-
 <!-- aqui termina el cuerpo -->
 {% endblock %}
+
+<div class="container">
+  <h2>Simple Collapsible</h2>
+  <p>Click on the button to toggle between showing and hiding content.</p>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+  
+</div>
