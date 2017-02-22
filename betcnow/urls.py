@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^gourl_callback.html/$', views.callback, name='callback'),
     url(r'^check-out/$', views.checkout, name='check-out'),
     url(r'^has_paid/$', views.has_paid, name='has_paid'),
-    url(r'^user/(?P<pk>[0-9]+)/$', views.profile, name='profile')
+    url(r'^user/(?P<pk>[0-9]+)/$', views.profile, name='profile'),
+    url(r'^membership/$', TemplateView.as_view(template_name="betcnow/upgrade.html"), name='membership'),
 ]

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Memberships{% endblock %}
+{% block content %}
+
+<!-- AQUI VA EL CUERPO -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-lg-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <center><h4>Free membership</h4></center>
+                    <div class="thumbnail">                        
+                        <img src="{% static 'betcnow/img/medalla.jpg' %}" alt="Lights" style="width:60%">                                       
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>
+                            Earn 5% of every play made by your referrals
+                        </li>
+                        <li>
+                            Unlimited number of plays
+                        </li>
+                    </ul>
+                </div>
+            </div>            
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <center><h4>Member - 2$/month</h4></center>
+                    <div class="thumbnail">                        
+                        <img src="{% static 'betcnow/img/medalla.jpg' %}" alt="Lights" style="width:60%">                                       
+                    </div>
+                </div>
+                <div class="panel-body">                        
+                    <ul>
+                        <li>
+                            Earn 10% of every play made by your referrals
+                        </li>
+                        <li>
+                            Unlock Betcpot's numbers with gift prizes
+                        </li>
+                        <li>
+                            Unlimited number of plays
+                        </li>                        
+                    </ul>
+                </div>
+            </div>                        
+        </div>        
+    </div>
+</div>
+<!-- aqui termina el cuerpo -->
+{% endblock %}

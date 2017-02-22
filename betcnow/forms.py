@@ -32,7 +32,7 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
                                     Div(FieldWithButtons('sponsor_name', edit_sponsor_button), css_class="form-group"),
                                     Div(Field('password1', placeholder='password'), css_class="form-group"),
                                     Div(Field('password2', placeholder='confirm your password'), css_class="form-group"),
-                                    HTML("<input type='submit' class='btn btn-default'"
+                                    HTML("<input type='submit' class='btn btn-info submit-color-betcnow'"
                                          "onclick='disabled_false()' value='Sign Up'/>"))
 
     def valid_sponsor(self):    # Lo uso para validar que el nombre ingresado está en la BD
@@ -57,11 +57,14 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
 
 class LoginWithPlaceholder(AuthenticationForm):
 
+    remember_me = forms.BooleanField(required=False, initial=False)
+
     def __init__(self, *args, **kwargs):
         super(LoginWithPlaceholder, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_show_labels = False
         self.helper.layout = Layout(Div(Field('username', placeholder='username'), css_class="form-group"),
                                     Div(Field('password', placeholder='password'), css_class="form-group"),
+                                    PrependedText('remember_me', ''),
                                     Div(Submit('submit', 'Log in')))
 

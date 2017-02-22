@@ -137,19 +137,24 @@ padding: 20px 5px 0px 0px;
         top: 4px;
         left: 1px;
     }    
+    
     .row .boton-jugadas h3, .boton-referidos h3, .boton-trofeos h3{
         font-size: 15px;        
     }
+    
     .caja-nombres-botones{
         margin: -10px 0px 0px 0px;
     }
-
-    .ert ul li {
-      position: relative;
-      left: 10px;
-      top: 10px;
-      display: inline-block;
+    
+    .botones-myaccount-group{
+    padding: 0px 0px 0px 95px !important;    
     }
+    
+    #boton-change_wallet{
+        margin: 7px 0px 7px 0px;
+    }
+
+
 
     .tabla{
         width: 70%;
@@ -337,46 +342,26 @@ font-style: bold;
     left: 2px;
 }
 
-#poi{
-  color: green;
-
+#upgrade-link{
+    color: lawngreen;
+    font-size: 18px;
 }
+
 .botones-redondos:hover{
-    background: #80bfff;
+  background: #80bfff;
   box-shadow: 0px 0px 0px;
   padding-top: 7px; 
 }
 
-.mov{
-  position: absolute;
-  left: 622px;
-bottom: 25px;
-color: #fff;
+.botones-myaccount-group{
+    padding: 0px 0px 0px 0px;
 }
 
-
-
-
-.ert ul li button{
-  background: #4F8ED8;
-}
-.ert ul li {
-  position: relative;
-  left: 480px;
-  top: 10px;
-  display: inline-block;
-}
-.ert ul li a{
-  position: relative;
-  left: 15px;
-  
-  display: inline-block;
+.botones-myaccount{
+    width: 150px;
+    background: #4F8ED8;
 }
 
-.ert ul li a:hover{
-  margin: 0px;
-background: #fff;
-}
 /*FIN DE LOGIN*/
 
 /*TESTIMONIOS*/
@@ -449,4 +434,22 @@ background: #fff;
 
 #submit_jugada{
     font-weight:bold;
+}
+
+.change-password{
+    padding: 15px 0px 0px 0px;
+    
+}
+
+.submit-color-betcnow{
+    background: #4F8ED8;
+    
+}
+
+.color-azul-betcnow{
+    color: #4F8ED8;
+}
+
+.color-verde-betcnow{
+    color: #5cb85c;
 }

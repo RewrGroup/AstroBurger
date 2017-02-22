@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from betcnow.regbackend import MyRegistrationView, RefRegistrationView
 from betcnow.forms import LoginWithPlaceholder
-from django.contrib.auth import views as auth_views
+from betcnow.views import remember_me_login
 from betcnow.views import SendEmailAfterActivate
 from django.views.generic.base import TemplateView
 
@@ -33,8 +33,8 @@ urlpatterns = [
     url(r'^accounts/register/ref=(?P<pk>[0-9]+)/$',
         RefRegistrationView.as_view(),
         name='ref_register'),
-    url(r'^accounts/login/$', auth_views.login, {'template_name': 'registration/login.html',
-                                                 'authentication_form': LoginWithPlaceholder},
+    url(r'^accounts/login/$', remember_me_login, {'template_name': 'registration/login.html',
+                                                  'authentication_form': LoginWithPlaceholder},
         name='login'),
     url(r'^accounts/activate/complete/$',
         TemplateView.as_view(template_name='registration/activation_complete.html'),
@@ -44,7 +44,7 @@ urlpatterns = [
         name='registration_activate'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^notifications/', include('pinax.notifications.urls'))
+    url(r'^notifications/', include('pinax.notifications.urls')),
 ]
 
 if settings.DEBUG:

@@ -6,7 +6,7 @@
 <div class="panel-group" id="accordion">
     <div class="panel panel-default">
         <div class="panel-heading">
-          <center><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Overview</a></h4></center>
+          <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><b>Overview</b></a></h4></center>
         </div>
         <div id="collapse1" class="panel-collapse collapse in">
             <div class="panel-body">
@@ -25,157 +25,111 @@
 
                         </div>
                     </div>
-<div class="container">
-                    <div class="row">
-                        <div class="col-xs-1 col-sm-3 col-md-3 col-lg-2 imagen-medalla">
-                            <img src="{% static 'betcnow/img/medalla.jpg' %}">
-                        </div>                        
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 info-user">
-                            <ul>
-                                <li>Username: {{user}}</li>
-                                <li>ID: {{user.pk}}</li>
-                                <li >membership: Free <a id="poi" href="upgrade.html">(upgrade)</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-2 fondo-botones-redondos">
-                            <div class="row">
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-jugadas">                                    
-                                    <a class="button" data-toggle="collapse" data-target="#misjugadas">
-                                        <div class="row botones-redondos"><span class="glyphicon glyphicon-tower"></span >
-                                        </div>
-                                    </a>                                    
-                                    <div class="row caja-nombres-botones">
-                                        <h3>Plays</h3>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-referidos">                                    
-                                    <a class="button" data-toggle="collapse" data-target="#misreferidos">
-                                        <div class="row botones-redondos"><span class="glyphicon glyphicon-user"></span >
-                                        </div>
-                                    </a>                                    
-                                    <div class="row caja-nombres-botones">
-                                        <h3>Referrals</h3>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-trofeos">
-                                    <a class="button" data-toggle="collapse" data-target="#mistrofeos">
-                                        <div class="row botones-redondos"><span class="glyphicon glyphicon-star"></span>
-                                        </div>
-                                    </a>                                                          
-                                    <div class="row caja-nombres-botones">
-                                        <h3>Trophys</h3>
-                                    </div>
-                                </div>                                                                
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-1 col-sm-3 col-md-3 col-lg-2 imagen-medalla">
+                                <img src="{% static 'betcnow/img/medalla.jpg' %}">
+                            </div>                        
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 info-user">
+                                <ul>
+                                    <li>Username: {{user}}</li>
+                                    <li>ID: {{user.pk}}</li>
+                                    <li >membership: Free <a id="upgrade-link" href="{% url 'membership' %}" target="_blank">(Upgrade)</a></li>
+                                </ul>
                             </div>
-                        </div> 
+                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-2 fondo-botones-redondos">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-jugadas">                                    
+                                        <a class="button" data-toggle="collapse" data-target="#misjugadas">
+                                            <div class="row botones-redondos"><span class="glyphicon glyphicon-tower"></span >
+                                            </div>
+                                        </a>                                    
+                                        <div class="row caja-nombres-botones">
+                                            <h3>Plays</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-referidos">                                    
+                                        <a class="button" data-toggle="collapse" data-target="#misreferidos">
+                                            <div class="row botones-redondos"><span class="glyphicon glyphicon-user"></span >
+                                            </div>
+                                        </a>                                    
+                                        <div class="row caja-nombres-botones">
+                                            <h3>Referrals</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-trofeos">
+                                        <a class="button" data-toggle="collapse" data-target="#mistrofeos">
+                                            <div class="row botones-redondos"><span class="glyphicon glyphicon-star"></span>
+                                            </div>
+                                        </a>                                                          
+                                        <div class="row caja-nombres-botones">
+                                            <h3>Trophys</h3>
+                                        </div>
+                                    </div>                                                                
+                                </div>
+                            </div> 
+                        </div>
                     </div>
-</div>
                 </div> <!-- div del box -->
             </div>
         </div>  
     </div>
-                             
+    
+    <div id="misjugadas" class="collapse">
+        TABLA CON JUGADAS ACTIVAS
+    </div>
 
-<div id="misjugadas" class="collapse">
-    Aqui se mostraran todas las jugadas.
-</div>
+    <!-- DESPLIEGUE DE BOTON MIS REFERIDOS -->
 
-<!-- DESPLIEGUE DE BOTON MIS REFERIDOS -->
+    <div id="misreferidos" class="collapse">
+        Aqui se mostraran los referidos y las ganancias generadas al sponsor
+    </div>
 
-<div id="misreferidos" class="collapse">
-    Aqui se mostraran los referidos y las ganancias generadas al sponsor
-</div>
+    <!-- DESPLIEGUE DE BOTON MIS TROFEOS -->
 
-<!-- DESPLIEGUE DE BOTON MIS TROFEOS -->
-
-<div id="mistrofeos" class="collapse">
-    aqui se mostraran los trofeos obtenidos 
-</div>
+    <div id="mistrofeos" class="collapse">
+        aqui se mostraran los trofeos obtenidos 
+    </div>
 </div>
 
 <!-- PANEL MY ACCOUNT -->
 
-  <div class="panel panel-default">
-          <div class="panel-heading">
-            <center><h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-              My Account</a>
-            </h4></center>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-              <div class="panel-body">
-<div class="ert">                              
-    <ul class="nav navbar-nav">          
-    <li><button type="button" class="btn btn-info " data-toggle="collapse" data-target="#cambioclave">Change Password</button>&nbsp&nbsp&nbsp&nbsp</li>          
-    <li><button type="button" class="btn btn-info " data-toggle="collapse" data-target="#cambiowallet">Change Wallet</button></li> 
-    </ul> 
-    <ul>
-    <li><a href="upgrade.html" ><button type="button" class="btn btn-info" id="zxc">Upgrade</button></a></li>            
-    </ul>
-</div> 
-
-<!-- DESPLIEGUE DE BOTON Change Password -->
-
-<center><div id="cambioclave" class="collapse">
-          <div class="form-group">
-           <label for="pwd">New Password:</label>
-             <input type="password" class="form-control" id="pwd">
-         </div>
-      <div class="form-group">
-        <label for="pwd">Confirm New Password:</label>
-        <input type="password" class="form-control" id="pwd">
-        <br><center><button type="button" class="btn btn-success">Success</button></center>
-      </div></center>
-
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><b>My Account</b></a></h4></center>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="container">
+                <div class="row botones-myaccount-group">                                              
+                    <div class="col-xs-8 col-sm-4 col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3">
+                        <a class="btn btn-info botones-myaccount" href="{% url 'auth_password_change' %}" target="_blank">Change Password</a>
+                    </div>
+                    <div class="col-xs-8 col-sm-4 col-md-2 col-lg-2" id="boton-change_wallet">
+                        <a class="btn btn-info botones-myaccount" href="#">Change Wallet</a>
+                    </div>
+                    <div class="col-xs-8 col-sm-4 col-md-2 col-lg-2">
+                        <a class="btn btn-info botones-myaccount" href="{% url 'membership' %}" >Upgrade</a>                
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
 </div>
-
-
-<!-- DESPLIEGUE DE Change Wallet -->
-
-<center><div id="cambiowallet" class="collapse">
-          <div class="form-group">
-           <label for="usr">New Wallet:</label>
-             <input type="text" class="form-control" id="usr">
-         </div>
-      <div class="form-group">
-        <label for="user1">Confirm New Wallet:</label>
-        <input type="user" class="form-control" id="user1">
-        <br><center><button type="button" class="btn btn-success">Success</button></center>
-      </div></center>
-      </div></center>
-
-</div>
-
-<!-- DESPLIEGUE DE BOTON MIS TROFEOS -->
-
-<div id="mistrofeos" class="collapse">
-    Aqui van imagenes de trofeos 
-</div>
- 
-
-              </div>
-          </div>
-  </div>
 
 
 <!-- PANEL MY REFERALS TOOLS -->
 
-  <div class="panel panel-default">
-          <div class="panel-heading">
-            <center><h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-              My referals tools</a>
-            </h4></center>
-          </div>
-    <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">
-
-              Referals link: <br>
-              Banners: 
-
-            </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><b>My referals tools</b></a></h4></center>
     </div>
-  </div>
+    <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+          Referals link: <a href="{% url 'ref_register' pk=user.id %}" target="_blank">http://rewr.pythonanywhere.com/accounts/register/ref={{user.id}}</a><br>
+          Banners: 
+        </div>
+    </div>
 </div>
 
 <!-- aqui termina el cuerpo -->

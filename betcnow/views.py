@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
+from betcnow.forms import LoginWithPlaceholder
 from pinax.notifications.models import send
 from .models import Profile, User, Jugada, Pote
 from registration.backends.default.views import ActivationView
@@ -7,6 +9,14 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import md5hash
+
+
+def remember_me_login(request, template_name, authentication_form):
+    response = auth_views.login(request, template_name, authentication_form=LoginWithPlaceholder)
+    if request.method == "POST":
+        if request.POST.get('remember_me', None):
+            request.session.set_expiry(1209600)  # 2 weeks
+    return response
 
 
 @login_required()
