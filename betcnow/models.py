@@ -4,9 +4,19 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+class Membership(models.Model):
+    tipo_membresia = models.CharField(max_length=30, unique=True)
+    precio = models.FloatField()
+
+    def __str__(self):
+        return self.tipo_membresia
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     address = models.CharField(max_length=100, blank=True, null=True)
+    membresia = models.ForeignKey(Membership, to_field='tipo_membresia', default='Free')
+    miembro_hasta = models.DateField(blank=True, null=True)
     sponsor = models.ForeignKey(User, to_field='username', related_name='spn',
                                 default='betcnow', on_delete=models.SET_DEFAULT)
     sponsor_revenue = models.FloatField(blank=True, null=True)

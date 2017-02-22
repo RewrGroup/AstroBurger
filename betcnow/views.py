@@ -8,6 +8,7 @@ from registration.backends.default.views import ActivationView
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+import datetime
 import md5hash
 
 
@@ -83,10 +84,17 @@ def has_paid(request):
     }
     return JsonResponse(data)
 
+
 @login_required()
 def profile(request, pk):
     user = get_object_or_404(User, pk=pk)
-    return render(request, 'betcnow/profile.html', {'user': user})
+    if request.user == user:
+        perfil = Profile.objects.get(user=user)
+        time = datetime.datetime.utcnow()
+        return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time})
+    else:
+        response = HttpResponse()
+        return HttpResponse(response.status_code)
 
 
 @csrf_exempt

@@ -3,6 +3,7 @@ body{
   width: 100%;
   padding: 0;
   margin: 0;
+    color: darkslategray;
 
 }
 
@@ -278,7 +279,7 @@ font-style: bold;
 .box {
 
   width: 100%;
-  height: 270px;
+  height: 300px;
   margin: 0 auto;
   background:  linear-gradient(to bottom, #0066ff 0%, #6699ff 102%);
   border:3px solid;

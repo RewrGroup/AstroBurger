@@ -24,7 +24,7 @@
             <div class="linea1">
                     {% if request.user.is_authenticated %}
                         <ul class="nav navbar-nav navbar-right ">
-                            <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'profile' pk=request.user.pk %}"> <button type="button" id="D" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-sunglasses"></span> {{user}}</button></a></li>
+                            <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'profile' pk=request.user.pk %}"> <button type="button" id="D" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-tag"></span>{{user}}</button></a></li>
 
                             <li><a class="col-xs-2 col-md-2 col-lg-2"  href="{% url 'auth_logout' %}"> <button type="button" id="E" class="btn btn-default btn-md " ><span class="glyphicon glyphicon-log-out"></span> Loggout</button></a></li> 
                         </ul>

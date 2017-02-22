@@ -15,11 +15,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <ul>
-                                <div class="col-xs-7 col-md-10 col-lg-10 saludo">
-                                    <li><h2 class="subtitulos">Hello, {{user}}</h2></li>
+                                <div class="col-xs-7 col-sm-7 col-md-10 col-lg-10 saludo">
+                                    <li><h2 class="subtitulos">Hello, {{user}}!</h2></li>
                                 </div>   
-                                <div class="col-xs-3 col-md-2 col-lg-2" >
-                                    <li>Hora del sistema</li>
+                                <div class="col-xs-5 col-sm-5 col-md-2 col-lg-2">
+                                    <li><b>Server time: </b>{{time|date:"P"}}</li>
                                 </div>
                             </ul>
 
@@ -32,9 +32,9 @@
                             </div>                        
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 info-user">
                                 <ul>
-                                    <li>Username: {{user}}</li>
-                                    <li>ID: {{user.pk}}</li>
-                                    <li >membership: Free <a id="upgrade-link" href="{% url 'membership' %}" target="_blank">(Upgrade)</a></li>
+                                    <li><b>Member since: </b> {{user.date_joined|date}}</li>                                    
+                                    <li ><b>Membership</b>: {{perfil.membresia}} <a id="upgrade-link" href="{% url 'membership' %}" target="_blank">(Upgrade)</a></li>
+                                    <li><b>Bitcoin Address:</b>{{perfil.address}}</li>
                                 </ul>
                             </div>
                             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-2 fondo-botones-redondos">
@@ -96,7 +96,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><b>My Account</b></a></h4></center>
+        <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><b>Settings</b></a></h4></center>
     </div>
     <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body">
@@ -109,7 +109,7 @@
                         <a class="btn btn-info botones-myaccount" href="#">Change Wallet</a>
                     </div>
                     <div class="col-xs-8 col-sm-4 col-md-2 col-lg-2">
-                        <a class="btn btn-info botones-myaccount" href="{% url 'membership' %}" >Upgrade</a>                
+                        <a class="btn btn-info botones-myaccount" href="{% url 'membership' %}" target="_blank">Upgrade</a>                
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><b>My referals tools</b></a></h4></center>
+        <center><h4 class="panel-title color-azul-betcnow"><a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><b>Referrals tools</b></a></h4></center>
     </div>
     <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">

@@ -13,7 +13,6 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
 
     sponsor_name = forms.CharField(max_length=30,   # Formulario donde se ingresa el username del sponsor
                                    initial='betcnow',
-                                   help_text="Edit the field above if you have a sponsor",
                                    )
 
     class Meta:
@@ -65,6 +64,6 @@ class LoginWithPlaceholder(AuthenticationForm):
         self.helper.form_show_labels = False
         self.helper.layout = Layout(Div(Field('username', placeholder='username'), css_class="form-group"),
                                     Div(Field('password', placeholder='password'), css_class="form-group"),
-                                    PrependedText('remember_me', ''),
-                                    Div(Submit('submit', 'Log in')))
+                                    Div(AppendedText('remember_me', 'Remember me'), css_class="form-group"),
+                                    Div(Submit('submit', 'Log in'), css_class="form-group"))
 
