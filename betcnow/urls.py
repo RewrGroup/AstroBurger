@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^user/(?P<pk>[0-9]+)/$', views.profile, name='profile'),
     url(r'^membership/$', TemplateView.as_view(template_name="betcnow/upgrade.html"), name='membership'),
     url(r'^about/$', TemplateView.as_view(template_name="betcnow/about.html"), name='about'),
-    url(r'^testimonials/$', TemplateView.as_view(template_name="betcnow/testimonios.html"), name='testimonios')
+    url(r'^testimonials/$', views.testimonios, name='testimonios'),
+    url(r'^proccess_testimonial', views.proccess_testimonial, name='proccess_testimonial'),
 ]

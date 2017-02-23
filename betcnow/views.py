@@ -3,11 +3,12 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from betcnow.forms import LoginWithPlaceholder
 from pinax.notifications.models import send
-from .models import Profile, User, Jugada, Pote
+from .models import Profile, User, Jugada, Pote, Testimonio
 from registration.backends.default.views import ActivationView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.core.urlresolvers import reverse
 import datetime
 import md5hash
 
@@ -114,6 +115,20 @@ def callback(request, *args, **kwargs):
     else:
         html = "Only POST Data Allowed"
     return HttpResponse(html)
+
+
+def testimonios(request):
+    testimonios_aprobados = Testimonio.objects.filter(aprobado=True)
+    testimonios_aprobados = reversed(testimonios_aprobados)
+    return render(request, "betcnow/testimonios.html", {'testimonios': testimonios_aprobados})
+
+
+def proccess_testimonial(request):
+    if request.method == 'POST':
+        nuevo_testimonio = Testimonio.objects.create(user=request.user, texto=request.POST.get('texto'))
+        nuevo_testimonio.save()
+    return HttpResponseRedirect(reverse('testimonios'))
+
 
 
 class SendEmailAfterActivate(ActivationView):

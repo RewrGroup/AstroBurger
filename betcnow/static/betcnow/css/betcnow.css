@@ -368,10 +368,12 @@ font-style: bold;
 
 /*TESTIMONIOS*/
 .caja-testimonios{
-    background: azure;
-    
+    background: #4F8ED8;
+    padding: 20px 20px 20px 20px;
     overflow: auto;
     height : 500px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px grey;
 }
 
 

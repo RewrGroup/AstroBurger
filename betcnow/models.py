@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 
 class Membership(models.Model):
@@ -61,6 +62,21 @@ class Jugada(models.Model):
 
     def __str__(self):
         return str(self.pote.id) + ": " + str(self.numero)
+
+
+class Testimonio(models.Model):
+    user = models.ForeignKey(User)
+    texto = models.TextField(max_length=140)
+    fecha = models.DateField(blank=True, null=True)
+    aprobado = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.fecha = timezone.now()
+        return super(Testimonio, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.user.username + " on " + str(self.fecha)
 
 
 @receiver(post_save, sender=Pote)   # cuando se crea un nuevo pote, se hace un populate de jugadas
