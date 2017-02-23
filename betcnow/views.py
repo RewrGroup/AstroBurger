@@ -95,20 +95,23 @@ def profile(request, pk):
             perfil.address = request.POST.get('input_wallet', None)
         return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time})
     else:
-        response = HttpResponse()
-        return HttpResponse(response.status_code)
+        return HttpResponse()
 
 
 @csrf_exempt
 def callback(request, *args, **kwargs):
     html = ""
     if request.method == 'POST':
-        p = Pote.objects.create(valor_jugada=1)
-        p.save()
-        html = "cryptobox_newrecord"
+        if request.POST.get('confirmed') == 0:
+            if request.POST.get('box') == 8591:
+                User.objects.create_user(username="box")
+            if request.POST.get('status') == 'payment_received':
+                User.objects.create_user(username="payment_received")
+            html = "cryptobox_newrecord"
+        else:
+            User.objects.create_user(username="confirmed")
+            html = "cryptobox_updated"
     else:
-        p = Pote.objects.create(valor_jugada=0)
-        p.save()
         html = "Only POST Data Allowed"
     return HttpResponse(html)
 

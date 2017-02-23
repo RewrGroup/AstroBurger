@@ -24,7 +24,7 @@
             <div class="linea1">
                     {% if request.user.is_authenticated %}
                         <ul class="nav navbar-nav navbar-right ">
-                            <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'profile' pk=request.user.pk %}"> <button type="button" id="D" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-tag"></span>{{user}}</button></a></li>
+                            <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'profile' pk=request.user.pk %}"> <button type="button" id="D" class="btn btn-primary btn-md "><b>{{user}}</b></button></a></li>
 
                             <li><a class="col-xs-2 col-md-2 col-lg-2"  href="{% url 'auth_logout' %}"> <button type="button" id="E" class="btn btn-default btn-md " ><span class="glyphicon glyphicon-log-out"></span> Loggout</button></a></li> 
                         </ul>
@@ -54,7 +54,7 @@
                <ul class="nav navbar-nav">
                     <li ><a href="{% url 'home' %}" ><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li ><a href="resultados.html" ><span class="glyphicon glyphicon-th"></span> Results</a></li>
-                    <li ><a href="detalles.html" ><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                    <li ><a href="{% url 'about' %}" ><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
               </ul>     
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'play' %}" id="B"> <b>PLAY NOW  </b><span  class="glyphicon glyphicon-bitcoin"></span></a></li> 

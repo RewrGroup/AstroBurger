@@ -19,9 +19,6 @@
                         <li>
                             Earn 5% of every play made by your referrals
                         </li>
-                        <li>
-                            Unlimited number of plays
-                        </li>
                     </ul>
                 </div>
             </div>            
@@ -43,9 +40,17 @@
                             Unlock Betcpot's numbers with gift prizes
                         </li>
                         <li>
-                            Unlimited number of plays
-                        </li>                        
+                            Jump into the Bitcoin Race
+                        </li>
                     </ul>
+                </div>
+                <div class="panel-footer">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <input type="hidden" value="Member">
+                        <input type="submit" class="form-control btn btn-info submit-color-betcnow" value="Become a member!">
+                    </form>
+
                 </div>
             </div>                        
         </div>        
