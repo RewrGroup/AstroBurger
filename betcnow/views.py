@@ -102,8 +102,8 @@ def profile(request, pk):
 def callback(request, *args, **kwargs):
     html = ""
     if request.method == 'POST':
-        if request.POST.get('confirmed') == 0:
-            if request.POST.get('box') == 8591:
+        if request.POST.get('confirmed') == '0':
+            if request.POST.get('box') == '8591':
                 User.objects.create_user(username="box")
             if request.POST.get('status') == 'payment_received':
                 User.objects.create_user(username="payment_received")

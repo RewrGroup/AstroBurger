@@ -53,41 +53,43 @@
         {% endfor %}
         were already token :(</h4>
     {% endif %}
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                <th>Pot N°</th>
-                <th>Selected number</th>
-                <th>price</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in jugadas_procesadas%}
-            <tr>
-                <td>
-                    {{i.pote.id}}
-                </td>
-                <td>
-                    {{i.numero}}
-                </td>
-                <td>
-                    {{i.pote.valor_jugada}}
-                </td>
-            </tr>
-            {% endfor %}            
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>                    
-                </td>
-                <td>                    
-                </td>
-                <td>                    
-                    Total: {{amount}} Btc (+fees)
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="col-lg-8 col-lg-offset-2">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Pot N°</th>
+                    <th>Selected number</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in jugadas_procesadas%}
+                <tr>
+                    <td>
+                        {{i.pote.id}}
+                    </td>
+                    <td>
+                        {{i.numero}}
+                    </td>
+                    <td>
+                        {{i.pote.valor_jugada}}
+                    </td>
+                </tr>
+                {% endfor %}            
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>                    
+                    </td>
+                    <td>                    
+                    </td>
+                    <td>                    
+                        Total: {{amount}} Btc (+fees)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
      <!-- procesador de pago -->
 
     <div align="center" style="min-width:530px">

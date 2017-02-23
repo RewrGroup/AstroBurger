@@ -29,8 +29,6 @@ body{
 background: #fff;
 }
 
-.linea1 navbar-right{
-}
 /*Propiedades del botón de SignUp*/
 
 .linea1 ul li a:hover{
@@ -93,9 +91,7 @@ padding: 20px 5px 0px 0px;
       .btn-group-lg .ad{
         display: none;
       }
-      .btn-group-lg .fg{
-        display: none;
-      }
+      
       .linea1 ul li a{
     padding: 10px 5px 0px 0px;
     }
@@ -238,12 +234,12 @@ padding: 20px 5px 0px 0px;
 
 /*DETALLES*/
 
-.container button{
+.about button{
 background: #4F8ED8;
 color:#fff;
 }
 
-.container button:hover{
+.about button:hover{
 color: #4F8ED8;
 background:#fff;
 }
@@ -253,7 +249,12 @@ color: #4F8ED8;
 font-style: bold;
 }
 
+.textos-explicativos{
+    text-align: justify;
+}
+
 /*FIN DE DETALLES*/
+
 
 /*Login*/
 
@@ -366,15 +367,11 @@ font-style: bold;
 /*FIN DE LOGIN*/
 
 /*TESTIMONIOS*/
-
-#frd{
-  margin:    0px 0px 10px 50px;
-            padding : 10px;
-            width : 500px;
-            height : 500px;
-            overflow : auto;
-            position: absolute;
-            left: 360px;
+.caja-testimonios{
+    background: azure;
+    
+    overflow: auto;
+    height : 500px;
 }
 
 
