@@ -34,7 +34,7 @@
                                 <ul>
                                     <li><b>Member since: </b> {{user.date_joined|date}}</li>                                    
                                     <li ><b>Membership</b>: {{perfil.membresia}} <a id="upgrade-link" href="{% url 'membership' %}" target="_blank">(Upgrade)</a></li>
-                                    <li><b>Bitcoin Address:</b><br>{{perfil.address}}</li>
+                                    <li><b>Bitcoin Address:</b><br><p class="letras-pequeñas">{{perfil.address}}</p></li>
                                 </ul>
                             </div>
                             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3 col-lg-offset-3 fondo-botones-redondos">
@@ -127,7 +127,7 @@
     </div>
     <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
-          Referals link: <a href="{% url 'ref_register' pk=user.id %}" target="_blank">http://rewr.pythonanywhere.com/accounts/register/ref={{user.id}}</a><br>
+          Referals link: <a href="{% url 'ref_register' pk=user.id %}" target="_blank"><p class="letras-pequeñas">http://rewr.pythonanywhere.com/accounts/register/ref={{user.id}}</p></a><br>
           Banners: 
         </div>
     </div>
