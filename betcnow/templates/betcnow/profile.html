@@ -34,21 +34,21 @@
                                 <ul>
                                     <li><b>Member since: </b> {{user.date_joined|date}}</li>                                    
                                     <li ><b>Membership</b>: {{perfil.membresia}} <a id="upgrade-link" href="{% url 'membership' %}" target="_blank">(Upgrade)</a></li>
-                                    <li><b>Bitcoin Address:</b>{{perfil.address}}</li>
+                                    <li><b>Bitcoin Address:</b><br>{{perfil.address}}</li>
                                 </ul>
                             </div>
-                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 col-lg-offset-2 fondo-botones-redondos">
+                            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3 col-lg-offset-3 fondo-botones-redondos">
                                 <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-jugadas">                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-offset-4 col-md-4 col-lg-6 col-lg-offset-0 boton-jugadas">                                    
                                         <a class="button" data-toggle="collapse" data-target="#misjugadas">
-                                            <div class="row botones-redondos"><span class="glyphicon glyphicon-tower"></span >
+                                            <div class="row botones-redondos"><span class="glyphicon glyphicon-star"></span >
                                             </div>
                                         </a>                                    
                                         <div class="row caja-nombres-botones">
                                             <h3>Plays</h3>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-referidos">                                    
+                                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 boton-referidos">                                    
                                         <a class="button" data-toggle="collapse" data-target="#misreferidos">
                                             <div class="row botones-redondos"><span class="glyphicon glyphicon-user"></span >
                                             </div>
@@ -56,16 +56,7 @@
                                         <div class="row caja-nombres-botones">
                                             <h3>Referrals</h3>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 boton-trofeos">
-                                        <a class="button" data-toggle="collapse" data-target="#mistrofeos">
-                                            <div class="row botones-redondos"><span class="glyphicon glyphicon-star"></span>
-                                            </div>
-                                        </a>                                                          
-                                        <div class="row caja-nombres-botones">
-                                            <h3>Trophys</h3>
-                                        </div>
-                                    </div>                                                                
+                                    </div>                                    
                                 </div>
                             </div> 
                         </div>
