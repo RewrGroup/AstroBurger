@@ -77,7 +77,7 @@ def has_paid(request):
             jugada.jugador = None
             jugada.orderID = None
             jugada.save()
-        else:
+        elif jugada.status == '3':
             paid = True
             break
     data = {
@@ -104,15 +104,16 @@ def profile(request, pk):
 def callback(request, *args, **kwargs):
     html = ""
     if request.method == 'POST':
-        if request.POST.get('confirmed') == '0':
-            if request.POST.get('box') == '8591':
-                User.objects.create_user(username="box")
-            if request.POST.get('status') == 'payment_received':
-                User.objects.create_user(username="payment_received")
+        user = User.objects.get(username=request.POST.get('user'))
+        if (request.POST.get('confirmed') == '0' and request.POST.get('box') == '8591' and
+                request.POST.get('status') == 'payment_received'):
+            Testimonio.objects.create(user=user, texto=request.POST.get('private_key_hash'))
             html = "cryptobox_newrecord"
-        else:
-            User.objects.create_user(username="confirmed")
+        elif request.POST.get('confirmed') == '1':
+            Testimonio.objects.create(user=user, texto=str(request.POST.get('order') + " confirmed"))
             html = "cryptobox_updated"
+        else:
+            Testimonio.objects.create(user=user, texto="error")
     else:
         html = "Only POST Data Allowed"
     return HttpResponse(html)

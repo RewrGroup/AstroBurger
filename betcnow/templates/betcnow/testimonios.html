@@ -56,7 +56,7 @@
                 <form method="post" action="{% url 'proccess_testimonial' %}" id="send_testimonial">
                     {% csrf_token %}
                     <div class="form-group">                                                
-                        <label for="comment"> Hi, {{user}}!<br> Could you tell your experience in betcnow (in 140 characters)</label>            
+                        <label for="comment"> Hi, {{user}}!<br> Could you tell your experience in betcnow (in 140 characters)?</label>            
                         <textarea class="form-control" rows="5" id="comment" maxlength="140" name="texto"></textarea>
                     </div>                        
                     <div class="form-group">
