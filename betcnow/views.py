@@ -115,11 +115,12 @@ def callback(request, *args, **kwargs):
             user = User.objects.get(username=request.POST.get('user'))
             lista_de_numeros = []
             jugadas_pagadas = Jugada.objects.filter(orderID=request.POST.get('order'))
-            for jugada in jugadas_pagadas:
-                jugada.status = '3'
-                jugada.fecha_jugada = timezone.now()
-                lista_de_numeros += jugada.numero
-                jugada.save()
+            for j in jugadas_pagadas:
+                j.status = '3'
+                j.fecha_jugada = timezone.now()
+                j.save()
+                lista_de_numeros += j.numero
+
             send([user], "Play_made", {"jugadas": lista_de_numeros,
                                        "monto": request.POST.get('amount'),
                                        "tx": request.POST.get('tx')})
