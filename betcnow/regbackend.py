@@ -17,9 +17,7 @@ class MyRegistrationView(RegistrationView):
     def register(self, form_class, *kwargs):
         s = form_class.valid_sponsor()
         new_user = super(MyRegistrationView, self).register(form_class)
-        print(form_class.cleaned_data['username'])  # (para probar)
         new_sponsor = Profile.objects.create(user=new_user, sponsor=s)
-
         new_sponsor.save()
 
     def post(self, request, *args, **kwargs):

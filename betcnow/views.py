@@ -106,23 +106,27 @@ def profile(request, pk):
 def callback(request, *args, **kwargs):
     html = ""
     if request.method == 'POST':
-        user = User.objects.get(username=request.POST.get('user'))
         private_key = "8591AAuVNwoBitcoin77BTCPRVlBBm1YOY3rLZstduagpNFn6H"
         h = hashlib.sha512(private_key.encode(encoding='utf-8'))
         private_key_hash = h.hexdigest()
         if (request.POST.get('confirmed') == '0' and request.POST.get('box') == '8591' and
                 request.POST.get('status') == 'payment_received' and
                 request.POST.get('private_key_hash') == private_key_hash):
+            user = User.objects.get(username=request.POST.get('user'))
+            lista_de_numeros = []
             jugadas_pagadas = Jugada.objects.filter(orderID=request.POST.get('order'))
             for jugada in jugadas_pagadas:
                 jugada.status = '3'
                 jugada.fecha_jugada = timezone.now()
+                lista_de_numeros += jugada.numero
                 jugada.save()
+            send([user], "Play_made", {"jugadas": lista_de_numeros,
+                                       "monto": request.POST.get('amount'),
+                                       "tx": request.POST.get('tx')})
             html = "cryptobox_newrecord"
         elif request.POST.get('confirmed') == '1':
             html = "cryptobox_updated"
         else:
-            Testimonio.objects.create(user=user, texto="error")
             html = "cryptobox_nochanges"
     else:
         html = "Only POST Data Allowed"
@@ -140,7 +144,6 @@ def proccess_testimonial(request):
         nuevo_testimonio = Testimonio.objects.create(user=request.user, texto=request.POST.get('texto'))
         nuevo_testimonio.save()
     return HttpResponseRedirect(reverse('testimonios'))
-
 
 
 class SendEmailAfterActivate(ActivationView):

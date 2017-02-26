@@ -1,0 +1,5 @@
+{% autoescape off %}{% load i18n %}{% blocktrans %}
+Congratulations! {{ notice }}!
+
+{{ from_user }} is now your referral!
+{% endblocktrans %}{% endautoescape %}
