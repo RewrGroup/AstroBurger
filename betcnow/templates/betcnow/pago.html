@@ -21,12 +21,12 @@
                     dataType: 'json',
                     success: function(data){
                         if (data.paid == false){
-                        alert("Your time for paying has expired");
+                        alert("Your time for paying has expired. Make a new selection!");
                         window.location.href = "{% url 'play' %}";
                         }
                     }
                 });
-            }, 120000);
+            }, 180000);
             window.onbeforeunload = function(){
                $.ajax({
                    async: false,  //Conexión síncrona porque se necesita esperar que se ejecute la conexión antes de seguir con el método    

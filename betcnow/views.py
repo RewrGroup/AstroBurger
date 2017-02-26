@@ -11,6 +11,8 @@ from django.http import JsonResponse
 from django.core.urlresolvers import reverse
 import datetime
 import md5hash
+import hashlib
+from django.utils import timezone
 
 
 def remember_me_login(request, template_name, authentication_form):
@@ -44,7 +46,7 @@ def checkout(request):
         boxID = 8591
         tipo_pago = 'jugada'
         user = request.user.username
-        orderID = str(pote) + "-" + str(len(jugadas)) + "-" + jugadas[0]
+        orderID = str(pote) + "-" + str(len(jugadas)) + "-" + jugadas[0] + "-" + jugadas[-1]
         amount = 0
         for i in jugadas:
             jugada = Jugada.objects.get(pote=pote, numero=i)
@@ -105,15 +107,23 @@ def callback(request, *args, **kwargs):
     html = ""
     if request.method == 'POST':
         user = User.objects.get(username=request.POST.get('user'))
+        private_key = "8591AAuVNwoBitcoin77BTCPRVlBBm1YOY3rLZstduagpNFn6H"
+        h = hashlib.sha512(private_key.encode(encoding='utf-8'))
+        private_key_hash = h.hexdigest()
         if (request.POST.get('confirmed') == '0' and request.POST.get('box') == '8591' and
-                request.POST.get('status') == 'payment_received'):
-            Testimonio.objects.create(user=user, texto=request.POST.get('private_key_hash'))
+                request.POST.get('status') == 'payment_received' and
+                request.POST.get('private_key_hash') == private_key_hash):
+            jugadas_pagadas = Jugada.objects.filter(orderID=request.POST.get('order'))
+            for jugada in jugadas_pagadas:
+                jugada.status = '3'
+                jugada.fecha_jugada = timezone.now()
+                jugada.save()
             html = "cryptobox_newrecord"
         elif request.POST.get('confirmed') == '1':
-            Testimonio.objects.create(user=user, texto=str(request.POST.get('order') + " confirmed"))
             html = "cryptobox_updated"
         else:
             Testimonio.objects.create(user=user, texto="error")
+            html = "cryptobox_nochanges"
     else:
         html = "Only POST Data Allowed"
     return HttpResponse(html)

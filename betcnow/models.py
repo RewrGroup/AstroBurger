@@ -58,6 +58,7 @@ class Jugada(models.Model):
         ('S', 'Silver'),
         ('B', 'Bronze'),
     )
+    fecha_jugada = models.DateTimeField(blank=True, null=True)
     resultado = models.CharField(max_length=30, blank=True, null=True, choices=RESULTADO_CHOICES, default='')
 
     def __str__(self):
