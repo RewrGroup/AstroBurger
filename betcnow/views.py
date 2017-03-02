@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ObjectDoesNotExist
 import datetime
 import md5hash
 import hashlib
@@ -25,16 +26,20 @@ def remember_me_login(request, template_name, authentication_form):
 
 @login_required()
 def play(request):
-    template = 'betcnow/betcpot.html'
-    variables = {}
-    pote = Pote.objects.get(pk=1)
-    lista_status = []
+    try:
+        pote = Pote.objects.get(status='1')
+        template = 'betcnow/betcpot.html'
+        variables = {}
+        lista_status = []
 
-    for i in Jugada.objects.filter(pote=pote):
-        lista_status.append(int(i.status))
+        for i in Jugada.objects.filter(pote=pote):
+            lista_status.append(int(i.status))
 
-    variables.update({"lista_status": lista_status, 'pote': pote})
-    return render(request, template, variables)
+        variables.update({"lista_status": lista_status, 'pote': pote})
+        return render(request, template, variables)
+    except ObjectDoesNotExist:
+
+        return HttpResponse("There are not any Betcpot open. The next one will be available very soon")
 
 
 def checkout(request):
@@ -94,12 +99,22 @@ def profile(request, pk):
     if request.user == user:
         perfil = Profile.objects.get(user=user)
         time = datetime.datetime.utcnow()
+        jugadas_activas = []
+        potes_no_cerrados = Pote.objects.exclude(status='0')
+        for pote in potes_no_cerrados:
+            jugadas_activas += Jugada.objects.filter(jugador=user, status='3', pote=pote)
+        referidos = Profile.objects.filter(sponsor=user)
         if request.method == "POST":
             perfil.address = request.POST.get('input_wallet', None)
             perfil.save()
-        return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time})
+        return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time,
+                                                        'jugadas_activas': jugadas_activas, 'referidos': referidos})
     else:
         return HttpResponse()
+
+
+def results(request):
+    return render(request, 'betcnow/results.html', {})
 
 
 @csrf_exempt
@@ -113,17 +128,18 @@ def callback(request, *args, **kwargs):
                 request.POST.get('status') == 'payment_received' and
                 request.POST.get('private_key_hash') == private_key_hash):
             user = User.objects.get(username=request.POST.get('user'))
+            profile = Profile.objects.get(user=user)
+            sponsor = Profile.objects.get(user=profile.sponsor)
             lista_de_numeros = []
             jugadas_pagadas = Jugada.objects.filter(orderID=request.POST.get('order'))
             for j in jugadas_pagadas:
                 j.status = '3'
                 j.fecha_jugada = timezone.now()
                 j.save()
+                profile.sponsor_revenue += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
                 lista_de_numeros += j.numero
-
-            send([user], "Play_made", {"jugadas": lista_de_numeros,
-                                       "monto": request.POST.get('amount'),
-                                       "tx": request.POST.get('tx')})
+            profile.save()
+            send([user], "Play_made", {"jugadas": lista_de_numeros})
             html = "cryptobox_newrecord"
         elif request.POST.get('confirmed') == '1':
             html = "cryptobox_updated"

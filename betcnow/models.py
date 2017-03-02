@@ -8,6 +8,7 @@ from django.utils import timezone
 class Membership(models.Model):
     tipo_membresia = models.CharField(max_length=30, unique=True)
     precio = models.FloatField()
+    porcentaje_jugada = models.FloatField()
 
     def __str__(self):
         return self.tipo_membresia
@@ -20,7 +21,7 @@ class Profile(models.Model):
     miembro_hasta = models.DateField(blank=True, null=True)
     sponsor = models.ForeignKey(User, to_field='username', related_name='spn',
                                 default='betcnow', on_delete=models.SET_DEFAULT)
-    sponsor_revenue = models.FloatField(blank=True, null=True)
+    sponsor_revenue = models.FloatField(blank=True, null=True, default=0)
 
     def __str__(self):
         return self.user.username

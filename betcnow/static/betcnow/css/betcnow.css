@@ -379,6 +379,20 @@ font-style: bold;
     box-shadow: 3px 3px 3px grey;
 }
 
+/*RESULTS*/
+.resultados{
+    background: #4F8ED8;
+    color: #fff;
+    padding: 20px 20px 20px 20px;
+    height : 500px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.ranking{
+    
+}
+
 
 /* Matriz de pago */
 

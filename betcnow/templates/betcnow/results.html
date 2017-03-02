@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Results{% endblock%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 resultados">
+            <p>elkhik</p>
+        </div>
+        <div class="col-lg-4 col-lg-offset-1 ranking">
+            <table class="table table-responsive">
+            <thead>
+                <tr>
+                    Ranking
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in jugadas_procesadas%}
+                <tr>
+                    <td>
+                        {{i.pote.id}}
+                    </td>
+                    <td>
+                        {{i.numero}}
+                    </td>
+                    <td>
+                        {{i.pote.valor_jugada}}
+                    </td>
+                </tr>
+                {% endfor %}            
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>                    
+                    </td>
+                    <td>                    
+                    </td>
+                    <td>                    
+                        Total: {{amount}} Btc (+fees)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

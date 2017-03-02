@@ -66,14 +66,75 @@
         </div>  
     </div>
     
-    <div id="misjugadas" class="collapse">
-        TABLA CON JUGADAS ACTIVAS
+    <div id="misjugadas" class="collapse">        
+        <div class="row">
+            {% if jugadas_activas %}
+                <h4 class="color-azul-betcnow">Your active plays</h4>
+                <div class="col-lg-4">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Pot N°</th>
+                                <th>Selected number</th>                       
+                                <th>Date and hour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in jugadas_activas%}
+                            <tr>
+                                <td>
+                                    {{i.pote.id}}
+                                </td>
+                                <td>
+                                    {{i.numero}}
+                                </td>
+                                <td>
+                                    {{i.fecha_jugada}}
+                                </td>
+                            </tr>
+                            {% endfor %}            
+                        </tbody>                
+                    </table>
+                </div>
+            {% else %}
+                <h5 class="color-azul-betcnow"> You haven't made any play for a currently open betcpot</h5>                
+            {% endif %}
+        </div>
     </div>
 
     <!-- DESPLIEGUE DE BOTON MIS REFERIDOS -->
 
     <div id="misreferidos" class="collapse">
-        Aqui se mostraran los referidos y las ganancias generadas al sponsor
+         <div class="row">
+            {% if referidos %}
+                <h4 class="color-azul-betcnow">Your active plays</h4>
+                <div class="col-lg-4">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Referral</th>
+                                <th>Revenue generated</th>      
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for referido in referidos%}
+                            <tr>
+                                <td>
+                                    {{referido.user.username}}
+                                </td>
+                                <td>
+                                    {{referido.user.sponsor_revenue}}
+                                </td>                                
+                            </tr>
+                            {% endfor %}            
+                        </tbody>                
+                    </table>
+                </div>
+            {% else %}
+                <h5 class="color-azul-betcnow"> You haven't any referrals yet :(</h5>                
+            {% endif %}
+        </div>
+       
     </div>
 
     <!-- DESPLIEGUE DE BOTON MIS TROFEOS -->
