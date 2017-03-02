@@ -107,13 +107,13 @@
     <div id="misreferidos" class="collapse">
          <div class="row">
             {% if referidos %}
-                <h4 class="color-azul-betcnow">Your active plays</h4>
+                <h4 class="color-azul-betcnow">Your Referrals</h4>
                 <div class="col-lg-4">
                     <table class="table table-responsive">
                         <thead>
                             <tr>
                                 <th>Referral</th>
-                                <th>Revenue generated</th>      
+                                <th>Revenue generated (Btc)</th>      
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +123,7 @@
                                     {{referido.user.username}}
                                 </td>
                                 <td>
-                                    {{referido.user.sponsor_revenue}}
+                                    {{referido.sponsor_revenue|floatformat:6}}
                                 </td>                                
                             </tr>
                             {% endfor %}            
