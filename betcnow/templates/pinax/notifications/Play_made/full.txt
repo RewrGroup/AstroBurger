@@ -7,6 +7,8 @@ First of all, We really want to thank you for playing in a Betcpot, and we since
 Your Play Summary:
 
 Played numbers: {{jugadas}}
+Btc amount: {{monto}}
+Transaction Id: {{tx}}
 
 
 
