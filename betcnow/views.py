@@ -137,7 +137,7 @@ def callback(request, *args, **kwargs):
                 j.fecha_jugada = timezone.now()
                 j.save()
                 profile.sponsor_revenue += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
-                lista_de_numeros += j.numero
+                lista_de_numeros.append(str(j.numero))
             profile.save()
             send([user], "Play_made", {"jugadas": lista_de_numeros})
             html = "cryptobox_newrecord"
