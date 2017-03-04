@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name="betcnow/about.html"), name='about'),
     url(r'^testimonials/$', views.testimonios, name='testimonios'),
     url(r'^proccess_testimonial', views.proccess_testimonial, name='proccess_testimonial'),
-    url(r'^results/$', views.results, name='results')
+    url(r'^results/$', views.results, name='results'),
+    url(r'^results/betcpot/(?P<pk>[0-9]+)/$', views.resultado_pote, name='betcpot_result')
 ]

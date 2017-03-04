@@ -12,11 +12,19 @@ body{
 .row {
     margin: 0px 0px 0px 0px;
 }
-.subtitulos{
+h2.subtitulos{
     font-family: 'Lobster', cursive;
     font-size: 50px;
     color: #4F8ED8;
 }
+
+h3.subtitulos{
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    color: #4F8ED8;
+}
+
+
 
 .footer{
     bottom: 0px;
@@ -301,14 +309,6 @@ font-style: bold;
     position: relative;
     left: -40px;
 }
-/*.boton-jugadas h3, .boton-trofeos h3{
-    padding: 0px 0px 0px 20px;
-        
-}
-.boton-referidos h3{
-    padding: 0px 0px 0px 5px;
-}*/
-
 .imagen-medalla{
   margin: 30px 0px 0px 0px;
 
@@ -380,13 +380,34 @@ font-style: bold;
 }
 
 /*RESULTS*/
-.resultados{
+.renglon-resultados{
+    margin-top: 30px;
+}
+.caja-resultados{
     background: #4F8ED8;
     color: #fff;
-    padding: 20px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
     height : 500px;
     border-radius: 8px;
     box-shadow: 3px 3px 3px grey;
+    
+}
+
+.links-resultados{
+	color: #fff;
+	text-decoration: none;
+}
+.links-resultados:hover{
+	color: #80bfff;
+	text-decoration: none;
+	
+}
+
+.hr-pava{
+    height: 2px;
+    border: 0;
+    box-shadow: 0 5px 5px -5px #fff inset;
+    margin-top: 0px;
 }
 
 .ranking{
@@ -468,5 +489,5 @@ font-style: bold;
 }
 
 .color-verde-betcnow{
-    color: #5cb85c;
+    color: #5cb85c !important;
 }

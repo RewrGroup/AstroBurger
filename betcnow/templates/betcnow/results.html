@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}Results{% endblock%}
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-lg-7 resultados">
-            <p>elkhik</p>
+<div class="container">    
+    <div class="row renglon-resultados">        
+        <div class="col-lg-5 col-md-5 caja-resultados">            
+            <h3 class="subtitulos" style="color: #fff"><center>This week results</center></h3>
+            {% for pote in potes %}
+                <a class="links-resultados" href="{% url 'betcpot_result' pk=pote.id %}"><h4>Betcpot N° {{pote.id}} - {{pote.fecha_sorteo}}</h4></a>
+                <hr class="hr-pava">
+            {% endfor %}
         </div>
-        <div class="col-lg-4 col-lg-offset-1 ranking">
+        <div class="col-lg-4 col-lg-offset-3 col-md-5 col-md-offset-2 ranking">
             <table class="table table-responsive">
             <thead>
                 <tr>
-                    Ranking
+                    <h3 class="subtitulos"><center>All-time top 10 users</center></h3><br>
                 </tr>
             </thead>
             <tbody>

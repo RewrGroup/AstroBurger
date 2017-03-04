@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Betcpot {{pote.id}} Winners! <h3>({{pote.fecha_sorteo}})</h3>{% endblock %} 
+{% block content %}
+
+<h3 class="subtitulos">First Place</h3> {{primero.jugador}} {{primero.numero}}
+<h3 class="subtitulos">Second Place</h3> {{segundo.jugador}} {{segundo.numero}}
+<h3 class="subtitulos">Third Place</h3> {{tercero.jugador}} {{tercero.numero}}
+<h3 class="subtitulos">Gold Group ({{gold|length}} winners)</h3>
+{% for g in gold %}
+	<h5>{{g.jugador}} ({{g.numero}})</h5>
+{% endfor %}
+<h3 class="subtitulos">Silver Group ({{silver|length}} winners)</h3>
+{% for s in silver %}
+	<h5>{{s.jugador}} ({{s.numero}})</h5>
+{% endfor %}
+<h3 class="subtitulos">Bronze Group ({{bronze|length}} winners)</h3>
+{% for b in bronze %}
+	<h5>{{b.jugador}} ({{b.numero}})</h5>
+{% endfor %}
+<h3 class="subtitulos">Repechage Group ({{repechage|length}} winners)</h3>
+{% for r in repechage %}
+	<h5>{{r.jugador}} ({{r.numero}})</h5>
+{% endfor %}
+
+{% endblock %}

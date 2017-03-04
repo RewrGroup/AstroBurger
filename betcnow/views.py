@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
-import datetime
+from datetime import datetime, timedelta
 import md5hash
 import hashlib
 from django.utils import timezone
@@ -98,7 +98,7 @@ def profile(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.user == user:
         perfil = Profile.objects.get(user=user)
-        time = datetime.datetime.utcnow()
+        time = datetime.utcnow()
         jugadas_activas = []
         potes_no_cerrados = Pote.objects.exclude(status='0')
         for pote in potes_no_cerrados:
@@ -114,7 +114,25 @@ def profile(request, pk):
 
 
 def results(request):
-    return render(request, 'betcnow/results.html', {})
+    hoy = timezone.now()
+    lunes = hoy - timedelta(days=hoy.weekday())
+    potes = Pote.objects.filter(status='0').filter(fecha_sorteo__gte=lunes).order_by('-fecha_sorteo')
+    return render(request, 'betcnow/results.html', {'potes': potes})
+
+
+def resultado_pote(request, pk):
+    pote = get_object_or_404(Pote, pk=pk)
+    ganadores = Jugada.objects.filter(pote=pote).exclude(resultado='')
+    primero = ganadores.get(resultado='1')
+    segundo = ganadores.get(resultado='2')
+    tercero = ganadores.get(resultado='3')
+    gold = ganadores.filter(resultado='G')
+    silver = ganadores.filter(resultado='S')
+    bronze = ganadores.filter(resultado='B')
+    repechage = ganadores.filter(resultado='R')
+    variables = {'pote': pote, 'primero': primero, 'segundo': segundo, 'tercero': tercero, 'gold': gold,
+                 'silver': silver, 'bronze': bronze, 'repechage': repechage}
+    return render(request, "betcnow/betcpot_result.html", variables)
 
 
 @csrf_exempt
