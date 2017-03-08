@@ -1,0 +1,5 @@
+sistema de puntos:
+	- añadir un field al modelo profile llamado "puntos"
+	- 
+	- hacer un script que se ejecute todos los dias (con el schedule de PythonAnywhere)
+	 y que verifique que si timezone.now().day == 1, entonces todos los usuarios tienen 0 puntos

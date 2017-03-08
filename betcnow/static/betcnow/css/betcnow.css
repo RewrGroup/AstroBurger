@@ -91,10 +91,14 @@ padding: 20px 5px 0px 0px;
 /*Propiedades de la pantalla pequeña*/
 
 @media screen and (max-width: 800px){
-    
+	
     .row {
     margin: 0px 0px 0px 0px;
     }
+	
+	.box {
+		height: 340px !important;
+	}
     
       .btn-group-lg .ad{
         display: none;
@@ -304,6 +308,10 @@ font-style: bold;
   font-size: 20px;
     padding: 0px 50px 0px 0px;
 }
+
+.identificador-info{
+	color: #c7d9ed;	
+}
 .info-user li{
     text-align: left;   
     position: relative;
@@ -365,6 +373,16 @@ font-style: bold;
 .botones-myaccount{
     width: 150px;
     background: #4F8ED8;
+}
+
+h2.puntos-BTCrace{
+	display: inline;
+}
+h4.puntos-BTCrace{
+	display: inline;
+}
+.renglon-plays{
+	padding-left: 35px;
 }
 
 /*FIN DE LOGIN*/

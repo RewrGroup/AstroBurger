@@ -42,6 +42,10 @@
                    alert("Aren't you gonna play?");
                    return false;
                }
+			   else{
+				   window.location.reload();
+				   return true;
+			   }
            }); 
         });
 
@@ -83,7 +87,7 @@
             </div>    
         </div>
         
-        <form action="{% url 'check-out' %}" method="post" target="_self">
+        <form action="{% url 'check-out' %}" method="post">
             {% csrf_token %}
             <table class="table table-condensed" id='tabla_jugadas'>
                 <thead>
@@ -93,6 +97,7 @@
                 </thead>
             </table>
             <input type="hidden" value='{{pote.id}}' name='pote'>
+			<input type="hidden" value="5c3d3ceac7a96c1742d326d42ce551fb" name='hash'>
             <input type="submit" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
         </form>
     </div>

@@ -2,17 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d47dfa0-057b-40a9-921f-6b28eede9ea9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/img/bitcoin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/img/fondo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/img/fondo2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/img/fondo3.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betc/settings.py" afterPath="$PROJECT_DIR$/betc/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betc/urls.py" afterPath="$PROJECT_DIR$/betc/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/models.py" afterPath="$PROJECT_DIR$/betcnow/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/css/betcnow.css" afterPath="$PROJECT_DIR$/betcnow/static/betcnow/css/betcnow.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/base.html" afterPath="$PROJECT_DIR$/betcnow/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/about.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/home.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/results.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/testimonios.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/testimonios.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/js/dynamic-fill.js" afterPath="$PROJECT_DIR$/betcnow/static/betcnow/js/dynamic-fill.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/betcpot.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/betcpot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/pago.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/pago.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/profile.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/betcnow/upgrade.html" afterPath="$PROJECT_DIR$/betcnow/templates/betcnow/upgrade.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/urls.py" afterPath="$PROJECT_DIR$/betcnow/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/views.py" afterPath="$PROJECT_DIR$/betcnow/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sorteo.py" afterPath="$PROJECT_DIR$/sorteo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/md5hash.py" afterPath="$PROJECT_DIR$/md5hash.py" />
     </list>
     <ignored path="REWR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +53,8 @@
       <file leaf-file-name="md5hash.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/md5hash.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -57,8 +63,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/betc/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
-              <caret line="138" column="23" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
+            <state relative-caret-position="975">
+              <caret line="176" column="35" selection-start-line="176" selection-start-column="35" selection-end-line="176" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -67,8 +73,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/betc/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+            <state relative-caret-position="482">
+              <caret line="54" column="70" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
               <folding>
                 <element signature="e#641#682#0" expanded="true" />
               </folding>
@@ -79,8 +85,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/betcnow/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+            <state relative-caret-position="136">
+              <caret line="8" column="33" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="37" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -100,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/betcnow/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="217" column="85" selection-start-line="217" selection-start-column="85" selection-end-line="217" selection-end-column="85" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -115,18 +121,18 @@
       <file leaf-file-name="sorteo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sorteo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            <state relative-caret-position="697">
+              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/betcnow/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1819">
-              <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+            <state relative-caret-position="391">
+              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -143,16 +149,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/betcnow/__init__.py" />
-        <option value="$PROJECT_DIR$/betc/urls.py" />
         <option value="$PROJECT_DIR$/betcnow/forms.py" />
         <option value="$PROJECT_DIR$/betcnow/admin.py" />
-        <option value="$PROJECT_DIR$/betc/settings.py" />
-        <option value="$PROJECT_DIR$/md5hash.py" />
         <option value="$PROJECT_DIR$/betcnow/regbackend.py" />
         <option value="$PROJECT_DIR$/betcnow/signals/handlers.py" />
         <option value="$PROJECT_DIR$/sorteo.py" />
-        <option value="$PROJECT_DIR$/betcnow/models.py" />
+        <option value="$PROJECT_DIR$/betc/urls.py" />
+        <option value="$PROJECT_DIR$/betc/settings.py" />
+        <option value="$PROJECT_DIR$/md5hash.py" />
         <option value="$PROJECT_DIR$/betcnow/urls.py" />
+        <option value="$PROJECT_DIR$/betcnow/models.py" />
         <option value="$PROJECT_DIR$/betcnow/views.py" />
       </list>
     </option>
@@ -188,6 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,7 +262,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,7 +456,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -866,14 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/betc/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="138" column="23" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/betcnow/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -905,6 +903,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sorteo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/betcnow/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -915,58 +921,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/md5hash.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sorteo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/betcnow/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/betc/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+        <state relative-caret-position="482">
+          <caret line="54" column="70" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
           <folding>
             <element signature="e#641#682#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/betcnow/views.py">
+    <entry file="file://$PROJECT_DIR$/betc/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+        <state relative-caret-position="975">
+          <caret line="176" column="35" selection-start-line="176" selection-start-column="35" selection-end-line="176" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/md5hash.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/betcnow/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="37" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/betcnow/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1819">
-          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+        <state relative-caret-position="391">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/betcnow/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="217" column="85" selection-start-line="217" selection-start-column="85" selection-end-line="217" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>

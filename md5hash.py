@@ -2,7 +2,6 @@ import hashlib
 
 
 def hash(boxID, tipo_pago, amount, user, orderID):
-    # boxID = 8591
     coin_name = 'bitcoin'
     public_key = ''
     private_key = ''
@@ -12,18 +11,14 @@ def hash(boxID, tipo_pago, amount, user, orderID):
         private_key = '8591AAuVNwoBitcoin77BTCPRVlBBm1YOY3rLZstduagpNFn6H'
         period = '1 MINUTE'
     elif tipo_pago == 'membresia':
-        public_key = 'la-clave-para-las-membresias'
-        private_key = 'la-clave-para-las-membresias'
+        public_key = '8620AAuGSwaBitcoin77BTCPUBPAxu4lidgnTBTSsmuo694DFv'
+        private_key = '8620AAuGSwaBitcoin77BTCPRVYT5IhY8uakoZyYJI2B9umZBW'
         period = '1 MONTH'
     webdev_key = ''
     amountUSD = 0
-    # period = '1 MINUTE'
-    # amount_usd = 0.6
     language = 'en'
     iframe_id = 'iframe_id'
-    # userid = 'betcnow'
     user_format = 'MANUAL'
-    # order_id = 'product1'
     width = 530
     height = 230
     string = ''

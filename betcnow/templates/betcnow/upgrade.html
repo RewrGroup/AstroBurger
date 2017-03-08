@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}Memberships{% endblock %}
-{% block content %}
+{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="{% static 'betcnow/js/cryptobox.js' %}" type="text/javascript"></script>
+    <script src="{% static 'betcnow/js/dynamic-fill.js' %}"></script>
+{% endblock %}
 
-<!-- AQUI VA EL CUERPO -->
+{% block title %}Memberships{% endblock %}
+
+{% block content %}
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-lg-offset-2">
@@ -37,24 +42,46 @@
                             Earn 10% of every play made by your referrals
                         </li>
                         <li>
-                            Unlock Betcpot's numbers with gift prizes
+                            Unlock Betcpot's numbers with gift prizes.
                         </li>
                         <li>
                             Jump into the Bitcoin Race
                         </li>
                     </ul>
                 </div>
-                <div class="panel-footer">
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <input type="hidden" value="Member">
-                        <input type="submit" class="form-control btn btn-info submit-color-betcnow" value="Become a member!">
-                    </form>
-
+                <div class="panel-footer">					
+					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Become a Member!</button>
                 </div>
             </div>                        
         </div>        
     </div>
 </div>
-<!-- aqui termina el cuerpo -->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upgrade your account!</h4>
+            </div>
+            <div class="modal-body">   
+                <div align="center" style="min-width:530px">
+        			<iframe id="iframe_id" style="border-radius:15px;border:1px solid #eee;padding:3px 6px;margin:10px;" scrolling="no" marginheight="0" marginwidth="0" frameborder="0" width="530" height="230"></iframe>
+    			</div>				
+    			<script type="text/javascript">
+        			dynamic_fill({{boxID}}, '{{tipo_pago}}', {{amount_member}}, '{{user}}', '{{orderID_member}}', '{{hash_member}}')
+    			</script>
+            </div>
+            <div class="modal-footer">
+                <div class="alert alert-success" id="success" style="display: None">
+                    <strong>Big Thanks! :)</strong> Your testimony will be posted very soon.
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
