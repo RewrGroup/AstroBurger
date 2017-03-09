@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, date, timedelta
 from dateutil import relativedelta
-from Scripts import md5hash
+from .Scripts import md5hash
 import hashlib
 from django.utils import timezone
 
