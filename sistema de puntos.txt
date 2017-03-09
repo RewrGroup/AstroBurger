@@ -3,3 +3,8 @@ sistema de puntos:
 	- 
 	- hacer un script que se ejecute todos los dias (con el schedule de PythonAnywhere)
 	 y que verifique que si timezone.now().day == 1, entonces todos los usuarios tienen 0 puntos
+
+1) 300pts
+2) 25 pts
+3) 15 pts
+4) 10 pts + plata

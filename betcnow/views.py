@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, date, timedelta
 from dateutil import relativedelta
-import md5hash
+from Scripts import md5hash
 import hashlib
 from django.utils import timezone
 
@@ -115,11 +115,16 @@ def profile(request, pk):
         for pote in potes_no_cerrados:
             jugadas_activas += Jugada.objects.filter(jugador=user, status='3', pote=pote)
         referidos = Profile.objects.filter(sponsor=user)
+        if perfil.membresia.tipo_membresia == "Free":
+            is_member = False
+        else:
+            is_member = True
         if request.method == "POST":
             perfil.address = request.POST.get('input_wallet', None)
             perfil.save()
         return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time,
-                                                        'jugadas_activas': jugadas_activas, 'referidos': referidos})
+                                                        'jugadas_activas': jugadas_activas, 'referidos': referidos,
+                                                        'is_member': is_member})
     else:
         return HttpResponse()
 
