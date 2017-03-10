@@ -34,7 +34,10 @@ def play(request):
         lista_status = []
 
         for i in Jugada.objects.filter(pote=pote):
-            lista_status.append(int(i.status))
+            if i.status == '3' and i.premio != '':
+                lista_status.append(4)
+            else:
+                lista_status.append(int(i.status))
 
         variables.update({"lista_status": lista_status, 'pote': pote})
         return render(request, template, variables)
@@ -151,7 +154,10 @@ def results(request):
     hoy = timezone.now()
     lunes = hoy - timedelta(days=hoy.weekday())
     potes = Pote.objects.filter(status='0').filter(fecha_sorteo__gte=lunes).order_by('-fecha_sorteo')
-    return render(request, 'betcnow/results.html', {'potes': potes})
+    member = Membership.objects.get(tipo_membresia='Member')
+    users = Profile.objects.select_related('user').filter(membresia=member).order_by('-puntos')[:10]
+    fecha = timezone.now().date()
+    return render(request, 'betcnow/results.html', {'potes': potes, 'users': users, 'fecha': fecha})
 
 
 def resultado_pote(request, pk):

@@ -14,35 +14,21 @@
             <table class="table table-responsive">
             <thead>
                 <tr>
-                    <h3 class="subtitulos"><center>All-time top 10 users</center></h3><br>
+                    <center><h3 class="subtitulos">Bitcoin-Race Points</h3>{{ fecha|date:"F, Y" }}</center><br>
                 </tr>
             </thead>
             <tbody>
-                {% for i in jugadas_procesadas%}
+                {% for u in users%}
                 <tr>
                     <td>
-                        {{i.pote.id}}
+                        {{u.user.username}}
                     </td>
-                    <td>
-                        {{i.numero}}
-                    </td>
-                    <td>
-                        {{i.pote.valor_jugada}}
-                    </td>
+                    <td style="text-align: right">
+                        <b>{{u.puntos}}</b>
+                    </td>                    
                 </tr>
                 {% endfor %}            
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>                    
-                    </td>
-                    <td>                    
-                    </td>
-                    <td>                    
-                        Total: {{amount}} Btc (+fees)
-                    </td>
-                </tr>
-            </tfoot>
+            </tbody>            
         </table>
         </div>
     </div>
