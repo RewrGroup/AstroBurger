@@ -186,6 +186,26 @@ padding: 20px 5px 0px 0px;
     .carousel-inner .active .img-corousel{
         height: 400px;
     }
+	
+	/* resultados */
+	.numeros-podio{	
+		font-size: 25px !important;	
+	}
+	
+	.letras-podio{	
+		font-size: 20px !important;
+	}
+	
+	
+	#resultado-primer{
+		margin-top: 40px !important;
+	}
+
+	#resultado-segundo{
+		margin-top: 30px !important;
+	}
+
+
     
     
     /* Matriz de pago pantalla pequeña*/
@@ -429,9 +449,58 @@ h4.puntos-BTCrace{
     margin-top: 0px;
 }
 
-.ranking{
+.hr-pava2{
+    height: 2px;
+    border: 0;
+    box-shadow: 0 5px 5px -5px #4F8ED8 inset;
     
 }
+
+.ranking{
+	height : 500px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px grey;	
+    border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	border-color: #4F8ED8;
+}
+.podio{
+	margin-top: 50px;
+}
+.primerlugar{
+	background: #4F8ED8;
+	height: 192px;
+	border-left: 2px solid #fff;
+	border-right: 2px solid #fff;
+}
+.segundolugar{
+	background: #4F8ED8;
+	height: 155px;
+	margin-top: 37px;
+}
+.tercerlugar{
+	background: #4F8ED8;
+	height: 117px;
+	margin-top: 75px;
+}
+.numeros-podio{
+	color: #fff;
+	font-size: 35px;
+	margin-top: 0px;
+}
+.resultado-podio{	
+	margin-top: -10px;
+}
+.letras-podio{	
+	color: #fff;
+	font-family: 'Lobster', cursive;
+	font-size: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
 
 
 /* Matriz de pago */
