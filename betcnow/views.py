@@ -72,7 +72,7 @@ def has_paid(request):
     paid = False
     lista_premios = []
     for jugada in qs:
-        if jugada.status == '2':
+        if jugada.status == '2' and not request.GET.get('continue_button', False):
             jugada.status = '1'
             jugada.jugador = None
             jugada.orderID = None
