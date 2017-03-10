@@ -3,33 +3,33 @@
 {% block content %}
 <div class="container">    
     <div class="row renglon-resultados">        
-        <div class="col-lg-5 col-md-5 caja-resultados">            
+        <div class="col-xs-12 col-lg-4 col-md-5 caja-resultados">            
             <h3 class="subtitulos" style="color: #fff"><center>This week results</center></h3>
             {% for pote in potes %}
                 <a class="links-resultados" href="{% url 'betcpot_result' pk=pote.id %}"><h4>Betcpot N° {{pote.id}} - {{pote.fecha_sorteo}}</h4></a>
                 <hr class="hr-pava">
             {% endfor %}
         </div>
-        <div class="col-lg-4 col-lg-offset-3 col-md-5 col-md-offset-2 ranking">
-            <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <center><h3 class="subtitulos">Bitcoin-Race Points</h3>{{ fecha|date:"F, Y" }}</center><br>
-                </tr>
-            </thead>
-            <tbody>
-                {% for u in users%}
-                <tr>
-                    <td>
-                        {{u.user.username}}
-                    </td>
-                    <td style="text-align: right">
-                        <b>{{u.puntos}}</b>
-                    </td>                    
-                </tr>
-                {% endfor %}            
-            </tbody>            
-        </table>
+        <div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-2 ranking">
+			<table class="table">
+				<thead>
+					<tr>
+						<center><h3 class="subtitulos">Bitcoin-Race Points</h3>{{ fecha|date:"F, Y" }}</center><br>
+					</tr>
+				</thead>
+				<tbody>
+					{% for u in users%}
+					<tr>
+						<td>
+							{{u.user.username}}
+						</td>
+						<td style="text-align: right">
+							<b>{{u.puntos}}</b>
+						</td>                    
+					</tr>
+					{% endfor %}            
+				</tbody>            
+			</table>
         </div>
     </div>
 </div>
