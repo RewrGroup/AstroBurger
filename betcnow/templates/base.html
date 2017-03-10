@@ -14,28 +14,24 @@
     {% endblock %}
 </head>
 <body>
+<div id="container">
+<div id="header">
   <div class="container-fluid">  
-      <div class="main row">
-          <div class="col-xs-8 col-md-8 col-lg-8 ">
-              <div>
-                  <a href="{% url 'home' %}"><img src="{% static 'betcnow/img/logo2.png' %}" alt="Logo de BETCnow" title="Ir a BETCnow"></a>
-              </div>
-          </div>  
-            <div class="linea1">
-                    {% if request.user.is_authenticated %}
-                        <ul class="nav navbar-nav navbar-right ">
-                            <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'profile' pk=request.user.pk %}"> <button type="button" id="D" class="btn btn-primary btn-md "><b>{{user}}</b></button></a></li>
+      <div class="row">
+          <div class="col-xs-8 col-md-8 col-lg-8 div-logo">
+			  <a href="{% url 'home' %}"><img class="img-responsive" src="{% static 'betcnow/img/bnletras.png' %}" alt="Logo de BETCnow" title="Ir a BETCnow"></a>
+          </div>
+		  <div class="col-xs-4 col-lg-2 col-lg-offset-2" id="botones-login">
+				{% if request.user.is_authenticated %}
+						<a href="{% url 'profile' pk=request.user.pk %}" class="btn btn-primary M "><b>{{user}}</b></a>
 
-                            <li><a class="col-xs-2 col-md-2 col-lg-2"  href="{% url 'auth_logout' %}"> <button type="button" id="E" class="btn btn-default btn-md " ><span class="glyphicon glyphicon-log-out"></span> Loggout</button></a></li> 
-                        </ul>
-                    {% else %}
-                   <ul class="nav navbar-nav navbar-right ">
-                        <li ><a class="col-xs-2 col-md-2 col-lg-2" href="{% url 'registration_register' %}"> <button type="button" class="btn btn-primary btn-md "><span class="glyphicon glyphicon-user"></span >Sign Up</button></a></li>
+						<a href="{% url 'auth_logout' %}" class="btn btn-primary A" ><span class="glyphicon glyphicon-log-out"></span> Loggout</a>
+				{% else %}
+			   			<a href="{% url 'registration_register' %}" class="btn btn-primary M"><span class="glyphicon glyphicon-user"></span >Sign Up</a>
 
-                        <li><a class="col-xs-2 col-md-2 col-lg-2"  href="{% url 'login' %}"> <button type="button" id="A" class="btn btn-default btn-md " ><span class="glyphicon glyphicon-log-in"></span> Login</button></a></li> 
-                    </ul>
-                    {% endif %}            
-            </div>        
+						<a href="{% url 'login' %}" class="btn btn-primary A"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+				{% endif %}                    
+			 </div>
         </div>
   </div>
 <nav class= "navbar navbar-default" role="navigation">
@@ -63,17 +59,39 @@
       </div>
     </div>
 </nav>
+</div>
 <center><h2 class="subtitulos">{% block title %}{% endblock %}</h2></center>
-
+<div id="body">
 <!-- AQUI VA EL CUERPO -->
 {% block content%}
 {% endblock %}
 <!-- aqui termina el cuerpo -->
-
-
-<div class="footer">  
-    <div class="panel-footer"><center><p class=text-muted>Copyright &copy; 2017. BETCnow. All right reserverd. DEVELOPED BY <B>REWR GROUP</B></p></center></div>
 </div>
+<div id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<center><img id="img-bitcoin" src="{% static 'betcnow/img/Bitcoin_Accepted_Here.png' %}"></center>
+			</div>
+			<div class="col-lg-4">
+				<center><p class=text-muted>&copy; 2017 Betcnow. All rights reserved</p></center>		
+			</div>
+			<div class="col-lg-4" style="text-align: right">
+					<ul id="terms-policy">
+						<li>
+							<a href="terminos">Terms and conditions</a>
+						</li>
+						|
+						<li>
+							<a href="policy">Privacy policy</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+</div>	
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'betcnow/js/bootstrap.min.js' %}"></script>
