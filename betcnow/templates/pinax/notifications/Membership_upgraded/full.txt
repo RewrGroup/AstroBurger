@@ -1,0 +1,12 @@
+{% autoescape off %}{% load i18n %}{% blocktrans %}
+{{ notice }}
+
+We really want to thank you for becoming a Betcnow Member! 
+And we wish you the best of luck in the Bitcoin-Race you're now into.
+
+Your membership will expire exactly in 30 days from now. You will be able
+to renew it after the 30 days have passed by
+
+Experation Date: {{valid_thru}}
+
+{% endblocktrans %}{% endautoescape %}

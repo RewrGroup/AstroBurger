@@ -54,6 +54,11 @@
 
 {% block title%}Betcpot{% endblock %}
 {% block content %}
+{% if address_vacia %}
+	<div class="alert alert-danger">
+  		<center><strong>Hey!</strong> Before you play, please go to your profile, and <strong>set up your Bitcoin address</strong> so we can know where we're going to pay you</center>
+	</div>
+{% endif %}
 <div class="row">
     <div class="col-lg-12" style="padding-left: 90px">
         <h4><b>Betcpot N°: {{pote.id}}</b></h4>

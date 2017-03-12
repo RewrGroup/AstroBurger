@@ -46,7 +46,26 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^notifications/', include('pinax.notifications.urls')),
 ]
+"""
 
+# Estas son las URLs para el countdown
+urlpatterns = [
+    url(r'^$',
+        MyRegistrationView.as_view(),
+        name='countdown_register'),
+    url(r'^/ref=(?P<pk>[0-9]+)/$',
+        RefRegistrationView.as_view(),
+        name='countdown_ref_register'),
+    url(r'^accounts/activate/complete/$',
+        TemplateView.as_view(template_name='registration/activation_complete.html'),
+        name='registration_activation_complete'),
+    url(r'^accounts/activate/(?P<activation_key>\w+)/$',
+        SendEmailAfterActivate.as_view(),
+        name='registration_activate'),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^admin/', admin.site.urls),
+]
+"""
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

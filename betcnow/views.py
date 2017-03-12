@@ -29,17 +29,21 @@ def remember_me_login(request, template_name, authentication_form):
 def play(request):
     try:
         pote = Pote.objects.get(status='1')
+        perfil = Profile.objects.get(user=request.user)
         template = 'betcnow/betcpot.html'
         variables = {}
         lista_status = []
-
         for i in Jugada.objects.filter(pote=pote):
             if i.status == '3' and i.premio != '':
                 lista_status.append(4)
             else:
                 lista_status.append(int(i.status))
+        if perfil.address == "":
+            address_vacia = True
+        else:
+            address_vacia = False
 
-        variables.update({"lista_status": lista_status, 'pote': pote})
+        variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia})
         return render(request, template, variables)
     except ObjectDoesNotExist:
 
@@ -228,6 +232,7 @@ def membership_callback(request, *args, **kwargs):
             profile.membresia = Membership.objects.get(tipo_membresia=request.POST.get('order'))
             profile.valid_thru = date.today() + relativedelta.relativedelta(months=1)
             profile.save()
+            send([user], "Membership_upgraded", {"valid_thru": profile.valid_thru})
             html = "cryptobox_newrecord"
         elif request.POST.get('confirmed') == '1':
             html = "cryptobox_updated"
