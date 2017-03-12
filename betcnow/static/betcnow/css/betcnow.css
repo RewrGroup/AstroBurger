@@ -129,6 +129,10 @@ padding: 20px 5px 0px 0px;
 
 @media screen and (max-width: 800px){
 	
+	#footer {
+		position: relative;
+	}
+	
     .row {
     margin: 0px 0px 0px 0px;
     }
