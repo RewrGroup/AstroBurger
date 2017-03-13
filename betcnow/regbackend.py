@@ -40,7 +40,6 @@ class RefRegistrationView(MyRegistrationView):
             self.initial = {'sponsor_name': u.username}
         except ObjectDoesNotExist:
             pass
-        print(self.get_context_data())
         return self.render_to_response(self.get_context_data())
 
     def get_form(self, *args, **kwargs):
