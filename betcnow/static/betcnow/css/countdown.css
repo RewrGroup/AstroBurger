@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina');
+
+.letr{
+	color:#fff;
+    font-family: 'Baloo Bhaina', cursive;
+    }
+.fondoblanco .row{
+	background-color: #fff;
+}    
+/* .peque{
+
+width: 150px; height: 100px;
+
+margin: 0;
+padding: 0;
+border-radius: 800px;
+overflow: hidden;
+} */
+
+#arrowDown{
+	cursor: pointer;
+	height: 60px;
+	width: 60px;
+}
+.div-pushdown{
+	position: absolute;
+	bottom: 5%;
+	width: 85%;
+	
+}

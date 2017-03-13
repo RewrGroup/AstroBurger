@@ -24,7 +24,7 @@ from betcnow.views import remember_me_login
 from betcnow.views import SendEmailAfterActivate
 from django.views.generic.base import TemplateView
 
-
+"""
 urlpatterns = [
     url(r'', include('betcnow.urls')),
     url(r'^accounts/register/$',
@@ -53,7 +53,7 @@ urlpatterns = [
     url(r'^$',
         MyRegistrationView.as_view(),
         name='countdown_register'),
-    url(r'^/ref=(?P<pk>[0-9]+)/$',
+    url(r'^ref=(?P<pk>[0-9]+)/$',
         RefRegistrationView.as_view(),
         name='countdown_ref_register'),
     url(r'^accounts/activate/complete/$',
@@ -65,7 +65,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
 ]
-"""
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

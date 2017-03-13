@@ -1,0 +1,33 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block scripts %}
+    <script>
+        window.onload = function(){                        
+            if ((document.getElementById('id_sponsor_name').value != 'betcnow') && !document.getElementById('error_1_id_sponsor_name')){
+                document.getElementById('edit-sponsor').style.display = 'none';            
+            }
+            document.getElementById('id_sponsor_name').readOnly = true;            
+        }
+    </script>
+
+    <script>
+        function disabled_false(){            
+            document.getElementById('id_sponsor_name').readOnly = false;
+            
+        }
+    </script>    
+{% endblock %}
+
+
+
+{% block title %}{% trans "Join Betcnow"%}{% endblock %}
+
+{% block content %}
+<div class = "row">
+    <div class="col-sm-6 col-sm-offset-3">
+        {% crispy form %}
+    </div>
+</div>
+{% endblock %}
