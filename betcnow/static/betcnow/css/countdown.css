@@ -28,3 +28,12 @@ overflow: hidden;
 	width: 85%;
 	
 }
+
+
+@media screen and (max-width: 800px){
+	
+	#section-1{
+		height: 100%;
+		width: 100%;
+	
+	}
