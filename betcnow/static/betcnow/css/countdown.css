@@ -29,11 +29,47 @@ overflow: hidden;
 	
 }
 
+#reloj{
+	font-size: 60px;
+}
+
+.cuadritos{
+	border-top: solid 3px #4F8ED8;
+	border-bottom: solid 3px #4F8ED8;
+}
+.identificadores-numeros{
+	background: #4F8ED8;
+	color: #fff;
+	font-family: 'Orbitron', sans-serif;
+}
+
+#days{
+	border-left: solid 3px #4F8ED8;
+	border-right: solid 2px #4F8ED8;
+}
+
+#seconds{
+	border-right: solid 3px #4F8ED8;
+}
+#reloj{
+	font-size: 35px;
+}
+
+#minutes{
+	border-left: solid 2px #4F8ED8;
+	border-right: solid 2px #4F8ED8;
+}
+
+.numeros-conteo{
+	font-family: 'Orbitron', sans-serif;
+}
+
 
 @media screen and (max-width: 800px){
 	
-	#section-1{
+	.mobile-full{
 		width: 100%;
 		min-height: 100vh;
 	
 	}
+	

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d47dfa0-057b-40a9-921f-6b28eede9ea9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/regbackend.py" afterPath="$PROJECT_DIR$/betcnow/regbackend.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/css/countdown.css" afterPath="$PROJECT_DIR$/betcnow/static/betcnow/css/countdown.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/registration/registration_form.html" afterPath="$PROJECT_DIR$/betcnow/templates/registration/registration_form.html" />
     </list>
     <ignored path="REWR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -472,7 +473,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
