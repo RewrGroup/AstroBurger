@@ -19,8 +19,21 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="{% static 'betcnow/js/jquery.fullPage.min.js' %}"></script>
 	<script>
+		if (screen && screen.width > 768) {
+			alert();
+			document.write("<scr" + "ipt" + " src=\" {% static 'betcnow/js/jquery.fullPage.min.js' %} \">" + "</sc" + "ript>" +  `
+							<script>
+								jQuery(function(){
+									$('#wrapper').fullpage();
+									$('#arrowDown').click(function(){
+										$.fn.fullpage.moveSectionDown();
+									});
+								});
+							` + '</sc' + 'ript>');
+		}
+	</script>
+  	<script>
         window.onload = function(){                        
             if ((document.getElementById('id_sponsor_name').value != 'betcnow') && !document.getElementById('error_1_id_sponsor_name')){
                 document.getElementById('edit-sponsor').style.display = 'none';            
@@ -35,13 +48,8 @@
             
         }
     </script>    
-	<script>
-		jQuery(function(){
-		$('#arrowDown').click(function(){
-			$.fn.fullpage.moveSectionDown();
-		});
-		});
-	</script>
+	
+	
 </head>
 
 <body>
@@ -51,7 +59,7 @@
 	  <div class="container">
 			<div class="row">
 				<div class=" col-lg-12 col-md-12 col-xs-12 col-sm-12">
-    <center><img class="img-responsive" src="{% static 'betcnow/img/bn2.png' %}"></center>
+    <center><img class="img-responsive imagen-logo" src="{% static 'betcnow/img/bn2.png' %}"></center>
 					</div>
 				</div>
 		<div class="row">
@@ -79,36 +87,36 @@
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12" > 
             <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/cohete.png' %}"></center>
             <br>
-            <p class="letr" align="justify">voy a escribir un texto mas o menos largo para simular que estamos describiendo cada una de las imagenes y poder ver que tan bien se ve con un texto considerable</p>
+            <p class="letr" align="justify">Low cost, high revenue</p>
           </div>
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12" > 
              <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/referidos.png' %}"></center>
              <br>
-             <p class="letr" align="justify">voy a escribir un texto mas o menos largo para simular que estamos describiendo cada una de las imagenes y poder ver que tan bien se ve con un texto considerable</p>
+             <p class="letr" align="justify">Easy passive income through our Referral System</p>
           </div>
       </div>
 <div class="row">
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
             <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/estadistica.png' %}"></center>
             <br>
-            <p class="letr" align="justify">voy a escribir un texto mas o menos largo para simular que estamos describiendo cada una de las imagenes y poder ver que tan bien se ve con un texto considerable</p>
+            <p class="letr" align="justify">More chances to win than any other Bitcoin site that has ever existed</p>
           </div>
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
              <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/carrera.png' %}"></center>
              <br>
-             <p class="letr" align="justify">voy a escribir un texto mas o menos largo para simular que estamos describiendo cada una de las imagenes y poder ver que tan bien se ve con un texto considerable</p>
+             <p class="letr" align="justify">1 free Bitcoin every month</p>
           </div>
 </div>
 <div class="row">
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
             <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/candado.png' %}"></center>
             <br>
-            <p class="letr" align="justify">voy a escribir un texto mas o menos largo para simular que estamos describiendo cada una de las imagenes y poder ver que tan bien se ve con un texto considerable</p>
+            <p class="letr" align="justify">Your money and identity is completely safe. We don't save money or personal information in our site</p>
           </div>
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
              <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/gift.png' %}"></center>
              <br>
-             <p class="letr" align="justify">voy a escribir un texto mas o menos largo para simular que estamos describiendo cada una de las imagenes y poder ver que tan bien se ve con un texto considerable</p>
+             <p class="letr" align="justify">More than 100 numbers with gift prizes per every draw</p>
            </div>
 </div>
 </div>
@@ -127,11 +135,6 @@
 
   </div>
 </div>
-<script>
-$(document).ready(function(){
-  $('#wrapper').fullpage();
-});
-</script>
 
 <script>
 // Set the date we're counting down to

@@ -293,7 +293,10 @@ padding: 20px 5px 0px 0px;
     margin: 0px 0px 0px 20px !important;
 }
 
-    
+	.imagen-logo{
+		width: 20px;
+		height: 20px;
+	}  
     
 }
 
