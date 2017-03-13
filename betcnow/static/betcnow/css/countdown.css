@@ -63,6 +63,13 @@ overflow: hidden;
 .numeros-conteo{
 	font-family: 'Orbitron', sans-serif;
 }
+.reloj{
+	margin-top: 50px;
+	width: 35%;
+}
+#caja-identificadores{
+	margin-top: 0px;
+}
 
 
 @media screen and (max-width: 800px){
@@ -72,4 +79,17 @@ overflow: hidden;
 		min-height: 100vh;
 	
 	}
+	.identificadores-numeros{
+		font-size: 10px;
+	}
+	
+	.numeros-conteo{
+		font-size: 20px;
+	
+	}
+	.reloj{
+		width: 100%;
+	}
+
+
 	
