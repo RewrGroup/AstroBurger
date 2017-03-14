@@ -5,7 +5,7 @@
 <head>
   <title>BETCnow</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -55,7 +55,7 @@
 <body>
 <!-- botones inicio y signup -->
 <div id="wrapper">
-  <div class="section mobile-full">
+  <div class="section mobile-full" id="top-section">
 	  <div class="container">
 			<div class="row">
 				<div class=" col-lg-12 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0">
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 		<div class="row">
-			<div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-5 col-sm-offset-4 col-xs-12 col-xs-offset-0 reloj">
+			<div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 reloj">
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cuadritos" id="days">					
 				</div>				
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cuadritos" id="hours">
@@ -75,7 +75,7 @@
 			</div>
 		</div>
 		  <div class="row">
-			  <div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-5 col-sm-offset-4 col-xs-12 col-xs-offset-0 reloj" id="caja-identificadores">
+			  <div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 reloj" id="caja-identificadores">
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 identificadores-numeros">					
 					<center>d</center>
 				</div>				
@@ -107,31 +107,35 @@
     <div class="section" style="background-color:#4f8ed8;">
         <div class="container">
         <br>
-      <div class="row">
+		<div class="row">
+			<center><h3 class="subtitulos" style="color: #fff">What's awaiting you in Betcnow?</h3></center>
+			<br>
+			</div>
+      <div class="row" style="margin-top: 20px">
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12" > 
             <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/cohete.png' %}"></center>
             <br>
-            <p class="letr" align="justify">Low cost, high revenue</p>
+            <center><p class="letr">Low cost, high revenue</p></center>
           </div>
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12" > 
              <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/referidos.png' %}"></center>
              <br>
-             <p class="letr" align="justify">Easy passive income through our Referral System</p>
+			  <center><p class="letr">Easy passive income through our Referral System</p></center>
           </div>
       </div>
-<div class="row">
+<div class="row" style="margin-top: 20px">
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
             <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/estadistica.png' %}"></center>
             <br>
-            <p class="letr" align="justify">More chances to win than any other Bitcoin site that has ever existed</p>
+			  <center><p class="letr">More chances to win than any other Bitcoin site that has ever existed</p></center>
           </div>
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
              <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/carrera.png' %}"></center>
              <br>
-             <p class="letr" align="justify">1 free Bitcoin every month</p>
+			  <center><p class="letr">1 free Bitcoin every month</p></center>
           </div>
 </div>
-<div class="row">
+<div class="row" style="margin-top: 20px">
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
             <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/candado.png' %}"></center>
             <br>
@@ -140,22 +144,26 @@
           <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-6 col-xs-12"> 
              <center><img class="img-responsive" src="{% static 'betcnow/img/iconos/gift.png' %}"></center>
              <br>
-             <p class="letr" align="justify">More than 100 numbers with gift prizes per every draw</p>
+			  <center><p class="letr">More than 100 numbers with gift prizes per every draw</p></center>
            </div>
 </div>
 </div>
 </div>
-  <div class="section  mobile-full">
-	  <div class="container">
-	<div class="row">
-		<center><h2 class="subtitulos">Join now!</h2></center>
-	</div>
-    <div class = "row">
-    <div class="col-sm-6 col-sm-offset-3">
-        {% crispy form %}
-    </div>
-	  </div>
+  <div class="section  mobile-full" id="bottom-section">
+	  <div class='container' id="top-spacing">
+		  <div class="row">			  
 		  </div>
+	  </div>
+	  <div class="container" id="caja-signup">
+		<div class="row">
+			<center><h2 class="subtitulos">Join now!</h2></center>
+		</div>
+		<div class = "row">
+			<div class="col-lg-12">
+				{% crispy form %}
+			</div>
+		 </div>
+	  </div>
 
   </div>
 </div>

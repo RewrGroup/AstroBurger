@@ -31,8 +31,8 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
                                     Div(FieldWithButtons('sponsor_name', edit_sponsor_button), css_class="form-group"),
                                     Div(Field('password1', placeholder='password'), css_class="form-group"),
                                     Div(Field('password2', placeholder='confirm your password'), css_class="form-group"),
-                                    HTML("<input type='submit' class='btn btn-info submit-color-betcnow'"
-                                         "onclick='disabled_false()' value='Sign Up'/>"))
+                                    HTML("<center><input type='submit' class='btn btn-lg btn-info submit-color-betcnow'"
+                                         "onclick='disabled_false()' value='Sign Up'/></center>"))
 
     def valid_sponsor(self):    # Lo uso para validar que el nombre ingresado está en la BD
         self.clean()

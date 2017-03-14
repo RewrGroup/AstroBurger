@@ -4,9 +4,21 @@
 	color:#fff;
     font-family: 'Baloo Bhaina', cursive;
     }
-.fondoblanco .row{
-	background-color: #fff;
-}    
+#top-section{
+    
+}
+#bottom-section{
+	background: #5cb85c;
+}
+#caja-signup{
+	background: #fff;
+	width: 40%;
+	height: 70%;
+	border: solid 4px #f4f1f1;
+}
+#top-spacing{
+	height: 10%;
+}
 /* .peque{
 
 width: 150px; height: 100px;
@@ -25,8 +37,7 @@ overflow: hidden;
 .div-pushdown{
 	position: absolute;
 	bottom: 5%;
-	width: 85%;
-	
+	width: 85%;	
 }
 
 #reloj{
@@ -90,6 +101,19 @@ overflow: hidden;
 	.reloj{
 		width: 100%;
 	}
+	
+	.div-pushdown{		
+		width: 95%;	
+	}
+	
+	#caja-signup{
+		
+		width: 80%;
+		height: 70%;
+		
+	}
+
+
 
 
 	
