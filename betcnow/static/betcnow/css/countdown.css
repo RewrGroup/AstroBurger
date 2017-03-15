@@ -3,21 +3,26 @@
 .letr{
 	color:#fff;
     font-family: 'Baloo Bhaina', cursive;
+	width: 60%;
+	text-align: justify;
+	font-size: 12pt;
     }
-#top-section{
-    
-}
 #bottom-section{
-	background: #5cb85c;
+	background: #4F8ED8;
+}
+#nota-bottom{
+	color:#fff;
+    font-family: 'Baloo Bhaina', cursive;		
+	font-size: 24pt;
 }
 #caja-signup{
 	background: #fff;
 	width: 40%;
 	height: 70%;
 	border: solid 4px #f4f1f1;
+	border-radius: 8px;
 }
 #top-spacing{
-	height: 10%;
 }
 /* .peque{
 
@@ -112,6 +117,5 @@ overflow: hidden;
 		
 	}
 	#top-spacing{
-	height: 40px;
 	}
 }
