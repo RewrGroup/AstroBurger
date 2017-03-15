@@ -22,6 +22,10 @@
 	border: solid 4px #f4f1f1;
 	border-radius: 8px;
 }
+.row-margin{
+	margin-top: 100px;
+	padding-bottom: 40px;
+}
 #top-spacing{
 }
 /* .peque{
@@ -119,3 +123,27 @@ overflow: hidden;
 	#top-spacing{
 	}
 }
+
+@media all and (min-width: 801px) and (max-width: 1199px){
+		#titulo-section-middle{
+			font-size: 16pt !important;
+		}
+	.iconos-countdown{
+		width: 50px;
+		height: 50px;
+	}
+	.letr{
+		font-size: 10pt;
+		
+	}
+	.icono-letra{
+		margin-top: 0px;
+	}
+	.del-countdown{
+		font-size: 14pt !important;
+	}
+	#caja-signup{
+		height: 85%;
+	}
+	
+	}
