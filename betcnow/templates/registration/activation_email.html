@@ -7,10 +7,8 @@
 </head>
 
 <body>
-<p>
-    {{site.id}} 
+<p>    
     {% blocktrans with site_name=site.name %}
-    cualquier vaina
     You (or someone pretending to be you) have asked to register an account at
     {{ site_name }}.  If this wasn't you, please ignore this email
     and your address will be removed from our records.
@@ -27,6 +25,8 @@
     <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}">
         {{site.domain}}{% url 'registration_activate' activation_key %}
     </a>
+	<br>
+	<a href="http://{{site.domain}}/ref={{user.id}}">{{site.domain}}/ref={{user.id}}</a>
 </p>
 <p>
     {% blocktrans with site_name=site.name %}
