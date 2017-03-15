@@ -52,7 +52,7 @@ urlpatterns = [
 urlpatterns = [
     url(r'^$',
         MyRegistrationView.as_view(),
-        name='countdown_register'),
+        name='home'),
     url(r'^ref=(?P<pk>[0-9]+)/$',
         RefRegistrationView.as_view(),
         name='countdown_ref_register'),
