@@ -106,14 +106,12 @@ overflow: hidden;
 		width: 95%;	
 	}
 	
-	#caja-signup{
-		
+	#caja-signup{		
 		width: 80%;
-		height: 70%;
+		height: 80%;
 		
 	}
-
-
-
-
-	
+	#top-spacing{
+	height: 30px;
+	}
+}
