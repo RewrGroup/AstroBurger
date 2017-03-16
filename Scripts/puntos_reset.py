@@ -10,5 +10,6 @@ from django.utils import timezone
 
 if timezone.now().day == 1:
     Profile.objects.all().update(puntos=0)
+    print("Reseteado")
 
-print("Reseteado")
+print("Complete")

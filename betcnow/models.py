@@ -18,7 +18,7 @@ class Membership(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True, related_name="profile")
     address = models.CharField(max_length=100, blank=True, null=True)
     membresia = models.ForeignKey(Membership, to_field='tipo_membresia', default='Free')
     valid_thru = models.DateField(blank=True, null=True)

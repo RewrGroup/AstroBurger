@@ -25,7 +25,7 @@ SECRET_KEY = 'a_9*^5bi&2gc#u6g+gt)3z7j()q41r6qr7o*3ez!g#17*xt!s$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1', '.betcnow.com']
 
 
 # Application definition
@@ -132,14 +132,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'pruebadjango.rafael@gmail.com'
-EMAIL_HOST_PASSWORD = 'guama123'
+EMAIL_HOST_USER = 'admin@betcnow.com'
+EMAIL_HOST_PASSWORD = 'G6b863af779d4183bef8f3858c136ddb6'
 EMAIL_PORT = 587
 
 LOGIN_REDIRECT_URL = "/"
 
 ACCOUNT_ACTIVATION_DAYS = 3
-SITE_ID = 2
+SITE_ID = 3
 """
 Esto cambia las clases de los inputs declarados en el diccionario
 """
