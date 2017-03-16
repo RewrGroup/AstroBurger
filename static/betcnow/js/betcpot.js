@@ -9,6 +9,10 @@ function llenar_matriz(centena) {
         if (lista[i] == 1){         //Verde
             color = "'btn btn-success custom'";     
         }
+		else if(lista[i] == 4){
+			color = "'btn btn-primary custom'"
+			disabled = true;
+		}
         else{           //Rojo
             color = "'btn btn-danger custom'";
             disabled = true;

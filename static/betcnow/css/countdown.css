@@ -38,7 +38,7 @@ border-radius: 800px;
 overflow: hidden;
 } */
 
-.arrowDown{
+#arrowDown{
 	cursor: pointer;
 	height: 60px;
 	width: 60px;
@@ -144,12 +144,6 @@ overflow: hidden;
 	}
 	#caja-signup{
 		height: 85%;
-	}
-	#div-flecha-blanca{
-		position: fixed;
-		z-index: 1;
-		left: 50%;
-		bottom: -465px;
 	}
 	
 	}
