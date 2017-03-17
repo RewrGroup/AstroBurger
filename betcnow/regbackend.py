@@ -36,8 +36,8 @@ class RefRegistrationView(MyRegistrationView):
 
     def get(self, request, *args, **kwargs):
         try:
-            u = User.objects.get(pk=kwargs['pk'])
-            self.initial = {'sponsor_name': u.username}
+            u = Profile.objects.get(pk=kwargs['pk'])
+            self.initial = {'sponsor_name': u.user.username}
         except ObjectDoesNotExist:
             pass
         return self.render_to_response(self.get_context_data())
