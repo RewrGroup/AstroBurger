@@ -21,7 +21,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
-		if (screen && screen.width > 800) {
+		if (screen && screen.width > 8000) {
 			document.write("<scr" + "ipt" + " src=\" {% static 'betcnow/js/jquery.fullPage.min.js' %} \">" + "</sc" + "ript>" +  `
 							<script>
 								jQuery(function(){
@@ -156,7 +156,9 @@
 	</div>	 
 </div>
 </div>
-  <div class="section  mobile-full" id="bottom-section">
+  <div class="section mobile-full" id="bottom-section">
+	  <div id="container">
+	  <div id="body">
 	  <div class='container' id="top-spacing">
 		  <div class="row">			  
 			  <center><h3 class="subtitulos del-countdown" style="color: #fff">Join now and begin making your referral network today!</h3></center>
@@ -173,9 +175,33 @@
 			</div>
 		 </div>
 	  </div>
+	</div>
+	 <div id="footer">
+	<div class="container">
+		<div class="row">
+			<div class=" col-md-4 col-sm-4 col-lg-4">
+				<img id="img-bitcoin" src="{% static 'betcnow/img/Bitcoin_Accepted_Here.png' %}">&nbsp &nbsp<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=KVUVBit6GgcnDLVGGm3ho6e5YbZHI96a1CDDXT4NV9pstewe57xKmRD01m0j"></script></span></center>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<center><p class=text-muted>&copy; 2017 Betcnow. All rights reserved</p></center>		
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4" style="text-align: right">
+					<ul id="terms-policy">
+						<li>
+							<a href="terminos">Terms and conditions</a>
+						</li>
+						|
+						<li>
+							<a href="policy">Privacy policy</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+  </div>	
+</div>
 
   </div>
-</div>
 
 <script>
 // Set the date we're counting down to
