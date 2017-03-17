@@ -42,8 +42,8 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
     def clean(self):
         super(MyRegistrationForm, self).clean()
         data = self.data['sponsor_name']
-        if User.objects.filter(username__iexact=data).count() == 0:  # si no existe en la base de datos (de usuarios):
-            """raise forms.ValidationError("Nombre de Sponsor inválido")  # Hago un error """
+        u = User.objects.get(username=data)
+        if User.objects.filter(username__iexact=data).count() == 0 or u.is_active is False:
             self.errors['sponsor_name'] = ["That user doesn't exists"]
         # Devolver el objeto que coincide con la busqueda
         return self.cleaned_data    # never forget this! ;o)

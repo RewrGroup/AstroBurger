@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a_9*^5bi&2gc#u6g+gt)3z7j()q41r6qr7o*3ez!g#17*xt!s$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-SECURE_SSL_REDIRECT = True
+DEBUG = True
+# SECURE_SSL_REDIRECT = True
 
 
 ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1', '.betcnow.com']
@@ -136,7 +136,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'admin@betcnow.com'
 EMAIL_HOST_PASSWORD = 'G6b863af779d4183bef8f3858c136ddb6'
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 
 LOGIN_REDIRECT_URL = "/"
 
