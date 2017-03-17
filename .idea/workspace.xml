@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d47dfa0-057b-40a9-921f-6b28eede9ea9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/static/betcnow/css/countdown.css" afterPath="$PROJECT_DIR$/betcnow/static/betcnow/css/countdown.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betcnow/templates/registration/registration_form.html" afterPath="$PROJECT_DIR$/betcnow/templates/registration/registration_form.html" />
     </list>
     <ignored path="REWR.iws" />

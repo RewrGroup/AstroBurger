@@ -55,7 +55,7 @@ overflow: hidden;
 
 .cuadritos{
 	border-top: solid 3px #4F8ED8;
-	border-bottom: solid 3px #4F8ED8;
+	border-bottom: solid 3px #4F8ED8;	
 }
 .identificadores-numeros{
 	background: #4F8ED8;
@@ -66,10 +66,12 @@ overflow: hidden;
 #days{
 	border-left: solid 3px #4F8ED8;
 	border-right: solid 2px #4F8ED8;
+	border-top-left-radius: 5px;
 }
 
 #seconds{
 	border-right: solid 3px #4F8ED8;
+	border-top-right-radius: 5px;
 }
 #reloj{
 	font-size: 35px;
@@ -78,6 +80,12 @@ overflow: hidden;
 #minutes{
 	border-left: solid 2px #4F8ED8;
 	border-right: solid 2px #4F8ED8;
+}
+#id-days{
+	border-bottom-left-radius: 5px;
+}
+#id-seconds{
+	border-bottom-right-radius: 5px;
 }
 
 .numeros-conteo{
@@ -151,5 +159,9 @@ overflow: hidden;
 		left: 50%;
 		bottom: -465px;
 	}
-	
+	#footer {
+	   bottom: 10px !important;
+		position: fixed;
 	}
+	
+}
