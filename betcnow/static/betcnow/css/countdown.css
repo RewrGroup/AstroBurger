@@ -43,6 +43,12 @@ overflow: hidden;
 	height: 60px;
 	width: 60px;
 }
+#div-flecha-blanca{
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: -615px;
+}
 .div-pushdown{
 	position: absolute;
 	bottom: 5%;
@@ -128,8 +134,14 @@ overflow: hidden;
 		height: 80%;
 		
 	}
-	#top-spacing{
+	#div-flecha-blanca{
+		position: relative;
+		bottom: 0px;
+		left: 0px;
+		background: red;
+		
 	}
+	
 }
 
 @media all and (min-width: 801px) and (max-width: 1199px){

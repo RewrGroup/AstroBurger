@@ -188,11 +188,11 @@
 			<div class="col-lg-4 col-md-4 col-sm-4" style="text-align: right">
 					<ul id="terms-policy">
 						<li>
-							<a href="terminos">Terms and conditions</a>
+							<a href="{% url 'terminos' %}">Terms of use</a>
 						</li>
 						|
 						<li>
-							<a href="policy">Privacy policy</a>
+							<a href="{% url 'privacidad' %}">Privacy policy</a>
 						</li>
 					</ul>
 			</div>
@@ -206,7 +206,7 @@
 
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Mar 19, 2017 15:37:25").getTime();
+var countDownDate = new Date("Mar 28, 2017 00:00:00").getTime();
 
 // Update the count down every 1 second
 var countdownfunction = setInterval(function() {

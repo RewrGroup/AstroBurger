@@ -50,6 +50,8 @@ urlpatterns = [
 
 # Estas son las URLs para el countdown
 urlpatterns = [
+    url(r'^terms_of_use/$', TemplateView.as_view(template_name='betcnow/terminos.html'), name="terminos"),
+    url(r'^privacy_policy/$', TemplateView.as_view(template_name='betcnow/privacidad.html'), name="privacidad"),
     url(r'^$',
         MyRegistrationView.as_view(),
         name='home'),
