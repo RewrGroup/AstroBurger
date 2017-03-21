@@ -29,7 +29,13 @@ body{
 }
 
 /*INICIO*/
-
+.alert-error{
+	color: #d80c0c;
+	font-weight: bold;
+}
+.alert-error > ul > li{
+	display: block;
+}
 .row {
     margin: 0px 0px 0px 0px;
 }
@@ -47,15 +53,20 @@ body{
 	display: inline-block;
 }
 
+@font-face {
+   font-family: customfont;
+   src: url(Rounded_Elegance.ttf);
+}
+
 
 h2.subtitulos{
-    font-family: 'Lobster', cursive;
+    font-family: 'customfont', cursive;
     font-size: 50px;
     color: #4F8ED8;
 }
 
 h3.subtitulos{
-    font-family: 'Lobster', cursive;
+    font-family: 'customfont', cursive;
     font-size: 35px;
     color: #4F8ED8;
 }

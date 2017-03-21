@@ -67,3 +67,10 @@ class LoginWithPlaceholder(AuthenticationForm):
                                     Div(AppendedText('remember_me', 'Remember me'), css_class="form-group"),
                                     Div(Submit('submit', 'Log in'), css_class="form-group"))
 
+    error_messages = {
+        'invalid_login': (
+            "Please enter a correct %(username)s and password."
+        ),
+        'inactive': "This account is inactive.",
+    }
+

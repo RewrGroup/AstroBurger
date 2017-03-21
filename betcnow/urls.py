@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="betcnow/home.html"), name='home'),
+    url(r'^profile_redirect/$', views.profile_redirect, name="profile_redirect"),
     url(r'^play/$', views.play, name='play'),
     url(r'^gourl_callback.html/$', views.callback, name='callback'),
     url(r'^gourl_callback_memberships/$', views.membership_callback, name='membership_callback'),

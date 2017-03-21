@@ -1,14 +1,14 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from betcnow.forms import LoginWithPlaceholder
 from pinax.notifications.models import send
 from .models import Profile, User, Jugada, Pote, Testimonio, Membership
 from registration.backends.default.views import ActivationView
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, NoReverseMatch
 from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime, date, timedelta
 from dateutil import relativedelta
@@ -23,6 +23,13 @@ def remember_me_login(request, template_name, authentication_form):
         if request.POST.get('remember_me', None):
             request.session.set_expiry(1209600)  # 2 weeks
     return response
+
+
+def profile_redirect(request):
+    try:
+        return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
+    except NoReverseMatch:
+        return HttpResponse()
 
 
 @login_required()
@@ -158,8 +165,7 @@ def results(request):
     hoy = timezone.now()
     lunes = hoy - timedelta(days=hoy.weekday())
     potes = Pote.objects.filter(status='0').filter(fecha_sorteo__gte=lunes).order_by('-fecha_sorteo')
-    member = Membership.objects.get(tipo_membresia='Member')
-    users = Profile.objects.select_related('user').filter(membresia=member).order_by('-puntos')[:10]
+    users = Profile.objects.select_related('user').filter(membresia__tipo_membresia="Member").order_by('-puntos')[:10]
     fecha = timezone.now().date()
     return render(request, 'betcnow/results.html', {'potes': potes, 'users': users, 'fecha': fecha})
 
@@ -244,8 +250,7 @@ def membership_callback(request, *args, **kwargs):
 
 
 def testimonios(request):
-    testimonios_aprobados = Testimonio.objects.filter(aprobado=True).select_related('user')
-    testimonios_aprobados = reversed(testimonios_aprobados)
+    testimonios_aprobados = Testimonio.objects.select_related('user').filter(aprobado=True).order_by("-fecha")
     return render(request, "betcnow/testimonios.html", {'testimonios': testimonios_aprobados})
 
 

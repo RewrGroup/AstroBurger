@@ -156,7 +156,7 @@ overflow: hidden;
 		
 	}
 	.icono-letra{
-		margin-top: 0px;
+		margin-top: -20px;
 	}
 	.del-countdown{
 		font-size: 14pt !important;
@@ -174,5 +174,6 @@ overflow: hidden;
 	   bottom: 10px !important;
 		position: fixed;
 	}
+	
 	
 }

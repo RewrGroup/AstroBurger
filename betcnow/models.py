@@ -39,6 +39,7 @@ class Pote(models.Model):
         ('-1', 'Pre-Cerrado')
     )
     status = models.CharField(max_length=30, default='1', choices=STATUS_CHOICES)
+    total_acumulado = models.FloatField(blank=True, null=True, default=0.0)
     fecha_sorteo = models.DateField(null=True, blank=True)
 
     def __str__(self):
@@ -58,7 +59,7 @@ class Jugada(models.Model):
     orderID = models.CharField(max_length=100, blank=True, null=True)
     fecha_jugada = models.DateTimeField(blank=True, null=True)
     PREMIO_CHOICES = (
-        ('1', '350pts'),
+        ('1', '300pts'),
         ('2', '25pts'),
         ('3', '15pts'),
         ('4', '0.0025Btc+10pts'),
