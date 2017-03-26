@@ -48,7 +48,7 @@ function add_jugada(i) {            //Añadir jugada a la tabla de seleccionadas
         cell2.innerHTML = "<button type='button' class='btn btn-default' onclick='delete_row(this)'><span id='delete_span' class='glyphicon glyphicon-remove'></span></button>";
     }
     else {
-        alert("Calm down! You can only play 8 numbers at once!");
+        swal("Calm down! You can only play 8 numbers at once!");
     }
 }
 
@@ -101,6 +101,6 @@ function random_values() {
         llenar_matriz(centena);     //Se actualiza la matríz
     }
     else {
-        alert("Invalid amount of random numbers")
+        swal("Invalid amount of random numbers")
     }
 }        

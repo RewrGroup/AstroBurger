@@ -36,10 +36,13 @@
         });        
     </script>
     <script>
+		{% if address_vacia %}
+			var address_vacia = true;
+		{% endif %}
+		
         jQuery(function(){
            $('#submit_jugada').click(function(){
-               if ($('#tabla_jugadas tr').length == 1){
-                   alert("Aren't you gonna play?");
+               if (($('#tabla_jugadas tr').length == 1) || address_vacia == true){                   
                    return false;
                }
 			   else{
@@ -56,7 +59,7 @@
 {% block content %}
 {% if address_vacia %}
 	<div class="alert alert-danger">
-  		<center><strong>Hey!</strong> Before you play, please go to your profile, and <strong>set up your Bitcoin address</strong> so we can know where we're going to pay you</center>
+  		<center><strong>Hey!</strong> Before you play, please go to your <a href="{% url 'profile' pk=request.user.pk %}" style="color: inherit; text-decoration: underline"><b>profile</b></a>, and <strong>set up your Bitcoin address</strong> so we can know where we're going to pay you</center>
 	</div>
 {% endif %}
 <div class="row">

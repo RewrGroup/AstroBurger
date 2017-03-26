@@ -1,178 +1,33 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
 {% load crispy_forms_tags %}
-<html lang="en">
-<head>
-  <title>BETCnow</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{% static 'betcnow/css/animate.css' %}">
-  <link rel="stylesheet" href="{% static 'betcnow/css/countdown.css' %}">
-	<link rel="stylesheet" href="{% static 'betcnow/css/betcnow.css' %}">
-	<link rel="shortcut icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
-	<link rel="icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
-  <link ref="stylesheet" href="{% static 'betcnow/css/jquery.fullPage.css' %}">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script>
-		if (screen && screen.width > 800) {
-			document.write("<scr" + "ipt" + " src=\" {% static 'betcnow/js/jquery.fullPage.min.js' %} \">" + "</sc" + "ript>" +  `
-							<script>
-								jQuery(function(){
-									$('#wrapper').fullpage();
-									$('.arrowDown').click(function(){
-										$.fn.fullpage.moveSectionDown();
-									});
-								});
-							` + '</sc' + 'ript>');
-		}
-	</script>
-  	<script>
-        window.onload = function(){
+{% block scripts %}
+    <script>
+        window.onload = function(){                        
             if ((document.getElementById('id_sponsor_name').value != 'betcnow') && !document.getElementById('error_1_id_sponsor_name')){
-                document.getElementById('edit-sponsor').style.display = 'none';
+                document.getElementById('edit-sponsor').style.display = 'none';            
             }
-            document.getElementById('id_sponsor_name').readOnly = true;
+            document.getElementById('id_sponsor_name').readOnly = true;            
         }
     </script>
 
     <script>
-        function disabled_false(){
+        function disabled_false(){            
             document.getElementById('id_sponsor_name').readOnly = false;
-
+            
         }
-    </script>
-	<script>
-		$(document).ready(function(){
-    		$(this).scrollTop(0);
-		});
-	</script>
+    </script>    
+{% endblock %}
 
-</head>
 
-<body>
-<!-- botones inicio y signup -->
-<div id="wrapper">
-  <div class="section mobile-full" id="top-section">
-	  <div class="container">
-			<div class="row">
-				<div class=" col-lg-12 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
-    <center><img class="img-responsive imagen-logo" src="{% static 'betcnow/img/bn2.png' %}"></center>
-					</div>
-				</div>
+
+{% block title %}{% trans "Join Betcnow"%}{% endblock %}
+
+{% block content %}
+<div class="container caja-signup">
 		<div class="row">
-			<div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 reloj">
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cuadritos" id="days">
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cuadritos" id="hours">
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cuadritos" id="minutes">
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 cuadritos" id="seconds">
-				</div>
-			</div>
-		</div>
-		  <div class="row">
-			  <div class="col-lg-5 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 reloj" id="caja-identificadores">
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 identificadores-numeros" id="id-days">
-					<center>d</center>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 identificadores-numeros">
-					<center>h</center>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 identificadores-numeros">
-					<center>m</center>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 identificadores-numeros" id="id-seconds">
-					<center>s</center>
-				</div>
-			</div>
-
-		  </div>
-		  <div class="row">
-			  <center><h3 class="subtitulos" style="font-size: 18pt">For launch!</h3></center>
-		  </div>
-
-
-
-
-	  <div class="row  div-pushdown">
-		  <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-	<center><img class="img-responsive arrowDown" src="{% static 'betcnow/img/down-arrow.png' %}"></center>
-			 </div>
-	</div>
-	</div>
-  </div>
-
-
-    <div class="section" style="background-color: #5cb85c;">
-        <div class="container">
-		<div class="row row-margin">
-			<center><h3 class="subtitulos" style="color: #fff" id="titulo-section-middle">What's awaiting you in Betcnow?</h3></center>
-			</div>
-      <div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 icono-letra">
-            <center><img class="img-responsive iconos-countdown" src="{% static 'betcnow/img/iconos/bitcoin-ticket.png' %}"></center>
-            <br>
-            <center><p class="letr">Low-cost plays, high Bitcoin revenue: Win up to 255 times your bet!</p></center>
-          </div>
-          <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 icono-letra">
-             <center><img class="img-responsive iconos-countdown" src="{% static 'betcnow/img/iconos/referidos.png' %}"></center>
-             <br>
-			  <center><p class="letr">Easy passive income through our Referral System</p></center>
-          </div>
-      </div>
-<div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 icono-letra">
-            <center><img class="img-responsive iconos-countdown" src="{% static 'betcnow/img/iconos/estadistica.png' %}"></center>
-            <br>
-			  <center><p class="letr">More chances to win than any other Bitcoin site that has ever existed</p></center>
-          </div>
-          <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 icono-letra">
-             <center><img class="img-responsive iconos-countdown" src="{% static 'betcnow/img/iconos/carrera.png' %}"></center>
-             <br>
-			  <center><p class="letr">Bitcoin-Race: 1 free Bitcoin every month</p></center>
-          </div>
-</div>
-<div class="row">
-          <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 icono-letra">
-            <center><img class="img-responsive iconos-countdown" src="{% static 'betcnow/img/iconos/candado.png' %}" style="width: 50px; heigth: 30px; margin-top: 8px;"></center>
-            <br>
-            <center><p class="letr">Your money and identity are completely safe. We don't keep your money or your personal information in our site</p></center>
-          </div>
-          <div class="col-lg-5 col-lg-offset-1 col-md-offset-1 col-md-5 col-sm-12 col-xs-12 icono-letra">
-             <center><img class="img-responsive iconos-countdown" src="{% static 'betcnow/img/iconos/gift.png' %}"></center>
-             <br>
-			  <center><p class="letr">More than 100 numbers with gift prizes for each draw</p></center>
-			  <br>
-			  <center><button class="btn btn-default color-verde-betcnow" id="learn-more" data-toggle="modal" data-target="#myModal"><strong>Learn More</strong></button></center>
-			  <br>
-           </div>
-</div>
-			<div class="row" id="div-flecha-blanca">
-				<center><img class="img-responsive arrowDown" src="{% static 'betcnow/img/down-arrow-blanca.png' %}"></center>
-
-			</div>
-</div>
-</div>
-  <div class="section mobile-full" id="bottom-section">
-	  <div id="container">
-	  <div id="body">
-	  <div class='container' id="top-spacing">
-		  <div class="row">
-			  <center><h3 class="subtitulos del-countdown" style="color: #fff">Join now and begin making your referral network today!</h3></center>
-		  </div>
-	  </div>
-
-	  <div class="container" id="caja-signup">
-		<div class="row">
-			<center><h3 class="subtitulos del-countdown">Create an account</h3></center>
+			<center><h3 class="subtitulos del-countdown" style="font-size: 16pt">Create an account</h3></center>
 		</div>
 		<div class = "row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -180,97 +35,4 @@
 			</div>
 		 </div>
 	  </div>
-	</div>
-
-	 <div id="footer">
-	<div class="container">
-		<div class="row">
-			<div class=" col-md-4 col-sm-4 col-lg-4">
-				<img id="img-bitcoin" src="{% static 'betcnow/img/Bitcoin_Accepted_Here.png' %}">&nbsp &nbsp<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=KVUVBit6GgcnDLVGGm3ho6e5YbZHI96a1CDDXT4NV9pstewe57xKmRD01m0j"></script></span>&nbsp &nbsp
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4">
-				<center><p class=text-muted>&copy; 2017 Betcnow. All rights reserved</p></center>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4" style="text-align: right">
-					<ul id="terms-policy">
-						<li>
-							<a href="{% url 'terminos' %}">Terms of use</a>
-						</li>
-						|
-						<li>
-							<a href="{% url 'privacidad' %}">Privacy policy</a>
-						</li>
-					</ul>
-			</div>
-		</div>
-	</div>
-  </div>
-</div>
-
-  </div>
-</div>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-    <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header" style="background: #5cb85c">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <center><h4 class="modal-title" style="color: #fff"><strong>What makes us great?</strong></h4></center>
-            </div>
-            <div class="modal-body">
-                <p style="text-align: justify">Betcnow is a site designed to make low-cost bitcoin bets with a high revenue of up to 255 times your bet.<br><br>
-					The system consists of acquiring a ticket from our lot (called Betcpot) with the numbers of your preference
-					between 000 and 999. More than 13% of the purchased numbers will be awarded, in addition to this, each
-					Betcpot has 100 instant gifts, these instant gifts bring you money and/or points to participate in a monthly race for a Bitcoin gift.
-					<hr>
-					We have a referral system where you can win up to 10% of each bet of your referrals.
-					<hr>
-
-					Betcnow does not keep money or personal information of the users, we do not accumulate prizes, it is distributed all in each draw
-				</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Mar 28, 2017 00:00:00").getTime();
-
-// Update the count down every 1 second
-var countdownfunction = setInterval(function() {
-
-    // Get todays date and time
-    var now = new Date().getTime();
-
-    // Find the distance between now an the count down date
-    var distance = countDownDate - now;
-
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Output the result in an element with id="demo"
-    var ids = ["days", "hours", "minutes", "seconds"];
-	var variables = [days, hours, minutes, seconds];
-	for (var i=0; i < 4; i++){
-		document.getElementById(ids[i]).innerHTML = "<center><h3 class='numeros-conteo'> " + variables[i] + "</h3></center>";
-	}
-
-
-    // If the count down is over, write some text
-    if (distance < 0) {
-        clearInterval(countdownfunction);
-        document.getElementById("reloj").innerHTML = "EXPIRED";
-    }
-}, 1000);
-</script>
-<!-- barra final -->
-<script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
-</body>
-</html>
+{% endblock %}

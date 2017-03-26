@@ -27,7 +27,7 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
                                            id="edit-sponsor")
         self.helper.layout = Layout(Div(Field('username', placeholder='username'), css_class="form-group"),
                                     Div(Field('email', placeholder='email'), css_class="form-group"),
-                                    HTML("<label for='id_sponsor_name' class='col-sm-2'>Sponsor:</label>"),
+                                    HTML("<label for='id_sponsor_name' class='col-sm-2'>Sponsor</label>"),
                                     Div(FieldWithButtons('sponsor_name', edit_sponsor_button), css_class="form-group"),
                                     Div(Field('password1', placeholder='password'), css_class="form-group"),
                                     Div(Field('password2', placeholder='confirm your password'), css_class="form-group"),
@@ -42,9 +42,11 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
     def clean(self):
         super(MyRegistrationForm, self).clean()
         data = self.data['sponsor_name']
-        u = User.objects.get(username=data)
-        if User.objects.filter(username__iexact=data).count() == 0 or u.is_active is False:
+        qs = User.objects.filter(username__iexact=data)
+        if qs.count() == 0:
             self.errors['sponsor_name'] = ["That user doesn't exists"]
+        elif qs[0].is_active is False:
+            self.errors['sponsor_name'] = ["That user is inactive"]
         # Devolver el objeto que coincide con la busqueda
         return self.cleaned_data    # never forget this! ;o)
 

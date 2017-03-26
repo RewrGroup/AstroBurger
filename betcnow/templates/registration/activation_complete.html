@@ -1,43 +1,39 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-{% load crispy_forms_tags %}
-<html lang="en">
-<head>
-  <title>BETCnow</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{% static 'betcnow/css/animate.css' %}">
-  <link rel="stylesheet" href="{% static 'betcnow/css/countdown.css' %}">
-	<link rel="stylesheet" href="{% static 'betcnow/css/betcnow.css' %}">
-	<link rel="shortcut icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
-	<link rel="icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% load staticfiles%}
 
-  <link ref="stylesheet" href="{% static 'betcnow/css/jquery.fullPage.css' %}">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
-</head>
+{% block content %}
 
-<body>
-	<div class="container">
+    <div class="container">
 		<center>
 		<div class="row">
-			<div class=" col-lg-12 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0">
+			<div class=" col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12 col-xs-offset-0">
     			<img class="img-responsive imagen-logo" src="{% static 'betcnow/img/bn2.png' %}">
 			</div>
 		</div>
 		<div class="row">
 			<h3 class="subtitulos">Your account is now activated.</h3>
 		</div>
+		{% if not user.is_authenticated %}
+    	<div class="row" style="margin: 30px 0px 0px 0px; width: 150px">
+			<a href="{% url 'login' %}" class="btn btn-success btn-block">Log in</a>
+		</div>
+    	{% else %}
 		<div class="row" style="margin: 30px 0px 0px 0px">
 			<a href="{% url 'home' %}" class="btn btn-success btn-md">Home</a>
 		</div>
+		{% endif %}
 		</center>
 	</div>
-</body>
-</html>
+    
 
+{% endblock %}
+
+
+{% comment %}
+**registration/activation_complete.html**
+
+Used after successful account activation. This template has no context
+variables of its own, and should simply inform the user that their
+account is now active.
+{% endcomment %}

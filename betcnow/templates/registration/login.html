@@ -5,11 +5,17 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-sm-6 col-sm-offset-3">    
-        {% crispy form %}      
-        <p>{% trans "Did you forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-        <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>        
-    </div>
-</div>    
+
+<div class="container caja-signup">
+		<div class="row">
+			<center><h3 class="subtitulos del-countdown" style="font-size: 16pt"> </h3></center>
+		</div>
+		<div class = "row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				{% crispy form %}
+				<p>{% trans "Did you forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
+        		<p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>        
+			</div>
+		 </div>
+	  </div>
 {% endblock %}

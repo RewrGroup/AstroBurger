@@ -45,7 +45,7 @@ def play(request):
                 lista_status.append(4)
             else:
                 lista_status.append(int(i.status))
-        if perfil.address == "":
+        if perfil.address == "" or perfil.address is None:
             address_vacia = True
         else:
             address_vacia = False
@@ -133,12 +133,16 @@ def profile(request, pk):
             is_member = False
         else:
             is_member = True
+        if perfil.address == "" or perfil.address is None:
+            address_vacia = True
+        else:
+            address_vacia = False
         if request.method == "POST":
             perfil.address = request.POST.get('input_wallet', None)
             perfil.save()
         return render(request, 'betcnow/profile.html', {'user': user, 'perfil': perfil, 'time': time,
                                                         'jugadas_activas': jugadas_activas, 'referidos': referidos,
-                                                        'is_member': is_member})
+                                                        'is_member': is_member, 'address_vacia': address_vacia})
     else:
         return HttpResponse()
 
@@ -172,7 +176,7 @@ def results(request):
 
 def resultado_pote(request, pk):
     pote = get_object_or_404(Pote, pk=pk)
-    ganadores = Jugada.objects.filter(pote=pote).exclude(resultado='').select_related('jugador')
+    ganadores = Jugada.objects.select_related('jugador').filter(pote=pote).exclude(resultado='')
     primero = ganadores.get(resultado='1')
     segundo = ganadores.get(resultado='2')
     tercero = ganadores.get(resultado='3')

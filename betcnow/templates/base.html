@@ -7,32 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'betcnow/css/betcnow.css' %}">
+	<link rel="stylesheet" href="{% static 'betcnow/css/countdown.css' %}">
 	<link rel="shortcut icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
 	<link rel="icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
     <link href="{% static 'betcnow/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">    
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'betcnow/css/sweetalert.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'betcnow/js/ie-emulation-modes-warning.js' %}"></script>    
+	<script src="{% static 'betcnow/js/sweetalert.min.js' %}"></script>
     {% block scripts %}
     {% endblock %}
 </head>
 <body>
 <div id="container">
 <div id="header">
-  <div class="container-fluid">  
-      <div class="row">
-          <div class="col-xs-8 col-md-8 col-lg-3 div-logo">
+  <div class="container-fluid" id="row-logo-y-botones">  
+      <div class="row-fluid">
+          <div class="col-xs-8 col-md-3 col-lg-3 col-sm-6 div-logo">
 			  <a href="{% url 'home' %}"><img class="img-responsive" src="{% static 'betcnow/img/bnletras.png' %}" alt="Logo de BETCnow" title="Ir a BETCnow"></a>
           </div>
-		  <div class="col-xs-4 col-lg-2 col-lg-offset-7 col-sm-2 col-sm-offset-2 col-md-2 col-md-offset-2" id="botones-login">
-				{% if request.user.is_authenticated %}
+		  <div class="col-xs-4 col-lg-3 col-lg-offset-6 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-6" id="botones-login">
+			<div class="pull-right" id="wrapper-botones-login">
+			  {% if request.user.is_authenticated %}
 						<a href="{% url 'profile' pk=request.user.pk %}" class="btn btn-primary M "><b>{{user}}</b></a>
 
 						<a href="{% url 'auth_logout' %}" class="btn btn-primary A" ><span class="glyphicon glyphicon-log-out"></span> Loggout</a>
 				{% else %}
-			   			<a href="{% url 'registration_register' %}" class="btn btn-primary M"><span class="glyphicon glyphicon-user"></span >Sign Up</a>
+			   			<a href="{% url 'registration_register' %}" class="btn btn-primary M"><span class="glyphicon glyphicon-user"></span > Sign Up</a>
 
 						<a href="{% url 'login' %}" class="btn btn-primary A"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 				{% endif %}                    
+			</div>	
 			 </div>
         </div>
   </div>
@@ -48,14 +55,16 @@
             </button> 
         </div>
        <div class="collapse navbar-collapse" id="navbar-1">
-            <div class>
+            <div>
                <ul class="nav navbar-nav">
-                    <li ><a href="{% url 'home' %}" ><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li ><a href="{% url 'home' %}" style="border-left: solid 1.5px #467dbe;"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li ><a href="{% url 'results' %}" ><span class="glyphicon glyphicon-th"></span> Results</a></li>
                     <li ><a href="{% url 'about' %}" ><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+				   	 <li ><a href="{% url 'testimonios' %}" ><span class="glyphicon glyphicon-comment"></span> Testimonials</a></li>
+				   
               </ul>     
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'play' %}" id="B"> <b>PLAY NOW  </b><span  class="glyphicon glyphicon-bitcoin"></span></a></li> 
+                    <li><a href="{% url 'play' %}" id="B"> <div class="letras-betcnow" id="play-now"><center>Play Now <span class="glyphicon glyphicon-bitcoin" style="font-weight: lighter"></span></center></div></a></li> 
                 </ul>
             </div>
       </div>
@@ -69,33 +78,31 @@
 {% endblock %}
 <!-- aqui termina el cuerpo -->
 </div>
-<div id="footer">
+ <div id="footer">
 	<div class="container">
 		<div class="row">
 			<div class=" col-md-4 col-sm-4 col-lg-4">
-				<center><img id="img-bitcoin" src="{% static 'betcnow/img/Bitcoin_Accepted_Here.png' %}"></center>
+				<img id="img-bitcoin" src="{% static 'betcnow/img/Bitcoin_Accepted_Here.png' %}">&nbsp &nbsp<span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=KVUVBit6GgcnDLVGGm3ho6e5YbZHI96a1CDDXT4NV9pstewe57xKmRD01m0j"></script></span>&nbsp &nbsp
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4">
-				<center><p class=text-muted>&copy; 2017 Betcnow. All rights reserved</p></center>		
+				<center><p class=text-muted>&copy; 2017 Betcnow. All rights reserved</p></center>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4" style="text-align: right">
 					<ul id="terms-policy">
 						<li>
-							<a href="terminos">Terms and conditions</a>
+							<a href="{% url 'terminos' %}">Terms of use</a>
 						</li>
 						|
 						<li>
-							<a href="policy">Privacy policy</a>
+							<a href="{% url 'privacidad' %}">Privacy policy</a>
 						</li>
 					</ul>
 			</div>
 		</div>
 	</div>
-</div>	
+  </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'betcnow/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'betcnow/js/ie10-viewport-bug-workaround.js' %}"></script>
 </body>

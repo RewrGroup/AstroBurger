@@ -19,7 +19,7 @@ class Membership(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True, related_name="profile")
-    address = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True, default="")
     membresia = models.ForeignKey(Membership, to_field='tipo_membresia', default='Free')
     valid_thru = models.DateField(blank=True, null=True)
     sponsor = models.ForeignKey(User, to_field='username', related_name='spn',
@@ -125,6 +125,15 @@ def sorteo_pote(sender, instance, created, **kwargs):
         lista_jugadas = list(qs.values_list('numero', flat=True))
         cant_jugadas = len(lista_jugadas)
         if cant_jugadas >= 135 and qs.filter(resultado='1').count() == 0:
+            payment_list = []
+            porcentajes = [0.3, 0, 0, 0.3, 0.35, 0.15, 0.2]
+            if cant_jugadas >= 300:
+                porcentajes[1] = 0.15
+                porcentajes[2] = 0.075
+            else:
+                porcentajes[1] = 0.20
+                porcentajes[2] = 0.15
+
             sort = Sorteo(cant_jugadas, lista_jugadas)
             sort.sortear()
             podio = [sort.primero, sort.segundo, sort.tercero]
@@ -136,18 +145,45 @@ def sorteo_pote(sender, instance, created, **kwargs):
                 jugada_podio.resultado = result_podio[p]
                 jugador.puntos += puntos_podio[p]
                 jugada_podio.save()
+                payment_list.append({'address': jugador.address, 'amount': str(instance.total_acumulado*porcentajes[p])})
                 jugador.save()
+
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_gold).update(resultado='G')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_silver).update(resultado='S')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_bronze).update(resultado='B')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_repechaje).update(resultado='R')
+
             ganadores_gold = list(Jugada.objects.filter(pote=instance, resultado='G').values_list('jugador', flat=True))
             ganadores_silver = list(Jugada.objects.filter(pote=instance, resultado='S').values_list('jugador', flat=True))
             ganadores_bronze = list(Jugada.objects.filter(pote=instance, resultado='B').values_list('jugador', flat=True))
             ganadores_rep = list(Jugada.objects.filter(pote=instance, resultado='R').values_list('jugador', flat=True))
-            Profile.objects.filter(pk__in=ganadores_gold).update(puntos=F('puntos')+25)
-            Profile.objects.filter(pk__in=ganadores_silver).update(puntos=F('puntos') + 15)
-            Profile.objects.filter(pk__in=ganadores_bronze).update(puntos=F('puntos') + 12)
-            Profile.objects.filter(pk__in=ganadores_rep).update(puntos=F('puntos') + 10)
+
+            qs_gold = Profile.objects.filter(pk__in=ganadores_gold)
+            qs_silver = Profile.objects.filter(pk__in=ganadores_silver)
+            qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze)
+            qs_rep = Profile.objects.filter(pk__in=ganadores_rep)
+
+            qs_gold.update(puntos=F('puntos') + 25)
+            qs_silver.update(puntos=F('puntos') + 15)
+            qs_bronze.update(puntos=F('puntos') + 12)
+            qs_rep.update(puntos=F('puntos') + 10)
+
+            nuevo_total = instance.total_acumulado
+            for i in range(3):
+                nuevo_total -= instance.total_acumulado*porcentajes[i]
+
+            pks = [ganadores_gold, ganadores_silver, ganadores_bronze, ganadores_rep]
+            for cont, index in enumerate(pks):
+                lista_tuplas = list(Profile.objects.filter(pk__in=index).values_list('address', 'pk'))
+                lista_address = []
+                for i in index:
+                    for j in lista_tuplas:
+                        if i == j[1]:
+                            lista_address.append(j[0])
+
+                for k in lista_address:
+                    payment_list.append({'address': k, 'amount': str(nuevo_total*porcentajes[cont+3]/len(index))})
+
+            print(payment_list)     # EPA! PON TOTAL_ACUMULADO EN SATOSHIS!! Y HACER INT() A TODOS LOS AMOUNTS
         else:
             print("No se puede sortear")

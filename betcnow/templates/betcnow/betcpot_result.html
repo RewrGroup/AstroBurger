@@ -4,7 +4,10 @@
 {% block content %}
 <div class="container">
 	<div class="row podio">
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 col-lg-offset-3 segundolugar">			
+		<div class="col-xs-4 col-sm-4 col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3 segundolugar">						
+			<div class="row nombres-podio">
+				<center><div class="letras-betcnow">{{segundo.jugador}}</div></center>
+			</div>
 			<div class="row">
 				<div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
 					<h2 class="numeros-podio">2nd.</h2>
@@ -14,12 +17,15 @@
 			<div class="row resultado-podio" id="resultado-segundo">
 				<center>
 					<div class="letras-podio">
-						{{segundo.numero}}<br> ({{segundo.jugador}})
+						{{segundo.numero}}<br><br>0.246075 BTC
 					</div>
 				</center>
 			</div>
 		</div>
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 primerlugar">			
+		<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 primerlugar">			
+			<div class="row nombres-podio">
+				<center><div class="letras-betcnow">{{primero.jugador}}</div></center>
+			</div>
 			<div class="row">
 				<div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
 					<h2 class="numeros-podio">1st.</h2>
@@ -29,12 +35,15 @@
 			<div class="row resultado-podio" id="resultado-primer">
 				<center>
 					<div class="letras-podio">
-						{{primero.numero}}<br> ({{primero.jugador}})
+						{{primero.numero}}<br><br>0.49215 BTC
 					</div>
 				</center>
 			</div>
 		</div>
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 tercerlugar">
+		<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 tercerlugar">
+			<div class="row nombres-podio">
+				<center><div class="letras-betcnow">{{tercero.jugador}}</div></center>
+			</div>
 			<div class="row">
 				<div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
 					<h2 class="numeros-podio">3rd.</h2>
@@ -43,8 +52,8 @@
 			<hr class="hr-pava">
 			<div class="row resultado-podio">
 				<center>
-					<div class="col-lg-12 letras-podio">
-						{{tercero.numero}} ({{tercero.jugador}})
+					<div class="col-lg-12 letras-podio" id="letras-tercero">
+						{{tercero.numero}}<br>0.123004 BTC
 					</div>
 				</center>
 			</div>
@@ -52,26 +61,26 @@
 	</div>	
 	<div class="row grupos">
 		<hr class="hr-pava2">
-		<div class="col-lg-3 otros-resultados">
-			<h3 class="subtitulos">Gold Group ({{gold|length}} winners)</h3>
+		<div class="col-lg-3 col-md-3 otros-resultados">
+			<h3 class="subtitulos">Gold Group <br>0.23377 BTC<br><div style="font-size: 12pt">({{gold|length}} winners, 0,02597 BTC each)</div></h3>
 				{% for g in gold %}
 					<h5>{{g.jugador}} ({{g.numero}})</h5>
 				{% endfor %}
 		</div>
-		<div class="col-lg-3 otros-resultados">
-			<h3 class="subtitulos">Silver Group ({{silver|length}} winners)</h3>
+		<div class="col-lg-3 col-md-3 otros-resultados">
+			<h3 class="subtitulos">Silver Group<br>0.27273 BTC<br><div style="font-size: 12pt">({{silver|length}} winners, 0,01435 BTC each)</div></h3>
 				{% for s in silver %}
 					<h5>{{s.jugador}} ({{s.numero}})</h5>
 				{% endfor %}
 		</div>
-		<div class="col-lg-3 otros-resultados">
-			<h3 class="subtitulos">Bronze Group ({{bronze|length}} winners)</h3>
+		<div class="col-lg-3 col-md-3 otros-resultados">
+			<h3 class="subtitulos">Bronze Group<br>0.116886 BTC<br><div style="font-size: 12pt">({{bronze|length}} winners, 0,003438 BTC each)</div></h3>
 			{% for b in bronze %}
 			<h5>{{b.jugador}} ({{b.numero}})</h5>
 			{% endfor %}	
 		</div>
-		<div class="col-lg-3 otros-resultados">
-			<h3 class="subtitulos">Copper Group ({{repechage|length}} winners)</h3>
+		<div class="col-lg-3 col-md-3 otros-resultados">
+			<h3 class="subtitulos">Copper Group<br>0.1558475 BTC<br><div style="font-size: 10pt">({{repechage|length}} winners, 0,0022587 BTC each)</div>
 			{% for r in repechage %}
 			<h5>{{r.jugador}} ({{r.numero}})</h5>
 			{% endfor %}
