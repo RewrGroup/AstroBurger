@@ -67,10 +67,10 @@ class Jugada(models.Model):
     orderID = models.CharField(max_length=100, blank=True, null=True)
     fecha_jugada = models.DateTimeField(blank=True, null=True)
     PREMIO_CHOICES = (
-        ('1', '300pts'),
-        ('2', '25pts'),
-        ('3', '15pts'),
-        ('4', '0.0025Btc+10pts'),
+        ('1', '160 pts'),
+        ('2', '40 pts'),
+        ('3', '20 pts'),
+        ('4', '0.0025Btc + 10pts'),
     )
     premio = models.CharField(max_length=30, blank=True, default='', choices=PREMIO_CHOICES)
     RESULTADO_CHOICES = (
@@ -123,13 +123,13 @@ def llenar_jugadas(sender, instance, created, **kwargs):
 
         for idx, item in enumerate(lista_num_premiados):
             if idx < 5:
-                lista_jugadas[item].premio = '4'    # 0.0025 + 10pts (13 numeros)
+                lista_jugadas[item].premio = '4'    # 0.0025 + 10pts (5 numeros)
             if idx >= 5 < 30:
-                lista_jugadas[item].premio = '2'    # 25pts (25 numeros)
+                lista_jugadas[item].premio = '2'    # 40pts (25 numeros)
             if idx >= 30 < 99:
-                lista_jugadas[item].premio = '3'  # 15pts (62 numeros)
+                lista_jugadas[item].premio = '3'  # 20pts (68 numeros)
             if idx == 99 and random.randint(0, 100) < 30:
-                lista_jugadas[item].premio = '1'    # 350pts (1 numero)
+                lista_jugadas[item].premio = '1'    # 160pts (1 numero)
                 print("Salio un cachuo!")
 
         Jugada.objects.bulk_create(lista_jugadas)
@@ -158,12 +158,15 @@ def sorteo_pote(sender, instance, **kwargs):
             sort = Sorteo(cant_jugadas, lista_jugadas)
             sort.sortear()
             podio = [sort.primero, sort.segundo, sort.tercero]
-            puntos_podio = [100, 70, 50]
+            puntos_podio = [80, 40, 30]
             for p in range(3):
                 jugada_podio = qs.get(numero=podio[p])
-                jugador = Profile.objects.get(user=jugada_podio.jugador)
+                jugador = Profile.objects.select_related('membresia').get(user=jugada_podio.jugador)
+                print(jugador)
                 jugada_podio.resultado = result_podio[p]
-                jugador.puntos += puntos_podio[p]
+                if jugador.membresia.tipo_membresia != 'Free':
+                    print("jajaja")
+                    jugador.puntos += puntos_podio[p]
                 jugada_podio.save()
                 jugador.save()
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_gold).update(resultado='G')
@@ -178,15 +181,15 @@ def sorteo_pote(sender, instance, **kwargs):
             ganadores_bronze = list(Jugada.objects.filter(pote=instance, resultado='B').values_list('jugador', flat=True))
             ganadores_rep = list(Jugada.objects.filter(pote=instance, resultado='R').values_list('jugador', flat=True))
 
-            qs_gold = Profile.objects.filter(pk__in=ganadores_gold)
-            qs_silver = Profile.objects.filter(pk__in=ganadores_silver)
-            qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze)
-            qs_rep = Profile.objects.filter(pk__in=ganadores_rep)
+            qs_gold = Profile.objects.filter(pk__in=ganadores_gold).exclude(membresia='Free')
+            qs_silver = Profile.objects.filter(pk__in=ganadores_silver).exclude(membresia='Free')
+            qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze).exclude(membresia='Free')
+            qs_rep = Profile.objects.filter(pk__in=ganadores_rep).exclude(membresia='Free')
 
             if se_sorteo is True:       # En tal caso que se haya hecho el sorteo, se pagan los puntos a los grupos
                 qs_gold.update(puntos=F('puntos') + 25)
-                qs_silver.update(puntos=F('puntos') + 15)
-                qs_bronze.update(puntos=F('puntos') + 12)
+                qs_silver.update(puntos=F('puntos') + 20)
+                qs_bronze.update(puntos=F('puntos') + 15)
                 qs_rep.update(puntos=F('puntos') + 10)
 
             total_repartir = instance.total_acumulado*0.85
@@ -216,6 +219,7 @@ def sorteo_pote(sender, instance, **kwargs):
                         )
                     if montos_posiciones.count(monto) == 0:
                         montos_posiciones.append(monto)
+                        print(len(montos_posiciones))
 
             instance.primero = montos_posiciones[0]/100000000
             instance.segundo = montos_posiciones[1]/100000000
@@ -225,6 +229,7 @@ def sorteo_pote(sender, instance, **kwargs):
             instance.bronze = montos_posiciones[5]/100000000
             instance.copper = montos_posiciones[6]/100000000
 
+            print(payment_list)
             tuplas_sponsors = list(
                 SponsorsPorPote.objects.filter(pote__pk=1).exclude(user__pk=1).values_list('user__address',
                                                                                            'dinero_ganado')

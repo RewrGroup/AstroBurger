@@ -15,15 +15,15 @@
     <div class="carousel-inner">
 
         <div class="item active">
-            <img class="img-corousel" src="{% static 'betcnow/img/batman.jpg' %}" alt="First Slide"> 
+            <a href="{% url 'play' %}"><img class="img-corousel" src="{% static 'betcnow/img/imagenes.png' %}" alt="First Slide"></a>
         </div>
 
         <div class="item">
-            <img class="img-corousel" src="{% static 'betcnow/img/32788762093_5ab87b54e5_o.jpg' %}" alt="Second Slide">
+			<a href="{% url 'results' %}"><img class="img-corousel" src="{% static 'betcnow/img/imagenes2.png' %}" alt="Second Slide"></a>
         </div>
 
         <div class="item">
-            <img class="img-corousel" src="{% static 'betcnow/img/fondo1.jpg' %}" alt="Third Slide">
+			<a href="{% url 'membership' %}"><img class="img-corousel" src="{% static 'betcnow/img/imagenes3.png' %}" alt="Third Slide"></a>
         </div>
 
     </div>

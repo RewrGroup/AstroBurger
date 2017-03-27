@@ -62,25 +62,25 @@
 	<div class="row grupos">
 		<hr class="hr-pava2">
 		<div class="col-lg-3 col-md-3 otros-resultados">
-			<h3 class="subtitulos">Gold Group <br>{{pote.gold}} BTC<br><div style="font-size: 12pt">({{gold|length}} winners, 0,02597 BTC each)</div></h3>
+			<h3 class="subtitulos">Gold Group <br>{{listas_totales.0|floatformat:8}} BTC<br><div style="font-size: 12pt">({{gold|length}} winners, {{pote.gold}} BTC each)</div></h3>
 				{% for g in gold %}
 					<h5>{{g.jugador}} ({{g.numero}})</h5>
 				{% endfor %}
 		</div>
 		<div class="col-lg-3 col-md-3 otros-resultados">
-			<h3 class="subtitulos">Silver Group<br>{{pote.silver}} BTC<br><div style="font-size: 12pt">({{silver|length}} winners, 0,01435 BTC each)</div></h3>
+			<h3 class="subtitulos">Silver Group<br>{{listas_totales.1|floatformat:8}} BTC<br><div style="font-size: 12pt">({{silver|length}} winners, {{pote.silver}} BTC each)</div></h3>
 				{% for s in silver %}
 					<h5>{{s.jugador}} ({{s.numero}})</h5>
 				{% endfor %}
 		</div>
 		<div class="col-lg-3 col-md-3 otros-resultados">
-			<h3 class="subtitulos">Bronze Group<br>{{pote.bronze}} BTC<br><div style="font-size: 12pt">({{bronze|length}} winners, 0,003438 BTC each)</div></h3>
+			<h3 class="subtitulos">Bronze Group<br>{{listas_totales.2|floatformat:8}} BTC<br><div style="font-size: 12pt">({{bronze|length}} winners, {{pote.bronze}} BTC each)</div></h3>
 			{% for b in bronze %}
 			<h5>{{b.jugador}} ({{b.numero}})</h5>
 			{% endfor %}	
 		</div>
 		<div class="col-lg-3 col-md-3 otros-resultados">
-			<h3 class="subtitulos">Copper Group<br>{{pote.copper}} BTC<br><div style="font-size: 10pt">({{repechage|length}} winners, 0,0022587 BTC each)</div></h3>
+			<h3 class="subtitulos">Copper Group<br>{{listas_totales.3|floatformat:8}} BTC<br><div style="font-size: 10pt">({{repechage|length}} winners, {{pote.copper}} BTC each)</div></h3>
 			{% for r in repechage %}
 			<h5>{{r.jugador}} ({{r.numero}})</h5>
 			{% endfor %}

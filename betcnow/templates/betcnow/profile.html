@@ -26,9 +26,13 @@
                         </div>
                     </div>
                     <div class="container">
-                        <div class="row">
+                        <div class="row">							
                             <div class="col-xs-1 col-sm-3 col-md-3 col-lg-2 imagen-medalla">
-                                <img src="{% static 'betcnow/img/medalla.jpg' %}">
+								{% if is_member is False %}
+                                	<img src="{% static 'betcnow/img/medalla.jpg' %}">
+								{% else %}
+									<img src="{% static 'betcnow/img/member.jpg' %}">
+								{% endif %}
                             </div>                        
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 info-user">
                                 <ul>
@@ -200,7 +204,7 @@
     </div>
     <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
-          <h4>Referals link:</h4> <a href="{% url 'ref_register' pk=user.id %}" target="_blank"><p class="letras-pequeñas">http://rewr.pythonanywhere.com/accounts/register/ref={{user.id}}</p></a><br>
+          <h4>Referals link:</h4> <a href="{% url 'ref_register' pk=user.id %}" target="_blank"><p class="letras-pequeñas">http://betcnow.com/ref={{user.id}}</p></a><br>
           Banners: 
         </div>
     </div>

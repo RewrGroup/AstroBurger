@@ -93,13 +93,13 @@ def has_paid(request):
             jugada.save()
         elif jugada.status == '3':
             if jugada.premio == '1':
-                player.puntos += 350
+                player.puntos += 160
                 lista_premios.append(jugada.get_premio_display())
             elif jugada.premio == '2':
-                player.puntos += 25
+                player.puntos += 40
                 lista_premios.append(jugada.get_premio_display())
             elif jugada.premio == '3':
-                player.puntos += 15
+                player.puntos += 20
                 lista_premios.append(jugada.get_premio_display())
             elif jugada.premio == '4':
                 player.puntos += 10
@@ -184,9 +184,10 @@ def resultado_pote(request, pk):
     silver = ganadores.filter(resultado='S')
     bronze = ganadores.filter(resultado='B')
     repechage = ganadores.filter(resultado='R')
-    lista_cantidades = []
+    listas_totales = [gold.count() * pote.gold, silver.count() * pote.silver, bronze.count() * pote.bronze,
+                      repechage.count() * pote.copper]
     variables = {'pote': pote, 'primero': primero, 'segundo': segundo, 'tercero': tercero, 'gold': gold,
-                 'silver': silver, 'bronze': bronze, 'repechage': repechage}
+                 'silver': silver, 'bronze': bronze, 'repechage': repechage, 'listas_totales': listas_totales}
     return render(request, "betcnow/betcpot_result.html", variables)
 
 
@@ -201,7 +202,7 @@ def callback(request, *args, **kwargs):
                 request.POST.get('status') == 'payment_received' and
                 request.POST.get('private_key_hash') == private_key_hash):
             user = User.objects.get(username=request.POST.get('user'))
-            profile = Profile.objects.get(user=user)
+            profile = Profile.objects.select_related('membresia').get(user=user)
             sponsor = Profile.objects.select_related('membresia').get(user=profile.sponsor)
             lista_de_numeros = []
             jugadas_pagadas = Jugada.objects.filter(orderID=request.POST.get('order')).select_related('pote')
@@ -217,8 +218,10 @@ def callback(request, *args, **kwargs):
                 profile.sponsor_revenue += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
                 spp.dinero_ganado += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
                 lista_de_numeros.append(j.numero)
-            profile.puntos += 4*len(jugadas_pagadas)
-            sponsor.puntos += 2*len(jugadas_pagadas)
+            if profile.membresia.tipo_membresia != 'Free':
+                profile.puntos += 5*len(jugadas_pagadas)
+            if sponsor.membresia.tipo_membresia != 'Free':
+                sponsor.puntos += 2*len(jugadas_pagadas)
             spp.save()
             profile.save()
             sponsor.save()
