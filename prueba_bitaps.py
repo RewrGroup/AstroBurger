@@ -1,6 +1,5 @@
 import requests
 import json
-import binascii
 
 url = 'https://bitaps.com/api/use/redeemcode/list'
 parameters = {'redeemcode': 'BTCvRawDGR2NkKoiWB76FWytVCFfVrKiGmuSuqfHp9LQKSbN9Yz4s',
@@ -10,3 +9,12 @@ parameters = {'redeemcode': 'BTCvRawDGR2NkKoiWB76FWytVCFfVrKiGmuSuqfHp9LQKSbN9Yz
 response = requests.post(url, data=json.dumps(parameters))
 print(response.text)
 
+
+"""
+# Esto para chequear cuanto tenemos
+
+url = 'https://bitaps.com/api/get/redeemcode/info'
+parameters = {'redeemcode': 'BTCvRawDGR2NkKoiWB76FWytVCFfVrKiGmuSuqfHp9LQKSbN9Yz4s'}
+response = requests.post(url, data=json.dumps(parameters))
+print(response.text)
+"""

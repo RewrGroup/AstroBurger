@@ -3,9 +3,9 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from betcnow.forms import LoginWithPlaceholder
 from pinax.notifications.models import send
-from .models import Profile, User, Jugada, Pote, Testimonio, Membership
+from .models import Profile, User, Jugada, Pote, Testimonio, Membership, SponsorsPorPote
 from registration.backends.default.views import ActivationView
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.urlresolvers import reverse, NoReverseMatch
@@ -201,17 +201,24 @@ def callback(request, *args, **kwargs):
                 request.POST.get('private_key_hash') == private_key_hash):
             user = User.objects.get(username=request.POST.get('user'))
             profile = Profile.objects.get(user=user)
-            sponsor = Profile.objects.get(user=profile.sponsor)
+            sponsor = Profile.objects.select_related('membresia').get(user=profile.sponsor)
             lista_de_numeros = []
             jugadas_pagadas = Jugada.objects.filter(orderID=request.POST.get('order')).select_related('pote')
+            try:
+                spp = SponsorsPorPote.objects.get(user=sponsor, pote=jugadas_pagadas[0].pote)
+            except ObjectDoesNotExist:
+                spp = SponsorsPorPote(user=sponsor, pote=jugadas_pagadas[0].pote)
+
             for j in jugadas_pagadas:
                 j.status = '3'
                 j.fecha_jugada = timezone.now()
                 j.save()
                 profile.sponsor_revenue += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
+                spp.dinero_ganado += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
                 lista_de_numeros.append(j.numero)
             profile.puntos += 4*len(jugadas_pagadas)
             sponsor.puntos += 2*len(jugadas_pagadas)
+            spp.save()
             profile.save()
             sponsor.save()
             send([user], "Play_made", {"jugadas": lista_de_numeros,
@@ -235,14 +242,13 @@ def membership_callback(request, *args, **kwargs):
         h = hashlib.sha512(private_key.encode(encoding='utf-8'))
         private_key_hash = h.hexdigest()
         if (request.POST.get('confirmed') == '0' and request.POST.get('box') == '8620' and
-                    request.POST.get('status') == 'payment_received' and
-                    request.POST.get('private_key_hash') == private_key_hash):
+                request.POST.get('status') == 'payment_received' and
+                request.POST.get('private_key_hash') == private_key_hash):
             user = User.objects.get(username=request.POST.get('user'))
-            profile = Profile.objects.select_related('membresia').get(user=user)
-            profile.membresia = Membership.objects.get(tipo_membresia=request.POST.get('order'))
-            profile.valid_thru = date.today() + relativedelta.relativedelta(months=1)
-            profile.save()
-            send([user], "Membership_upgraded", {"valid_thru": profile.valid_thru})
+            valid_thru = date.today() + relativedelta.relativedelta(months=1)
+            profile = Profile.objects.filter(user=user)
+            profile.update(membresia=request.POST.get('order'), valid_thru=valid_thru)
+            send([user], "Membership_upgraded", {"valid_thru": profile[0].valid_thru})
             html = "cryptobox_newrecord"
         elif request.POST.get('confirmed') == '1':
             html = "cryptobox_updated"

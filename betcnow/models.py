@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.utils import timezone
 from Scripts.sorteo import Sorteo
 from django.db.models import F
+from django.core.mail import EmailMessage
 import random
 
 
@@ -39,7 +40,7 @@ class Pote(models.Model):
         ('-1', 'Pre-Cerrado')
     )
     status = models.CharField(max_length=30, default='1', choices=STATUS_CHOICES)
-    total_acumulado = models.FloatField(blank=True, null=True, default=0.0)
+    total_acumulado = models.IntegerField(blank=True, null=True, default=0)
     fecha_sorteo = models.DateField(null=True, blank=True)
 
     def __str__(self):
@@ -80,6 +81,15 @@ class Jugada(models.Model):
         return str(self.pote.id) + ": " + str(self.numero)
 
 
+class SponsorsPorPote(models.Model):
+    user = models.ForeignKey(Profile)
+    pote = models.ForeignKey(Pote)
+    dinero_ganado = models.FloatField(blank=True, null=True, default=0)
+
+    def __str__(self):
+        return self.user.user.username + " on " + self.pote.__str__()
+
+
 class Testimonio(models.Model):
     user = models.ForeignKey(User)
     texto = models.TextField(max_length=140)
@@ -118,26 +128,28 @@ def llenar_jugadas(sender, instance, created, **kwargs):
         Jugada.objects.bulk_create(lista_jugadas)
 
 
-@receiver(post_save, sender=Pote)  # cuando se cierra un pote, se efectua el sorteo inmediatamente
-def sorteo_pote(sender, instance, created, **kwargs):
+@receiver(pre_save, sender=Pote)  # cuando se cierra un pote, se efectua el sorteo inmediatamente
+def sorteo_pote(sender, instance, **kwargs):
     if instance.status == '0':
         qs = Jugada.objects.filter(status='3', pote=instance).select_related('jugador')
         lista_jugadas = list(qs.values_list('numero', flat=True))
         cant_jugadas = len(lista_jugadas)
-        if cant_jugadas >= 135 and qs.filter(resultado='1').count() == 0:
-            payment_list = []
-            porcentajes = [0.3, 0, 0, 0.3, 0.35, 0.15, 0.2]
-            if cant_jugadas >= 300:
-                porcentajes[1] = 0.15
-                porcentajes[2] = 0.075
-            else:
-                porcentajes[1] = 0.20
-                porcentajes[2] = 0.15
+        payment_list = []
+        porcentajes = [0.3, 0, 0, 0.3, 0.35, 0.15, 0.2]
+        if cant_jugadas >= 300:
+            porcentajes[1] = 0.15
+            porcentajes[2] = 0.075
+        else:
+            porcentajes[1] = 0.20
+            porcentajes[2] = 0.15
+        result_podio = ['1', '2', '3']
+        se_sorteo = False
 
+        if cant_jugadas >= 135 and qs.filter(resultado='1').count() == 0:    # Se sortea y guardan las jugadas ganadoras
+            se_sorteo = True
             sort = Sorteo(cant_jugadas, lista_jugadas)
             sort.sortear()
             podio = [sort.primero, sort.segundo, sort.tercero]
-            result_podio = ['1', '2', '3']
             puntos_podio = [100, 70, 50]
             for p in range(3):
                 jugada_podio = qs.get(numero=podio[p])
@@ -145,14 +157,14 @@ def sorteo_pote(sender, instance, created, **kwargs):
                 jugada_podio.resultado = result_podio[p]
                 jugador.puntos += puntos_podio[p]
                 jugada_podio.save()
-                payment_list.append({'address': jugador.address, 'amount': str(instance.total_acumulado*porcentajes[p])})
                 jugador.save()
-
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_gold).update(resultado='G')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_silver).update(resultado='S')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_bronze).update(resultado='B')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_repechaje).update(resultado='R')
 
+        elif qs.filter(resultado='1').count() == 1:     # Se hace la payment_list
+            ganadores_podio = list(Jugada.objects.filter(pote=instance, resultado__in=result_podio).values_list('jugador', flat=True))
             ganadores_gold = list(Jugada.objects.filter(pote=instance, resultado='G').values_list('jugador', flat=True))
             ganadores_silver = list(Jugada.objects.filter(pote=instance, resultado='S').values_list('jugador', flat=True))
             ganadores_bronze = list(Jugada.objects.filter(pote=instance, resultado='B').values_list('jugador', flat=True))
@@ -163,16 +175,18 @@ def sorteo_pote(sender, instance, created, **kwargs):
             qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze)
             qs_rep = Profile.objects.filter(pk__in=ganadores_rep)
 
-            qs_gold.update(puntos=F('puntos') + 25)
-            qs_silver.update(puntos=F('puntos') + 15)
-            qs_bronze.update(puntos=F('puntos') + 12)
-            qs_rep.update(puntos=F('puntos') + 10)
+            if se_sorteo is True:       # En tal caso que se haya hecho el sorteo, se pagan los puntos a los grupos
+                qs_gold.update(puntos=F('puntos') + 25)
+                qs_silver.update(puntos=F('puntos') + 15)
+                qs_bronze.update(puntos=F('puntos') + 12)
+                qs_rep.update(puntos=F('puntos') + 10)
 
-            nuevo_total = instance.total_acumulado
+            total_repartir = instance.total_acumulado*0.85
+            nuevo_total = total_repartir
             for i in range(3):
-                nuevo_total -= instance.total_acumulado*porcentajes[i]
+                nuevo_total -= total_repartir*porcentajes[i]
 
-            pks = [ganadores_gold, ganadores_silver, ganadores_bronze, ganadores_rep]
+            pks = [ganadores_podio, ganadores_gold, ganadores_silver, ganadores_bronze, ganadores_rep]
             for cont, index in enumerate(pks):
                 lista_tuplas = list(Profile.objects.filter(pk__in=index).values_list('address', 'pk'))
                 lista_address = []
@@ -181,9 +195,31 @@ def sorteo_pote(sender, instance, created, **kwargs):
                         if i == j[1]:
                             lista_address.append(j[0])
 
-                for k in lista_address:
-                    payment_list.append({'address': k, 'amount': str(nuevo_total*porcentajes[cont+3]/len(index))})
+                for cont2, k in enumerate(lista_address):
+                    if cont == 0:
+                        payment_list.append(
+                            {'address': k, 'amount': str(int(total_repartir * porcentajes[cont2]))}
+                        )
+                    else:
+                        payment_list.append(
+                            {'address': k, 'amount': str(int(nuevo_total*porcentajes[cont+2]/len(index)))}
+                        )
 
-            print(payment_list)     # EPA! PON TOTAL_ACUMULADO EN SATOSHIS!! Y HACER INT() A TODOS LOS AMOUNTS
+            tuplas_sponsors = list(
+                SponsorsPorPote.objects.filter(pote__pk=1).exclude(user__pk=1).values_list('user__address',
+                                                                                           'dinero_ganado')
+            )
+            sponsors_payment_list = []
+            for tupla in tuplas_sponsors:
+                sponsors_payment_list.append(
+                    {'address': tupla[0], 'amount': str(int(tupla[1]))}
+                )
+            email = EmailMessage('Payment List',
+                                 ("lista ganadores (" + str(len(payment_list)) + "):\n\n" + payment_list.__str__() +
+                                  "\n\nLista de sponsors (" + str(len(sponsors_payment_list)) + "):\n\n" +
+                                  sponsors_payment_list.__str__()),
+                                 to=['betcnow@gmail.com'])
+            email.send()
+
         else:
             print("No se puede sortear")
