@@ -184,6 +184,7 @@ def resultado_pote(request, pk):
     silver = ganadores.filter(resultado='S')
     bronze = ganadores.filter(resultado='B')
     repechage = ganadores.filter(resultado='R')
+    lista_cantidades = []
     variables = {'pote': pote, 'primero': primero, 'segundo': segundo, 'tercero': tercero, 'gold': gold,
                  'silver': silver, 'bronze': bronze, 'repechage': repechage}
     return render(request, "betcnow/betcpot_result.html", variables)

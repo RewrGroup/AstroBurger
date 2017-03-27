@@ -41,6 +41,13 @@ class Pote(models.Model):
     )
     status = models.CharField(max_length=30, default='1', choices=STATUS_CHOICES)
     total_acumulado = models.IntegerField(blank=True, null=True, default=0)
+    primero = models.FloatField(blank=True, null=True, default=0)
+    segundo = models.FloatField(blank=True, null=True, default=0)
+    tercero = models.FloatField(blank=True, null=True, default=0)
+    gold = models.FloatField(blank=True, null=True, default=0)
+    silver = models.FloatField(blank=True, null=True, default=0)
+    bronze = models.FloatField(blank=True, null=True, default=0)
+    copper = models.FloatField(blank=True, null=True, default=0)
     fecha_sorteo = models.DateField(null=True, blank=True)
 
     def __str__(self):
@@ -135,6 +142,7 @@ def sorteo_pote(sender, instance, **kwargs):
         lista_jugadas = list(qs.values_list('numero', flat=True))
         cant_jugadas = len(lista_jugadas)
         payment_list = []
+        montos_posiciones = []
         porcentajes = [0.3, 0, 0, 0.3, 0.35, 0.15, 0.2]
         if cant_jugadas >= 300:
             porcentajes[1] = 0.15
@@ -197,13 +205,25 @@ def sorteo_pote(sender, instance, **kwargs):
 
                 for cont2, k in enumerate(lista_address):
                     if cont == 0:
+                        monto = int(total_repartir * porcentajes[cont2])
                         payment_list.append(
-                            {'address': k, 'amount': str(int(total_repartir * porcentajes[cont2]))}
+                            {'address': k, 'amount': str(monto)}
                         )
                     else:
+                        monto = int(nuevo_total * porcentajes[cont + 2] / len(index))
                         payment_list.append(
-                            {'address': k, 'amount': str(int(nuevo_total*porcentajes[cont+2]/len(index)))}
+                            {'address': k, 'amount': str(monto)}
                         )
+                    if montos_posiciones.count(monto) == 0:
+                        montos_posiciones.append(monto)
+
+            instance.primero = montos_posiciones[0]/100000000
+            instance.segundo = montos_posiciones[1]/100000000
+            instance.tercero = montos_posiciones[2]/100000000
+            instance.gold = montos_posiciones[3]/100000000
+            instance.silver = montos_posiciones[4]/100000000
+            instance.bronze = montos_posiciones[5]/100000000
+            instance.copper = montos_posiciones[6]/100000000
 
             tuplas_sponsors = list(
                 SponsorsPorPote.objects.filter(pote__pk=1).exclude(user__pk=1).values_list('user__address',
