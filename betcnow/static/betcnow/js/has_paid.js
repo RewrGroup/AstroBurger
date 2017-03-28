@@ -22,9 +22,9 @@ jQuery(function(){
 			}
 		});
 	}, 180000);
-	window.onbeforeunload = cerrar;
+	//window.onbeforeunload = cerrar;
 	$(window).unload(cerrar);
-	window.onunload = cerrar;
+	//window.onunload = cerrar;
 		function cerrar (){		
 		if (ignore_onbeforeunload == false){
 			var pago;
