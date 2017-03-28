@@ -47,8 +47,10 @@ body{
 
 #terms-policy{
 	font-size: 10pt;
-	list-style: none;	
+	list-style: none;
+	text-align: right
 }
+
 #terms-policy li{
 	display: inline-block;
 }
