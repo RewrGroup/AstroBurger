@@ -585,7 +585,7 @@ h4.puntos-BTCrace{
 @media screen and (max-width: 800px){
 	.caja-signup{
 		background: #f8f8f8;
-		width: 100%;
+		width: 80%;
 		height: 70%;
 		border: solid 2px #f4f1f1;
 		border-radius: 8px;
