@@ -23,6 +23,7 @@ jQuery(function(){
 		});
 	}, 180000);
 	window.onbeforeunload = function(){
+		window.onunload = window.onbeforeunload;
 		if (ignore_onbeforeunload == false){
 			var pago;
 		   $.ajax({
