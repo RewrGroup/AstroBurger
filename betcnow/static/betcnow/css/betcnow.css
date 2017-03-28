@@ -533,7 +533,7 @@ h4.puntos-BTCrace{
 }
 
 .tabla{
-    padding: 20px 0px 0px 0px;
+    padding: 20px 0px 0px 80px;
  
 }
 
@@ -795,4 +795,16 @@ h4.puntos-BTCrace{
 		position: relative !important;
 	}
 	
+	.columnaMatriz{
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-left: 0px;
+		
+	}
+	.tabla{
+		padding-left: 0px;
+		margin-left: -35px;
+		z-index: 1;
+		
+	}
 }
