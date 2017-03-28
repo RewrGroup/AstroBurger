@@ -22,7 +22,10 @@ jQuery(function(){
 			}
 		});
 	}, 180000);
-	window.onunload = window.onbeforeunload = function(){		
+	window.onunload = window.onbeforeunload = cerrar;
+	$(window).unload(cerrar);
+	$(window).on('beforeunload pagehide', cerrar);
+		function cerrar(){		
 		if (ignore_onbeforeunload == false){
 			var pago;
 		   $.ajax({
