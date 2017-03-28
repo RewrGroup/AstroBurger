@@ -224,6 +224,15 @@ padding: 20px 5px 0px 0px;
 	transition: 0.5s;
 }
 /*FIN DE INICIO*/
+.caja-login{
+	background: rgba(79, 142, 216, 0.47);
+	width: 40%;
+	height: 70%;
+	border: solid 2px rgba(195, 195, 195, 0.56);
+	border-radius: 8px;
+	padding-bottom: 20px;
+	margin-top: 20px;
+}
 
 .caja-signup{
 	background: #f8f8f8;
@@ -591,6 +600,9 @@ h4.puntos-BTCrace{
 		border-radius: 8px;
 		padding-bottom: 20px;
 		margin-top: 20px;
+	}
+	.caja-login{
+		width: 80%;
 	}
 
 	#header{
