@@ -706,12 +706,14 @@ h4.puntos-BTCrace{
 
 
     .tabla{
-        width: 70%;
-        margin: 0px 0px 0px 50px;
+        width: 90%;
+        margin: 0px 0px 0px 0px;
+		padding-top: 20px; 
+		padding-left: 10px;
     }
     
     .botones-centena{
-        padding: 0px 0px 0px 40px !important;
+        padding: 10px 0px 0px 10px !important;
         width: 80% !important;
     }
     
