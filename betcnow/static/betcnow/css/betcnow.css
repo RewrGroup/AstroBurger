@@ -65,7 +65,7 @@ body{
 	
 }
 
-h2.subtitulos{
+h1.subtitulos, h2.subtitulos{
     font-family: 'customfont', cursive;
     font-size: 50px;
     color: #4F8ED8;
@@ -75,6 +75,11 @@ h3.subtitulos{
     font-family: 'customfont', cursive;
     font-size: 35px;
     color: #4F8ED8;
+}
+
+#h1-betcnow{
+	font-size: 28pt; 
+	display: inline-block;
 }
 
 .navbar-default .container-fluid .row{
@@ -594,6 +599,15 @@ h4.puntos-BTCrace{
 /* Propiedades panatalla pequeña*/
 
 @media screen and (max-width: 800px){
+	#h1-betcnow{
+		margin-top: -10px;
+		z-index: 1;
+		
+	}
+	#signo-int{
+		margin-top: -10px;
+		z-index: 2;
+	}
 	.caja-signup{
 		background: #f8f8f8;
 		width: 80%;
