@@ -604,7 +604,7 @@ h4.puntos-BTCrace{
 #sticky-social{
 	position: fixed;
 	left: -40px;
-	top: 390px;
+	top: 200px;
 	z-index: 10;
 }
 #sticky-social ul{
