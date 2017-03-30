@@ -67,7 +67,8 @@ class LoginWithPlaceholder(AuthenticationForm):
         self.helper.layout = Layout(Div(Field('username', placeholder='username'), css_class="form-group"),
                                     Div(Field('password', placeholder='password'), css_class="form-group"),
                                     Div(AppendedText('remember_me', 'Remember me'), css_class="form-group"),
-                                    Div(Submit('submit', 'Log in'), css_class="form-group"))
+                                    Div(Submit('submit', 'Log in'), css_class="form-group"),
+                                    HTML("<div class='g-recaptcha' data-sitekey='6Lf44RoUAAAAAJEik7dtnSPQcZcquCxd7K06T3vL'></div>"))
 
     error_messages = {
         'invalid_login': (

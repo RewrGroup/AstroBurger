@@ -133,6 +133,7 @@ padding: 20px 5px 0px 0px;
   width: 100%;
   margin: 0px 0px -20px 0px;
   padding: 0px 0px 0px 0px;
+	z-index: 1000;
 }
 
 .navbar-collapse .navbar-nav li a:hover{
