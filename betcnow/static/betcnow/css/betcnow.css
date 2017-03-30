@@ -192,7 +192,11 @@ padding: 20px 5px 0px 0px;
 #myCarousel{
 	z-index: 2000;
 }
-
+#titulo-seccion-verde{
+	z-index: 300;
+	position: relative;
+	background: #fff;
+}
 
 .en-pantalla{	
 	animation: izq-der 2s;
