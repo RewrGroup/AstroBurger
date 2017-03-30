@@ -677,7 +677,8 @@ h4.puntos-BTCrace{
 		margin-top: 20px;
 	}
 	.caja-login{
-		width: 80%;
+		width: 90%;
+		padding-left: 1px;
 	}
 
 	#header{
