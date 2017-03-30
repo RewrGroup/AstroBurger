@@ -5,6 +5,7 @@ from registration.users import UsernameField, UserModel
 from crispy_forms.helper import *
 from crispy_forms.layout import *
 from crispy_forms.bootstrap import *
+from captcha.fields import ReCaptchaField
 
 User = UserModel()
 
@@ -59,6 +60,9 @@ class MyRegistrationForm(RegistrationFormUniqueEmail):
 class LoginWithPlaceholder(AuthenticationForm):
 
     remember_me = forms.BooleanField(required=False, initial=False)
+    captcha = ReCaptchaField(attrs={
+        'theme': 'light',
+    })
 
     def __init__(self, *args, **kwargs):
         super(LoginWithPlaceholder, self).__init__(*args, **kwargs)
@@ -66,9 +70,10 @@ class LoginWithPlaceholder(AuthenticationForm):
         self.helper.form_show_labels = False
         self.helper.layout = Layout(Div(Field('username', placeholder='username'), css_class="form-group"),
                                     Div(Field('password', placeholder='password'), css_class="form-group"),
+                                    'captcha',
                                     Div(AppendedText('remember_me', 'Remember me'), css_class="form-group"),
-                                    Div(Submit('submit', 'Log in'), css_class="form-group"),
-                                    HTML("<div class='g-recaptcha' data-sitekey='6Lf44RoUAAAAAJEik7dtnSPQcZcquCxd7K06T3vL'></div>"))
+                                    Div(Submit('submit', 'Log in'), css_class="form-group")
+                                    )
 
     error_messages = {
         'invalid_login': (

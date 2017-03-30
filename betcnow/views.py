@@ -10,10 +10,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 from datetime import datetime, date, timedelta
 from dateutil import relativedelta
 from Scripts import md5hash
 import hashlib
+import requests
 from django.utils import timezone
 
 

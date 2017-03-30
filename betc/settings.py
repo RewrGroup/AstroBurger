@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Foreign apps
     'crispy_forms',
     'registration',
+    'captcha',
     # el admin
     'django.contrib.admin',
     'pinax.notifications',
@@ -139,7 +140,10 @@ EMAIL_HOST_PASSWORD = 'G6b863af779d4183bef8f3858c136ddb6'
 EMAIL_PORT = 587
 
 LOGIN_REDIRECT_URL = 'profile_redirect'
-GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf44RoUAAAAAEsVNdE8YnfD2xZ50B-rP02hRLcJ'
+
+RECAPTCHA_PUBLIC_KEY = '6Lf44RoUAAAAAJEik7dtnSPQcZcquCxd7K06T3vL'
+RECAPTCHA_PRIVATE_KEY = '6Lf44RoUAAAAAEsVNdE8YnfD2xZ50B-rP02hRLcJ'
+NOCAPTCHA = True
 
 ACCOUNT_ACTIVATION_DAYS = 3
 SITE_ID = 3
