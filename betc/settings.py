@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'betcnow.context_processors.google_analytics',
             ],
         },
     },
@@ -144,6 +145,9 @@ LOGIN_REDIRECT_URL = 'profile_redirect'
 RECAPTCHA_PUBLIC_KEY = '6Lf44RoUAAAAAJEik7dtnSPQcZcquCxd7K06T3vL'
 RECAPTCHA_PRIVATE_KEY = '6Lf44RoUAAAAAEsVNdE8YnfD2xZ50B-rP02hRLcJ'
 NOCAPTCHA = True
+
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-96432984-1'
+GOOGLE_ANALYTICS_DOMAIN = 'betcnow.com'
 
 ACCOUNT_ACTIVATION_DAYS = 3
 SITE_ID = 3
