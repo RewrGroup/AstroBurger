@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'betcnow.context_processors.google_analytics',
+                'betcnow.context_processors.google_analytics'
             ],
         },
     },

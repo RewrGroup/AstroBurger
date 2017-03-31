@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}404 - Not found{% endblock%}
+{% block content %}
+<div class="container">
+	<div class="row" style="margin-top: 50px">
+		<center><img src="{% static 'betcnow/img/not-found.jpg' %}"></center>
+	</div>
+	<div class="row">
+		<center><h4>Ooops! We have nothing to show you here!</h4></center>
+	</div>
+</div>
+{% endblock%}
+
