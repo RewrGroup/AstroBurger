@@ -22,11 +22,12 @@
 	<script src="{% static 'betcnow/js/sweetalert.min.js' %}"></script>
     {% block scripts %}
     {% endblock %}
+	{% if GOOGLE_ANALYTICS_PROPERTY_ID %}
+  		{% include 'google_analytics.html' %}
+	{% endif %}
+
 </head>
 <body>
-{% if GOOGLE_ANALYTICS_PROPERTY_ID %}
-  {% include 'google_analytics.html' %}
-{% endif %}
 <div id="container">
 <div id="header">
   <div class="container-fluid" id="row-logo-y-botones">  
