@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}Betcpot {{pote.id}} Winners! <h3>({{pote.fecha_sorteo}})</h3>{% endblock %} 
+{% block meta_title %}Betcpot {{pote.id}} Results - BETCnow{% endblock %}
+{% block title %}<h1 class="subtitulos">Betcpot {{pote.id}} Winners!</h1> <h3>({{pote.fecha_sorteo}})</h3>{% endblock %} 
 {% block content %}
 <div class="container">
 	<div class="row podio">
