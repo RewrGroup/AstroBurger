@@ -2,6 +2,11 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block meta_title %}Registration Complete - BETCnow{% endblock %}
+{% block fb_event %}
+	<script>
+	fbq('track', 'CompleteRegistration');
+	</script>
+{% endblock %}
 {% block content %}
 <div class="container">
 		<center>
