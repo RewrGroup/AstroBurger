@@ -23,7 +23,10 @@ from betcnow.forms import LoginWithPlaceholder
 from betcnow.views import remember_me_login
 from betcnow.views import SendEmailAfterActivate
 from django.views.generic.base import TemplateView
+from django.contrib.sitemaps.views import sitemap
+from betcnow.sitemaps import ViewSitemap
 
+sitemaps = {'views': ViewSitemap}
 
 urlpatterns = [
     url(r'', include('betcnow.urls')),
@@ -45,6 +48,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^notifications/', include('pinax.notifications.urls')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 """
 
