@@ -10,13 +10,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.core.exceptions import ObjectDoesNotExist
-from django.conf import settings
 from datetime import datetime, date, timedelta
 from dateutil import relativedelta
 from Scripts import md5hash
 import hashlib
-import requests
 from django.utils import timezone
+from ipware.ip import get_ip
 
 
 def remember_me_login(request, template_name, authentication_form):
@@ -24,6 +23,7 @@ def remember_me_login(request, template_name, authentication_form):
     if request.method == "POST":
         if request.POST.get('remember_me', None):
             request.session.set_expiry(1209600)  # 2 weeks
+    response.set_cookie('unique', '22311370')
     return response
 
 
@@ -122,6 +122,9 @@ def has_paid(request):
 
 @login_required()
 def profile(request, pk):
+    print("Coockies: ", request.COOKIES)
+    ip = get_ip(request)
+    print("IP: ", ip)
     user = get_object_or_404(User, pk=pk)
     if request.user == user:
         perfil = Profile.objects.select_related('membresia').get(user=user)

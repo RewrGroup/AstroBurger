@@ -162,10 +162,8 @@ def sorteo_pote(sender, instance, **kwargs):
             for p in range(3):
                 jugada_podio = qs.get(numero=podio[p])
                 jugador = Profile.objects.select_related('membresia').get(user=jugada_podio.jugador)
-                print(jugador)
                 jugada_podio.resultado = result_podio[p]
                 if jugador.membresia.tipo_membresia != 'Free':
-                    print("jajaja")
                     jugador.puntos += puntos_podio[p]
                 jugada_podio.save()
                 jugador.save()
@@ -173,8 +171,10 @@ def sorteo_pote(sender, instance, **kwargs):
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_silver).update(resultado='S')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_bronze).update(resultado='B')
             Jugada.objects.filter(pote=instance, numero__in=sort.lista_repechaje).update(resultado='R')
+        else:
+            print("No se puede sortear")
 
-        elif qs.filter(resultado='1').count() == 1:     # Se hace la payment_list
+        if qs.filter(resultado='1').count() == 1:     # Se hace la payment_list
             ganadores_podio = list(Jugada.objects.filter(pote=instance, resultado__in=result_podio).values_list('jugador', flat=True))
             ganadores_gold = list(Jugada.objects.filter(pote=instance, resultado='G').values_list('jugador', flat=True))
             ganadores_silver = list(Jugada.objects.filter(pote=instance, resultado='S').values_list('jugador', flat=True))
@@ -244,7 +244,4 @@ def sorteo_pote(sender, instance, **kwargs):
                                   "\n\nLista de sponsors (" + str(len(sponsors_payment_list)) + "):\n\n" +
                                   sponsors_payment_list.__str__()),
                                  to=['betcnow@gmail.com'])
-            email.send()
-
-        else:
-            print("No se puede sortear")
+            # email.send()
