@@ -244,4 +244,4 @@ def sorteo_pote(sender, instance, **kwargs):
                                   "\n\nLista de sponsors (" + str(len(sponsors_payment_list)) + "):\n\n" +
                                   sponsors_payment_list.__str__()),
                                  to=['betcnow@gmail.com'])
-            # email.send()
+            email.send()
