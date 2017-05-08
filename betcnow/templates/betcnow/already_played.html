@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block meta_title %}404 - BETCnow{% endblock %}
+{% block title %}<h1 class="subtitulos">404 - Not found</h1>{% endblock%}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<center><img src="{% static 'betcnow/img/not-found.jpg' %}"></center>
+	</div>
+	<div class="row" style="margin-top: 30px">
+		<center>
+			<h3>You have already played in the free Betcpot Demo of this week</h3>
+			<h2>Play now in today's <a href="{% url 'play' %}" class="color-azul-betcnow" style="text-decoration: none" target="_blank">Betcpot</a> because you will be able to play more and win more!</h2>
+		</center>
+	</div>
+</div>
+{% endblock%}
+

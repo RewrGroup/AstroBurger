@@ -39,17 +39,20 @@ function llenar_matriz(centena) {
 
 function add_jugada(i) {            //Añadir jugada a la tabla de seleccionadas
     var table = document.getElementById('tabla_jugadas');
-    if (table.rows.length <= 8){
+    if (table.rows.length <= 1){
         document.getElementById('cant_jugadas').innerHTML = table.rows.length;  //El texto que dice cuantas jugadas has seleccionado
         var row = table.insertRow(-1);  //Insertar al final
         var cell1 = row.insertCell(0);       //Celda 1, la jugada    
-        cell1.innerHTML = "<input type='text' name='jugadas[]' class='form-control' readonly=true value='" + i + "'/>";
+        cell1.innerHTML = "<input type='text' id='jugada' name='jugada' class='form-control' readonly=true value='" + i + "'/>";
         var cell2 = row.insertCell(1);      //Celda 2, el botón de delete
         cell2.innerHTML = "<button type='button' class='btn btn-default' onclick='delete_row(this)'><span id='delete_span' class='glyphicon glyphicon-remove'></span></button>";
     }
     else {
-        swal("Calm down! You can only play 8 numbers at once!");
-		llenar_matriz(0);
+			swal({
+				title: 'You can only play 1 number in our Demo version. \n ',
+				text: 'In the Full version you can play more'
+			});
+			llenar_matriz(0);
     }
 }
 
@@ -72,7 +75,7 @@ function random_values() {
     var numero; 
     var jugadas_disponibles = [];
     var disponible = true;
-    if (random_times > 0 && (random_times <= (9-table.rows.length))){     //Se valida lo ingresado
+    if (random_times > 0 && (random_times <= (2-table.rows.length))){     //Se valida lo ingresado
         for (var i=0; i<1000; i++){
             if (lista_status[i]==1){
                 disponible = true;
@@ -104,4 +107,4 @@ function random_values() {
     else {
         swal("Invalid amount of random numbers")
     }
-}        
+}

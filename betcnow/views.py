@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from betcnow.forms import LoginWithPlaceholder
 from pinax.notifications.models import send
-from .models import Profile, User, Jugada, Pote, Testimonio, Membership, SponsorsPorPote
+from .models import Profile, User, Jugada, Pote, Testimonio, Membership, SponsorsPorPote, IpsYCookies
 from registration.backends.default.views import ActivationView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
@@ -23,7 +23,6 @@ def remember_me_login(request, template_name, authentication_form):
     if request.method == "POST":
         if request.POST.get('remember_me', None):
             request.session.set_expiry(1209600)  # 2 weeks
-    response.set_cookie('unique', '22311370')
     return response
 
 
@@ -37,7 +36,7 @@ def profile_redirect(request):
 @login_required()
 def play(request):
     try:
-        pote = Pote.objects.get(status='1')
+        pote = Pote.objects.get(status='1', demo=False)
         perfil = Profile.objects.get(user=request.user)
         template = 'betcnow/betcpot.html'
         variables = {}
@@ -55,8 +54,58 @@ def play(request):
         variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia})
         return render(request, template, variables)
     except ObjectDoesNotExist:
-
         return HttpResponse("There are not any Betcpot open. The next one will be available very soon")
+
+
+@login_required()
+def demo(request):
+    try:
+        pote = Pote.objects.get(status='1', demo=True)
+        perfil = Profile.objects.get(user=request.user)
+        template = 'betcnow/already_played.html'
+        variables = {}
+        lista_status = []
+        if 'uuid_demo' in request.COOKIES:
+            if IpsYCookies.objects.get(cookie=True).__str__() == request.COOKIES['uuid_demo']:
+                return render(request, template, variables)
+        if IpsYCookies.objects.filter(elemento=get_ip(request)).count() > 0:
+                return render(request, template, variables)
+
+        template = 'betcnow/betcpot_demo.html'
+        for i in Jugada.objects.filter(pote=pote):
+            if i.status == '3' and i.premio != '':
+                lista_status.append(4)
+            else:
+                lista_status.append(int(i.status))
+        if perfil.address == "" or perfil.address is None:
+            address_vacia = True
+        else:
+            address_vacia = False
+
+        variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia})
+        return render(request, template, variables)
+    except ObjectDoesNotExist:
+        return HttpResponse("There are not any Betcpot open. The next one will be available very soon")
+
+
+def registrar_demo(request):
+    numero = request.GET.get('numero', None)
+    pote = Pote.objects.get(id=request.GET.get('pote', None))
+    qs = Jugada.objects.filter(pote=pote, numero=numero)
+    cookie = IpsYCookies.objects.get(cookie=True)
+    ip = get_ip(request)
+    IpsYCookies.objects.create(elemento=ip)
+    if qs[0].status == '3':
+        ocupado = True
+    else:
+        ocupado = False
+        qs.update(status='3', jugador=request.user)
+    data = {
+        'ocupado': ocupado,
+    }
+    response = JsonResponse(data)
+    response.set_cookie('uuid_demo', cookie.elemento)
+    return response
 
 
 def checkout(request):
@@ -122,9 +171,6 @@ def has_paid(request):
 
 @login_required()
 def profile(request, pk):
-    print("Coockies: ", request.COOKIES)
-    ip = get_ip(request)
-    print("IP: ", ip)
     user = get_object_or_404(User, pk=pk)
     if request.user == user:
         perfil = Profile.objects.select_related('membresia').get(user=user)
@@ -182,9 +228,16 @@ def results(request):
 def resultado_pote(request, pk):
     pote = get_object_or_404(Pote, pk=pk)
     ganadores = Jugada.objects.select_related('jugador').filter(pote=pote).exclude(resultado='')
-    primero = ganadores.get(resultado='1')
-    segundo = ganadores.get(resultado='2')
-    tercero = ganadores.get(resultado='3')
+    primero = None
+    segundo = None
+    tercero = None
+    try:
+        primero = ganadores.get(resultado='1')
+        segundo = ganadores.get(resultado='2')
+        tercero = ganadores.get(resultado='3')
+    except ObjectDoesNotExist:
+        pass
+
     gold = ganadores.filter(resultado='G')
     silver = ganadores.filter(resultado='S')
     bronze = ganadores.filter(resultado='B')

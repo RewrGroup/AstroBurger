@@ -4,7 +4,11 @@
 {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script> var lista_status = {{lista_status}}</script>
-    <script src="{% static 'betcnow/js/betcpot.js' %}"></script>
+    <script src="{% static 'betcnow/js/betcpot_demo.js' %}"></script>
+	<script>
+		pote = {{pote.id}}
+		URL_registrar_jugada = {% url 'reg-demo' %};
+	</script>
     <script>        
         $(document).ready(function(){
            llenar_matriz(0); 
@@ -32,18 +36,48 @@
         });        
     </script>
     <script>
+		var address_vacia = false;
 		{% if address_vacia %}
-			var address_vacia = true;
+			address_vacia = true;
 		{% endif %}
 		
         jQuery(function(){
-           $('#submit_jugada').click(function(){
+           $('#submit_jugada').click(function(){			   
                if (($('#tabla_jugadas tr').length == 1) || address_vacia == true){                   
                    return false;
                }
-			   else{
-				   window.location.reload();
-				   return true;
+			   else{				   
+				   var numero = $('#jugada').val();
+					$.ajax({
+						url: URL_registrar_jugada,
+						data: {
+							'numero': numero,
+							'pote': pote
+						},
+						dataType: 'json',
+						success: function(data){
+							var resultado, title, text, url;
+							if (data.ocupado == false){
+								resultado = 'success';
+								title = 'Thanks for playing!';
+								text = 'You have played de number ' + numero + '\n\nCheck the Results page next sunday to find out if you are one of the winners!';
+								url = "/";
+							}
+							else{
+								resultado = 'error';
+								title = 'Please, pick a different number';
+								text = 'The number ' + numero + ' has already been taken';
+								url = {% url 'demo' %}
+							}
+							swal({
+								title: title,
+								text: text,
+								type: resultado,
+							}, function(){
+								window.location.replace(url);
+							});														
+						}
+					});
 			   }
            }); 
         });
@@ -51,7 +85,7 @@
     </script>
 {% endblock %}
 
-{% block title%}<h1 class="subtitulos">Betcpot</h1>{% endblock %}
+{% block title%}<h1 class="subtitulos">Betcpot Demo</h1>{% endblock %}
 {% block content %}
 {% if address_vacia %}
 	<div class="alert alert-danger">
@@ -60,7 +94,7 @@
 {% endif %}
 <div class="row">
     <div class="col-lg-12" style="padding-left: 90px">
-        <h4><b>Betcpot N°: {{pote.id}}</b></h4>
+        <h4><b>Betcpot N°: {{pote.id}} (Demo)</b></h4>
     </div>
 </div>
 <div class="row renglon-betcpot">    
@@ -91,19 +125,16 @@
             </div>    
         </div>
         
-        <form action="{% url 'check-out' %}" method="post">
-            {% csrf_token %}
-            <table class="table table-condensed" id='tabla_jugadas'>
-                <thead>
-                    <tr>
-                        <th>Played numbers: <small id='cant_jugadas'>0</small></th>
-                    </tr>
-                </thead>
-            </table>
-            <input type="hidden" value='{{pote.id}}' name='pote'>
-			<input type="hidden" value="5c3d3ceac7a96c1742d326d42ce551fb" name='hash'>
-            <input type="submit" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
-        </form>
+        
+            
+		<table class="table table-condensed" id='tabla_jugadas'>
+			<thead>
+				<tr>
+					<th>Played numbers: <small id='cant_jugadas'>0</small></th>
+				</tr>
+			</thead>
+		</table>
+		<input type="button" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
     </div>
 </div>
 
