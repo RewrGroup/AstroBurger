@@ -30,6 +30,7 @@ sitemaps = {'views': ViewSitemap}
 
 urlpatterns = [
     url(r'', include('betcnow.urls')),
+    url(r'^robots.txt/$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name="robots"),
     url(r'^accounts/register/$',
         MyRegistrationView.as_view(),
         name='registration_register'),
