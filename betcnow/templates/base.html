@@ -12,8 +12,7 @@
 	<link rel="shortcut icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">
 	<link rel="icon" href="{% static 'betcnow/img/favicon.ico' %}" type="image/x-icon">        
 	<link rel="stylesheet" href="{% static 'betcnow/css/sweetalert.css' %}">
-	<link rel="stylesheet" href="{% static 'betcnow/fonts/style.css' %}">	
-	<script src="{% static 'betcnow/js/sweetalert.min.js' %}"></script>    
+	<link rel="stylesheet" href="{% static 'betcnow/fonts/style.css' %}">		
 	{% if GOOGLE_ANALYTICS_PROPERTY_ID %}
   		{% include 'google_analytics.html' %}
 	{% endif %}
@@ -122,6 +121,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>        
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{% static 'betcnow/js/sweetalert.min.js' %}"></script>    
 {% block scripts %}
 {% endblock %}
 </body>

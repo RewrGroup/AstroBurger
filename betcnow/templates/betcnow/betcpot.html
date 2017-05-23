@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block meta_title %}Betcpot: Pick numbers and Play{% endblock %}
-{% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{% block scripts %}    
     <script> var lista_status = {{lista_status}}</script>
     <script src="{% static 'betcnow/js/betcpot.js' %}"></script>
     <script>        
@@ -102,7 +101,7 @@
             </table>
             <input type="hidden" value='{{pote.id}}' name='pote'>
 			<input type="hidden" value="5c3d3ceac7a96c1742d326d42ce551fb" name='hash'>
-            <input type="submit" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
+            <input type="submit" class="btn btn-primary btn-block" id="submit_jugada" value="Go!">
         </form>
     </div>
 </div>

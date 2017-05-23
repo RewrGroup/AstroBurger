@@ -74,7 +74,7 @@ function jugada_premiada(){
 					}
 					else{
 						title = "Congrat... Oh Wait!";
-						text = "You have selected some numbers with gift prizes! you could have won these gifts:\n\n";
+						text = "You have selected some numbers with instant gift prizes! you could have won these gifts:\n\n";
 						text2 = "\n\nBut since you haven't upgraded your membership yet, we can't give you those gifts :(\n";
 					}
 					swal({

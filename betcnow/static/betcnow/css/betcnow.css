@@ -192,12 +192,78 @@ padding: 20px 5px 0px 0px;
 	}
 }
 
+.listas-check{
+	list-style-image: url('../img/double-checking-32.png');
+	padding-left: 60px;
+}
+#titulo-promotional{
+	font-size: 30px;
+	word-spacing: 15px;
+	margin-top: 30px;
+	margin-bottom: -10px;
+	padding-bottom: 0px;
+}
+.listas-check li{
+	font-size: 25px;
+	padding: 15px 0px 0px 10px;
+}
+.listas-check li p{
+	font-size: 14px !important;
+	padding-left: 6px;
+}
+
+
 .carousel-inner .active .img-corousel{
 	width: 100%;	
 }
 #myCarousel{
 	z-index: 2000;
 }
+.carousel-control{
+  width:15px;  
+	opacity: 1000;
+}
+
+
+/* Indicators list style */
+ .article-slide .carousel-indicators {
+    bottom: -5px;
+    left: 35%;
+    margin-left: 5px;
+    width: inherit;
+}
+/* Indicators list style */
+.article-slide .carousel-indicators li {
+    border: medium none;
+    border-radius: 0;
+    float: left;
+    height: 50px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 5px !important;
+    margin-top: 0;
+    width: 100px;
+}
+/* Indicators images style */
+ .article-slide .carousel-indicators img {
+    border: 2px solid #FFFFFF;
+    float: left;
+    height: 50px;
+    left: 0;
+    width: 100px;	 
+    opacity: 0.7;
+}
+.article-slide .carousel-indicators img:hover {
+    transform: scale(1.1);
+	transition: 0.2s linear;
+}
+
+.carousel-indicators .active img {
+    border: 3px solid #e0c016;
+}
+
+
+
 #titulo-seccion-verde{
 	z-index: 300;
 	position: relative;
@@ -708,6 +774,10 @@ h4.puntos-BTCrace{
     .row {
     margin: 0px 0px 0px 0px;
     }
+	
+	.carousel-indicators{
+		display: none;
+	}	
 	
 	.box {
 		height: 340px !important;

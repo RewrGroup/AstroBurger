@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block meta_title %}Betcpot: Pick numbers and Play{% endblock %}
-{% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{% block scripts %}    
     <script> var lista_status = {{lista_status}}</script>
     <script src="{% static 'betcnow/js/betcpot_demo.js' %}"></script>
 	<script>
@@ -10,31 +9,24 @@
 		URL_registrar_jugada = {% url 'reg-demo' %};
 	</script>
     <script>        
-        $(document).ready(function(){
-           llenar_matriz(0); 
-        });        
-    </script>
-    <script>        
         jQuery(function(){
+			llenar_matriz(0); 
+			$(window).on('load', function(){
+				$('#myModal').modal('show');
+			});
             $('.cientos').on("click", function(){
                 llenar_matriz(this.value);            
             });
-        });        
-    </script>
-    <script>        
-        jQuery(function(){
-            $("#random_button").click(function(){
+			$("#random_button").click(function(){
                 random_values();   
             });
-        });
-        jQuery(function(){
-            $("#random_input").on('keyup', function (e) {
+			$("#random_input").on('keyup', function (e) {
                 if (e.keyCode == 13) {
                     random_values();                
                 }
             });
         });        
-    </script>
+    </script>    
     <script>
 		var address_vacia = false;
 		{% if address_vacia %}
@@ -134,11 +126,34 @@
 				</tr>
 			</thead>
 		</table>
-		<input type="button" class="btn btn-primary btn-block" id="submit_jugada" value="PLAY">
+		<input type="button" class="btn btn-primary btn-block" id="submit_jugada" value="Go!">
     </div>
 </div>
-
-
+<!-- Modal de bienvenida!-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header azulmodal">                
+                <center><h1 class="modal-title letras-betcnow">This is our Betcpot Demo!</h1></center>
+            </div>
+            <div class="modal-body">
+				<ul class="listas-check">
+					<li class="letras-betcnow">Play for Free</li>
+					<li class="letras-betcnow">Weekly draws: <p>Results published every sunday on the Results page</p></li>
+				</ul>				
+					<center><p id="titulo-promotional" class="color-verde-betcnow letras-betcnow">PROMOTIONAL LAUNCHING</p></center>
+				<ul class="listas-check">
+					<li class="letras-betcnow">0.057 BTC to be distributed by the house</li>
+				</ul>
+                
+            </div>
+            <div class="modal-footer">
+                <center><button type="button" class="btn btn-success" data-dismiss="modal">Continue</button></center>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 
