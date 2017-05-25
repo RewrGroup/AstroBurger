@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block meta_title %}Betcpot: Pick numbers and Play{% endblock %}
+{% block meta_title %}Betcpot Demo: Try Betcnow for free{% endblock %}
 {% block scripts %}    
     <script> var lista_status = {{lista_status}}</script>
     <script src="{% static 'betcnow/js/betcpot_demo.js' %}"></script>
@@ -51,8 +51,8 @@
 							var resultado, title, text, url;
 							if (data.ocupado == false){
 								resultado = 'success';
-								title = 'Thanks for playing!';
-								text = 'You have played de number ' + numero + '\n\nCheck the Results page next sunday to find out if you are one of the winners!';
+								title = 'Successful selection';
+								text = 'You have selected de number ' + numero + '\n\nCheck the Results page next sunday to find out if you are one of the winners!';
 								url = "/";
 							}
 							else{
@@ -122,7 +122,7 @@
 		<table class="table table-condensed" id='tabla_jugadas'>
 			<thead>
 				<tr>
-					<th>Played numbers: <small id='cant_jugadas'>0</small></th>
+					<th>Numbers selected: <small id='cant_jugadas'>0</small></th>
 				</tr>
 			</thead>
 		</table>
@@ -139,12 +139,12 @@
             </div>
             <div class="modal-body">
 				<ul class="listas-check">
-					<li class="letras-betcnow">Play for Free</li>
+					<li class="letras-betcnow">Free bets</li>
 					<li class="letras-betcnow">Weekly draws: <p>Results published every sunday on the Results page</p></li>
 				</ul>				
 					<center><p id="titulo-promotional" class="color-verde-betcnow letras-betcnow">PROMOTIONAL LAUNCHING</p></center>
 				<ul class="listas-check">
-					<li class="letras-betcnow">0.057 BTC to be distributed by the house</li>
+					<li class="letras-betcnow">Betcpots of 0.04225 BTC courtesy of <span><img src="{% static 'betcnow/img/betcnow_span.png' %}"></span> every week</li>
 				</ul>
                 
             </div>

@@ -49,8 +49,8 @@ function add_jugada(i) {            //Añadir jugada a la tabla de seleccionadas
     }
     else {
 			swal({
-				title: 'You can only play 1 number in our Demo version. \n ',
-				text: 'In the Full version you can play more'
+				title: 'You can only select 1 number in our Demo version. \n ',
+				text: 'In the Full version you can select more'
 			});
 			llenar_matriz(0);
     }

@@ -60,7 +60,7 @@
                                             </div>
                                         </a>                                    
                                         <div class="row caja-nombres-botones">
-                                            <h3>Plays</h3>
+                                            <h3>Activities</h3>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 boton-referidos">                                    
@@ -86,7 +86,7 @@
 			<h4 class="color-azul-betcnow puntos-BTCrace">Bitcoin-Race Points: </h4> <h2 class="puntos-BTCrace">{{perfil.puntos}}pts.</h2>
 			<hr>
             {% if jugadas_activas %}
-                <h4 class="color-azul-betcnow">Your active plays</h4>
+                <h4 class="color-azul-betcnow">Today's selected numbers</h4>
                 <div class="col-lg-4">
                     <table class="table table-responsive">
                         <thead>
@@ -114,7 +114,7 @@
                     </table>
                 </div>
             {% else %}
-                <h5 class="color-azul-betcnow"> You haven't made any play for a currently open betcpot</h5>                
+                <h5 class="color-azul-betcnow"> You haven't participated in any currently open betcpot</h5>                
             {% endif %}
         </div>
     </div>
@@ -122,7 +122,7 @@
     <!-- DESPLIEGUE DE BOTON MIS REFERIDOS -->
 
     <div id="misreferidos" class="collapse">
-         <div class="row">
+         <div class="row renglon-plays">
             {% if referidos %}
                 <h4 class="color-azul-betcnow">Your Referrals</h4>
                 <div class="col-lg-4">
