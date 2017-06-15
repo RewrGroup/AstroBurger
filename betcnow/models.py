@@ -309,7 +309,7 @@ def sorteo_pote(sender, instance, **kwargs):
             qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze).exclude(membresia='Free')
             qs_rep = Profile.objects.filter(pk__in=ganadores_rep).exclude(membresia='Free')
 
-            if se_sorteo is True:       # En tal caso que se haya hecho el sorteo, se pagan los puntos a los grupos
+            if se_sorteo is True:       # En tal caso que se haya hecho el sorteo en esta misma llamada, se pagan los puntos a los grupos
                 qs_gold.update(puntos=F('puntos') + 25)
                 qs_silver.update(puntos=F('puntos') + 20)
                 qs_bronze.update(puntos=F('puntos') + 15)
@@ -324,26 +324,25 @@ def sorteo_pote(sender, instance, **kwargs):
                     nuevo_total -= total_repartir*porcentajes[i]
 
             pks = [ganadores_podio, ganadores_gold, ganadores_silver, ganadores_bronze, ganadores_rep]
-            for cont, index in enumerate(pks):
+            for cont, index in enumerate(pks):      # Cada 'index' es una pk... no se por qué coño la nombré y que index
                 if len(index) > 0:
                     lista_tuplas = list(Profile.objects.filter(pk__in=index).values_list('address', 'pk'))
                     lista_address = []
                     for i in index:     # Primero obtengo las address de los ganadores
                         for j in lista_tuplas:
                             if i == j[1]:
-                                lista_address.append(j[0])
+                                lista_address.append(j[0])      # hago esto para que se puedan agregar address de gente que ganó mas de un numero (repetidas)
 
-                    for cont2, k in enumerate(lista_address):   # Ahora asigno el monto correspondiente y formo payment_list
+                    for cont2, address in enumerate(lista_address):   # Ahora asigno el monto correspondiente y formo payment_list
                         if cont == 0:
                             monto = int(total_repartir * porcentajes[cont2])
                         else:
                             monto = int(nuevo_total * porcentajes[cont + 2] / len(index))
                         payment_list.append(
-                            {'address': k, 'amount': str(monto)}
+                            {'address': address, 'amount': str(monto)}
                         )
-                        if montos_posiciones.count(monto) == 0:
+                        if montos_posiciones.count(monto) == 0:     # Esto es para guardar en el modelo cuáto gano cada posicion (1ero, 2do, 3ero, gold...)
                             montos_posiciones.append(monto)
-                            print(len(montos_posiciones))
                 else:
                     break
             try:

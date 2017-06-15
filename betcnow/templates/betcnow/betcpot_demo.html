@@ -84,51 +84,48 @@
   		<center><strong>Hey!</strong> Before you play, please go to your <a href="{% url 'profile' pk=request.user.pk %}" style="color: inherit; text-decoration: underline"><b>profile</b></a>, and <strong>set up your Bitcoin address</strong> so we can know where we're going to pay you</center>
 	</div>
 {% endif %}
-<div class="row">
-    <div class="col-lg-12" style="padding-left: 90px">
-        <h4><b>Betcpot N°: {{pote.id}} (Demo)</b></h4>
-    </div>
-</div>
-<div class="row renglon-betcpot">    
-    <div class="col-lg-6 col-md-8 col-sm-7 columnaMatriz">        
-        <div class="btn-group btn-group-lg btn-matrix" id="matriz"></div>
+<div class="container-fluid">
+	<div class="row renglon-betcpot">    
+		<div class="col-lg-6 col-md-8 col-sm-7 columnaMatriz">        
+			<div class="btn-group btn-group-lg btn-matrix" id="matriz"></div>
 
-        <div class="botones-centena">
-            <input type="button" class="btn btn-default cientos" value='0'> 
-            <input type="button" class="btn btn-default cientos" value='100'>
-            <input type="button" class="btn btn-default cientos" value='200'>
-            <input type="button" class="btn btn-default cientos" value='300'>
-            <input type="button" class="btn btn-default cientos" value='400'>
-            <input type="button" class="btn btn-default cientos" value='500'>
-            <input type="button" class="btn btn-default cientos" value='600'>
-            <input type="button" class="btn btn-default cientos" value='700'>
-            <input type="button" class="btn btn-default cientos" value='800'>
-            <input type="button" class="btn btn-default cientos" value='900'>
+			<div class="botones-centena">
+				<input type="button" class="btn btn-default cientos" value='0'> 
+				<input type="button" class="btn btn-default cientos" value='100'>
+				<input type="button" class="btn btn-default cientos" value='200'>
+				<input type="button" class="btn btn-default cientos" value='300'>
+				<input type="button" class="btn btn-default cientos" value='400'>
+				<input type="button" class="btn btn-default cientos" value='500'>
+				<input type="button" class="btn btn-default cientos" value='600'>
+				<input type="button" class="btn btn-default cientos" value='700'>
+				<input type="button" class="btn btn-default cientos" value='800'>
+				<input type="button" class="btn btn-default cientos" value='900'>
 
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-5 tabla">
-        <div class="row">
-            <div class="col-sm-9">
-                <input type="number" id='random_input' placeholder="how many random numbers?" class="form-control">        
-            </div>
-            <div class="col-sm-2">
-                <input type="button" id='random_button' value="Random" class='btn btn-default'>
-            </div>    
-        </div>
-        
-        
-            
-		<table class="table table-condensed" id='tabla_jugadas'>
-			<thead>
-				<tr>
-					<th>Numbers selected: <small id='cant_jugadas'>0</small></th>
-				</tr>
-			</thead>
-		</table>
-		<input type="button" class="btn btn-primary btn-block" id="submit_jugada" value="Go!">
-    </div>
-</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-5 tabla">
+			<div class="row">
+				<div class="col-sm-9">
+					<input type="number" id='random_input' placeholder="how many random numbers?" class="form-control">        
+				</div>
+				<div class="col-sm-2">
+					<input type="button" id='random_button' value="Random" class='btn btn-default'>
+				</div>    
+			</div>
+
+
+
+			<table class="table table-condensed" id='tabla_jugadas'>
+				<thead>
+					<tr>
+						<th>Numbers selected: <small id='cant_jugadas'>0</small></th>
+					</tr>
+				</thead>
+			</table>
+			<input type="button" class="btn btn-primary btn-block" id="submit_jugada" value="Go!">
+		</div>
+	</div>
+</div>	
 <!-- Modal de bienvenida!-->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">

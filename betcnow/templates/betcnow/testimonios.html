@@ -41,7 +41,7 @@
 <!-- BOTON DE AGREGAR COMENTARIO -->
 <!-- Trigger the modal with a button -->
 {% if request.user.is_authenticated %}
-<center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Testimonials</button></center><br>
+	<center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Testimonials</button></center><br>
 {% endif %}
 
 <!-- Modal -->
@@ -49,7 +49,7 @@
     <div class="modal-dialog">
     <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header azulmodal">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Add testimonials</h4>
             </div>
@@ -57,19 +57,16 @@
                 <form method="post" action="{% url 'proccess_testimonial' %}" id="send_testimonial">
                     {% csrf_token %}
                     <div class="form-group">                                                
-                        <label for="comment"> Hi, {{user}}!<br> Could you tell your experience in betcnow (in 140 characters)?</label>            
+                        <label for="comment"> Hi, {{user}}!<br> Could you tell your experience in betcnow (in 140 characters)?</label>           
                         <textarea class="form-control" rows="5" id="comment" maxlength="140" name="texto"></textarea>
                     </div>                        
                     <div class="form-group">
                         <input type="button" value="Send" class="btn btn-info submit-color-betcnow" onclick="show_success()">
                     </div>                
                 </form>
-            </div>
-            <div class="modal-footer">
-                <div class="alert alert-success" id="success" style="display: None">
+				<div class="alert alert-success" id="success" style="display: None">
                     <strong>Big Thanks! :)</strong> Your testimony will be posted very soon.
                 </div>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

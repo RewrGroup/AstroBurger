@@ -38,6 +38,10 @@ def play(request):
     try:
         pote = Pote.objects.get(status='1', demo=False)
         perfil = Profile.objects.get(user=request.user)
+        now = datetime.utcnow()
+        today_at_8 = datetime(now.year, now.month, now.day, 20)
+        difference = (today_at_8 - now).total_seconds() / 3600
+        show_timer = True if int(difference) < 3 else False
         template = 'betcnow/betcpot.html'
         variables = {}
         lista_status = []
@@ -51,7 +55,8 @@ def play(request):
         else:
             address_vacia = False
 
-        variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia})
+        variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia,
+                          'now': str(now), 'today_at_8': str(today_at_8), 'show_timer': show_timer})
         return render(request, template, variables)
     except ObjectDoesNotExist:
         return HttpResponse("There are not any Betcpot open. The next one will be available very soon")

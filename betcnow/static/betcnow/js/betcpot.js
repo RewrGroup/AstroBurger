@@ -1,4 +1,4 @@
-function llenar_matriz(centena) {    
+function llenar_matriz(centena) {   	
     var lista = lista_status;   //Recibe la lista con los estados de las jugadas en la BD. 1=Free; 2 y 3 = Ocupados
     var html = '';  //String con código html que retornará la función
     var table = document.getElementById('tabla_jugadas');   //La tabla donde se van reportando las jugadas seleccionadas
@@ -34,8 +34,7 @@ function llenar_matriz(centena) {
         disabled = false;
     }
     $('#matriz').html(html);                                
-
-    }
+}
 
 function add_jugada(i) {            //Añadir jugada a la tabla de seleccionadas
     var table = document.getElementById('tabla_jugadas');

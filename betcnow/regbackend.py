@@ -1,6 +1,6 @@
 from registration.backends.default.views import RegistrationView
 from .forms import MyRegistrationForm
-from .models import Profile, User
+from .models import Profile
 from django.forms import ValidationError
 from django.core.exceptions import ObjectDoesNotExist
 
