@@ -41,7 +41,7 @@ def play(request):
         now = datetime.utcnow()
         today_at_8 = datetime(now.year, now.month, now.day, 20)
         difference = (today_at_8 - now).total_seconds() / 3600
-        show_timer = True if int(difference) < 3 else False
+        show_timer = True if 0 < int(difference) < 3 else False
         template = 'betcnow/betcpot.html'
         variables = {}
         lista_status = []

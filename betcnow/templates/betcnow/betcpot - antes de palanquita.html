@@ -35,16 +35,7 @@
                     random_values();                
                 }
             });
-        }); 
-		$('.lever').mousedown(function(){
-			$('.ball').css('top', '84px');
-			$('.stem').css('top', '40px');				
-		});
-		$('.lever').mouseup(function(){
-			$('.ball').css('top', '0px');
-			$('.stem').css('top', '0px');				
-			random_values();   
-		});
+        });        
     </script>
     <script>
 		{% if address_vacia %}
@@ -73,48 +64,36 @@
   		<center><strong>Hey!</strong> Before you start, please go to your <a href="{% url 'profile' pk=request.user.pk %}" style="color: inherit; text-decoration: underline"><b>profile</b></a>, and <strong>set up your Bitcoin address</strong> so we can know where we're going to pay you</center>
 	</div>
 {% endif %}
-<div class="container-fluid container-betcpot">
+<div class="container-fluid">
+	
 	<div class="row renglon-betcpot">    
 		<div class="col-lg-6 col-md-8 col-sm-7 columnaMatriz">        
-			<div class="row">
-				<div class="btn-group btn-group-lg btn-matrix" id="matriz"></div>
-			</div>
-			<div class="row">
-				<div class="botones-centena">
-					<input type="button" class="btn btn-default cientos" value='0'> 
-					<input type="button" class="btn btn-default cientos" value='100'>
-					<input type="button" class="btn btn-default cientos" value='200'>
-					<input type="button" class="btn btn-default cientos" value='300'>
-					<input type="button" class="btn btn-default cientos" value='400'>
-					<input type="button" class="btn btn-default cientos" value='500'>
-					<input type="button" class="btn btn-default cientos" value='600'>
-					<input type="button" class="btn btn-default cientos" value='700'>
-					<input type="button" class="btn btn-default cientos" value='800'>
-					<input type="button" class="btn btn-default cientos" value='900'>
+			<div class="btn-group btn-group-lg btn-matrix" id="matriz"></div>
 
-				</div>
+			<div class="botones-centena">
+				<input type="button" class="btn btn-default cientos" value='0'> 
+				<input type="button" class="btn btn-default cientos" value='100'>
+				<input type="button" class="btn btn-default cientos" value='200'>
+				<input type="button" class="btn btn-default cientos" value='300'>
+				<input type="button" class="btn btn-default cientos" value='400'>
+				<input type="button" class="btn btn-default cientos" value='500'>
+				<input type="button" class="btn btn-default cientos" value='600'>
+				<input type="button" class="btn btn-default cientos" value='700'>
+				<input type="button" class="btn btn-default cientos" value='800'>
+				<input type="button" class="btn btn-default cientos" value='900'>
+
 			</div>
 		</div>
-		<div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-5 col-xs-12 tabla">
-			<div class="row row-random">
-				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
-					<input type="number" id='random_input' placeholder="Random numbers" class="form-control">        
+		<div class="col-lg-4 col-lg-offset-1 col-md-4 col-sm-5 tabla">
+			<div class="row">
+				<div class="col-sm-9">
+					<input type="number" id='random_input' placeholder="how many random numbers?" class="form-control">        
 				</div>
-				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 columna-palanca-random">
+				<div class="col-sm-2">
 					<input type="button" id='random_button' value="Random" class='btn btn-default'>
-					<div class="lever">
-						<div class="pull">
-							<div class="ball">
-							</div>
-							<div class="stem">
-							</div>
-						</div>
-						<div class="cog1"></div>
-						<div class="cog2"></div>
-					</div>
 				</div>    
 			</div>
-			<div class="row" id="wrapper-tabla_jugadas">
+			<div class="row" style="margin-top: 20px;">
 				<form action="{% url 'check-out' %}" method="post">
 					{% csrf_token %}
 					<table class="table table-condensed" id='tabla_jugadas'>
@@ -131,8 +110,8 @@
 			</div>
 		</div>
 	</div>
+	
 	{% if show_timer %}	
-	<script type="text/javascript">var timer = true;</script>
 	<div id="timer">
 		<div class="row">
 			<h4>Time left for today's draw:</h4>
@@ -161,8 +140,6 @@
 			</div>
 		</div>
 	</div>
-	{% else %}
-		<script type="text/javascript">var timer = false;</script>
 	{% endif %}
 	
 </div>	
