@@ -215,7 +215,7 @@ h2.subtitulos{
 }
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {
+@media screen and (max-width : 768px), (max-height : 540px) {
 	.mobile-full{
 		height: 100vh;
 	}
