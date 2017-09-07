@@ -248,6 +248,19 @@ h2.subtitulos{
 
 
 /* Custom, iPhone Retina */ 
-@media only screen and (max-width : 320px) {
-	
+@media only screen and (max-height : 415px) {
+	.div-pushdown{
+		position: relative !important;
+		margin: 40px 0 10px 0;
+	}
+	.mobile-full{
+		height: auto;
+	}
+	#sticky-social{
+	position: absolute;
+	left: -40px;
+	top: 100px;
+	z-index: 10;
+}
+
 }
