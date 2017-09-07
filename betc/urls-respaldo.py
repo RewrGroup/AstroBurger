@@ -27,7 +27,7 @@ from django.contrib.sitemaps.views import sitemap
 from betcnow.sitemaps import ViewSitemap
 
 sitemaps = {'views': ViewSitemap}
-"""
+
 urlpatterns = [
     url(r'', include('betcnow.urls')),
     url(r'^robots.txt/$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name="robots"),
@@ -53,16 +53,26 @@ urlpatterns = [
 ]
 """
 
-# Estas son las URLs para el "estamos trabajando"
+# Estas son las URLs para el countdown
 urlpatterns = [
     url(r'^terms_of_use/$', TemplateView.as_view(template_name='betcnow/terminos.html'), name="terminos"),
     url(r'^privacy_policy/$', TemplateView.as_view(template_name='betcnow/privacidad.html'), name="privacidad"),
     url(r'^$',
-        TemplateView.as_view(template_name='betcnow/working.html'),
+        MyRegistrationView.as_view(),
         name='home'),
+    url(r'^ref=(?P<pk>[0-9]+)/$',
+        RefRegistrationView.as_view(),
+        name='countdown_ref_register'),
+    url(r'^accounts/activate/complete/$',
+        TemplateView.as_view(template_name='registration/activation_complete.html'),
+        name='registration_activation_complete'),
+    url(r'^accounts/activate/(?P<activation_key>\w+)/$',
+        SendEmailAfterActivate.as_view(),
+        name='registration_activate'),
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
 ]
-
+"""
 if settings.DEBUG:
     import debug_toolbar
 
