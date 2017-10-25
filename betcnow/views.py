@@ -136,9 +136,9 @@ def checkout(request):
 
 def has_paid(request):
     numeros_jugadas = request.GET.getlist('jugadas[]', None)
-    pote = Pote.objects.get(id=request.GET.get('pote', None))
     player = Profile.objects.select_related('membresia').get(user=request.user)
-    qs = Jugada.objects.filter(pote=pote, numero__in=numeros_jugadas).select_related('jugador')
+    qs = Jugada.objects.filter(pote__pk=request.GET.get('pote', None),
+                               numero__in=numeros_jugadas).select_related('jugador')
     paid = False
     lista_premios = []
     for jugada in qs:
@@ -149,23 +149,23 @@ def has_paid(request):
             jugada.save()
         elif jugada.status == '3':
             if jugada.premio == '1':
-                player.puntos += 160
+                player.puntos += 48 if player.membresia.tipo_membresia == "Free" else 144
                 lista_premios.append(jugada.get_premio_display())
             elif jugada.premio == '2':
-                player.puntos += 40
+                player.puntos += 12 if player.membresia.tipo_membresia == "Free" else 36
                 lista_premios.append(jugada.get_premio_display())
             elif jugada.premio == '3':
-                player.puntos += 20
+                player.puntos += 6 if player.membresia.tipo_membresia == "Free" else 18
                 lista_premios.append(jugada.get_premio_display())
             elif jugada.premio == '4':
-                player.puntos += 10
+                player.puntos += 3 if player.membresia.tipo_membresia == "Free" else 9
                 lista_premios.append(jugada.get_premio_display())
             paid = True
-    if player.membresia.tipo_membresia != 'Free' and lista_premios:
-        member = True
+
+    member = False if player.membresia.tipo_membresia == "Free" else True
+    if lista_premios:
         player.save()
-    else:
-        member = False
+
     data = {
         'paid': paid,
         'lista_premios': lista_premios,
@@ -281,10 +281,13 @@ def callback(request, *args, **kwargs):
                 profile.sponsor_revenue += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
                 spp.dinero_ganado += j.pote.valor_jugada * sponsor.membresia.porcentaje_jugada
                 lista_de_numeros.append(j.numero)
-            if profile.membresia.tipo_membresia != 'Free':
-                profile.puntos += 5*len(jugadas_pagadas)
-            if sponsor.membresia.tipo_membresia != 'Free':
-                sponsor.puntos += 2*len(jugadas_pagadas)
+
+            profile.puntos += 2 * len(jugadas_pagadas) if profile.membresia.tipo_membresia == 'Free' else \
+                6 * len(jugadas_pagadas)
+
+            sponsor.puntos += 1 * len(jugadas_pagadas) if sponsor.membresia.tipo_membresia != 'Free' else \
+                3 * len(jugadas_pagadas)
+
             spp.save()
             profile.save()
             sponsor.save()

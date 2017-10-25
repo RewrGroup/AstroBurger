@@ -4,7 +4,7 @@ from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.utils import timezone
 from Scripts.sorteo import Sorteo
-from django.db.models import F
+from django.db.models import F, Case, When
 from django.core.mail import EmailMessage
 import random, uuid
 
@@ -71,10 +71,10 @@ class Jugada(models.Model):
     orderID = models.CharField(max_length=100, blank=True, null=True)
     fecha_jugada = models.DateTimeField(blank=True, null=True)
     PREMIO_CHOICES = (
-        ('1', '160 pts'),
-        ('2', '40 pts'),
-        ('3', '20 pts'),
-        ('4', '0.0025Btc + 10pts'),
+        ('1', '48 Bitcoin Race points'),
+        ('2', '12 Bitcoin Race points'),
+        ('3', '6 Bitcoin Race points'),
+        ('4', '3 Bitcoin Race points'),
     )
     premio = models.CharField(max_length=30, blank=True, default='', choices=PREMIO_CHOICES)
     RESULTADO_CHOICES = (
@@ -279,7 +279,9 @@ def sorteo_pote(sender, instance, **kwargs):
                         jugada_podio = qs.get(numero=podio[p])
                         jugador = Profile.objects.select_related('membresia').get(user=jugada_podio.jugador)
                         jugada_podio.resultado = resultado_podio[p]
-                        if jugador.membresia.tipo_membresia != 'Free':
+                        if jugador.membresia.tipo_membresia == 'Free':
+                            jugador.puntos += puntos_podio[p]*0.3
+                        else:
                             jugador.puntos += puntos_podio[p]
                         jugada_podio.save()
                         jugador.save()
@@ -304,16 +306,22 @@ def sorteo_pote(sender, instance, **kwargs):
             ganadores_bronze = list(Jugada.objects.filter(pote=instance, resultado='B').values_list('jugador', flat=True))
             ganadores_rep = list(Jugada.objects.filter(pote=instance, resultado='R').values_list('jugador', flat=True))
 
-            qs_gold = Profile.objects.filter(pk__in=ganadores_gold).exclude(membresia='Free')
-            qs_silver = Profile.objects.filter(pk__in=ganadores_silver).exclude(membresia='Free')
-            qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze).exclude(membresia='Free')
-            qs_rep = Profile.objects.filter(pk__in=ganadores_rep).exclude(membresia='Free')
+            qs_gold = Profile.objects.filter(pk__in=ganadores_gold)
+            qs_silver = Profile.objects.filter(pk__in=ganadores_silver)
+            qs_bronze = Profile.objects.filter(pk__in=ganadores_bronze)
+            qs_rep = Profile.objects.filter(pk__in=ganadores_rep)
 
             if se_sorteo is True:       # En tal caso que se haya hecho el sorteo en esta misma llamada, se pagan los puntos a los grupos
-                qs_gold.update(puntos=F('puntos') + 25)
-                qs_silver.update(puntos=F('puntos') + 20)
-                qs_bronze.update(puntos=F('puntos') + 15)
-                qs_rep.update(puntos=F('puntos') + 10)
+                free = Membership.objects.get(tipo_membresia="Free")
+                member = Membership.objects.get(tipo_membresia="Member")
+                qs_gold.update(puntos=Case(When(membresia=free, then=F("puntos") + 8),
+                                           When(membresia=member, then=F("puntos") + 24)))
+                qs_silver.update(puntos=Case(When(membresia=free, then=F("puntos") + 6),
+                                             When(membresia=member, then=F("puntos") + 18)))
+                qs_bronze.update(puntos=Case(When(membresia=free, then=F("puntos") + 4),
+                                             When(membresia=member, then=F("puntos") + 12)))
+                qs_rep.update(puntos=Case(When(membresia=free, then=F("puntos") + 3),
+                                          When(membresia=member, then=F("puntos") + 9)))
             if cant_jugadas < 135:      # Porque la reparticion de porcentajes de Erick suma 85%
                 total_repartir = instance.total_acumulado
                 nuevo_total = total_repartir
@@ -341,7 +349,7 @@ def sorteo_pote(sender, instance, **kwargs):
                         payment_list.append(
                             {'address': address, 'amount': str(monto)}
                         )
-                        if montos_posiciones.count(monto) == 0:     # Esto es para guardar en el modelo cuáto gano cada posicion (1ero, 2do, 3ero, gold...)
+                        if montos_posiciones.count(monto) == 0:     # Esto es para guardar en el modelo cuánto gano cada posicion (1ero, 2do, 3ero, gold...)
                             montos_posiciones.append(monto)
                 else:
                     break
@@ -358,7 +366,7 @@ def sorteo_pote(sender, instance, **kwargs):
 
             tuplas_sponsors = list(
                 SponsorsPorPote.objects.filter(pote=instance).exclude(user__pk=1).values_list('user__address',
-                                                                                           'dinero_ganado')
+                                                                                              'dinero_ganado')
             )
             sponsors_payment_list = []
             for tupla in tuplas_sponsors:

@@ -1,7 +1,7 @@
 {% autoescape off %}{% load i18n %}{% blocktrans %}
 {{ notice }}
 
-First of all, We really want to thank you for playing in a Betcpot, and we sincerally wish you all the best of luck!
+First of all, we really want to thank you for playing in a Betcpot, and we sincerally wish you all the best of luck!
 
 
 Your Play Summary:
