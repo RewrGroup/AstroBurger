@@ -6,7 +6,7 @@ from django.utils import timezone
 from Scripts.sorteo import Sorteo
 from django.db.models import F, Case, When
 from django.core.mail import EmailMessage
-import random, uuid
+import random, uuid, string
 
 
 class Membership(models.Model):
@@ -122,6 +122,31 @@ class IpsYCookies(models.Model):
 
     def __str__(self):
         return self.elemento
+
+
+class Codigo(models.Model):
+    codigo = models.CharField(max_length=8, unique=True, blank=True)
+    STATUS_CHOICES = (
+        ('0', 'Disponible'),
+        ('1', 'Canjeado'),
+    )
+    status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='0')
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            while True:
+                c = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+                if Codigo.objects.filter(codigo=c).count() == 0:
+                    self.codigo = c
+                    break
+        return super(Codigo, self).save(*args, **kwargs)
+
+    def __str__(self):
+        etiqueta = self.codigo
+        if self.status == '1':
+            etiqueta += ' (Canjeado)'
+        return etiqueta
+
 
 
 @receiver(post_save, sender=Pote)   # cuando se crea un nuevo pote, se hace un populate de jugadas

@@ -101,3 +101,17 @@ function puntos(lista_premios, member){
 	}
 	return text;
 }
+
+$(document).ready(function(){
+	if(numeros_jugadas.length > 1){
+		$('#code-button').attr('data-toggle', 'popover');
+		$('#code-button').attr('data-content', 'Codes are only valid for one-number selections');
+		$(function () {
+			$('[data-toggle="popover"]').popover()
+		})
+	}
+	else{
+		$('#code-button').attr('data-toggle', 'modal');
+		$('#code-button').attr('data-target', '#code-modal');
+	}
+});

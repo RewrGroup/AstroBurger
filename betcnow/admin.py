@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Profile, Jugada, Pote, Membership, Testimonio, SponsorsPorPote, IpsYCookies
+from .models import Profile, Jugada, Pote, Membership, Testimonio, SponsorsPorPote, IpsYCookies, Codigo
 
 
 class ProfileInline(admin.StackedInline):
@@ -25,3 +25,4 @@ admin.site.register(Membership)
 admin.site.register(Testimonio)
 admin.site.register(SponsorsPorPote)
 admin.site.register(IpsYCookies)
+admin.site.register(Codigo)
