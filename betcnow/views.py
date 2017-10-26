@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from betcnow.forms import LoginWithPlaceholder
 from pinax.notifications.models import send
-from .models import Profile, User, Jugada, Pote, Testimonio, Membership, SponsorsPorPote, IpsYCookies
+from .models import Profile, User, Jugada, Pote, Testimonio, Membership, SponsorsPorPote, IpsYCookies, Codigo
 from registration.backends.default.views import ActivationView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
@@ -132,6 +132,25 @@ def checkout(request):
         return render(request, 'betcnow/pago.html', variables)
     else:
         return HttpResponse()
+
+
+def redeem(request):
+    canjeado = False
+    if request.is_ajax():
+        try:
+            c = Codigo.objects.get(codigo=request.GET.get('codigo'))
+            if c.status == '0':
+                c.status = '1'
+                c.save()
+                Jugada.objects.filter(numero=request.GET.get('numero'), pote__pk=request.GET.get('pote')).update(status='3')
+                canjeado = True
+        except ObjectDoesNotExist:
+            pass
+        data = {
+            'canjeado': canjeado
+        }
+        return JsonResponse(data)
+
 
 
 def has_paid(request):

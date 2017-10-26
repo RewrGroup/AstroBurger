@@ -4,7 +4,12 @@ history.pushState(null, null, '#');
 window.addEventListener('popstate', function(event) {
 	history.pushState(null, null, '#');
 });
-jQuery(function(){            	
+jQuery(function(){
+	$('#code-input').on('keyup', function(e){	// Para que cuando se presione enter en lo de canjear codigo, se haga el canje
+		if(e.keyCode == 13){
+			redeem();
+		}
+	});
 	window.setTimeout(function(){                
 		$.ajax({
 			url: hp,
@@ -102,16 +107,56 @@ function puntos(lista_premios, member){
 	return text;
 }
 
-$(document).ready(function(){
+function set_popover(content){
+	$('#code-button').attr('data-toggle', 'popover');
+	$('#code-button').attr('data-content', content);
+	$('#code-modal').html("");
+	$(function () {
+		$('[data-toggle="popover"]').popover();			
+	})
+}
+
+$(document).ready(function(){	
 	if(numeros_jugadas.length > 1){
-		$('#code-button').attr('data-toggle', 'popover');
-		$('#code-button').attr('data-content', 'Codes are only valid for one-number selections');
-		$(function () {
-			$('[data-toggle="popover"]').popover()
-		})
+		set_popover('Codes are only valid for one-number selections');
 	}
 	else{
 		$('#code-button').attr('data-toggle', 'modal');
 		$('#code-button').attr('data-target', '#code-modal');
 	}
 });
+
+function redeem(){
+	veces_pulsado += 1;
+	if (veces_pulsado == 3){
+		$('#code-button').attr('disabled', true);
+	}
+	var codigo = $('#code-input').val();	
+	$.ajax({
+		url: redeem_url,
+		data: {
+			'codigo': codigo,
+			'numero': numeros_jugadas[0],
+			'pote': pote
+		},
+		dataType: 'json',
+		success: function(data){
+			$('#code-modal').modal('hide');
+			if(data.canjeado == true){
+				set_popover('You have already redeemed your code');
+				swal({
+			  		title: "Code redeemed!",
+			  		text: "Your code has been redeemed successfully",
+				  	type: "success",
+				});
+			}
+			else{
+				swal({
+			  		title: "Error",
+			  		text: "Invalid or already taken code",
+				  	type: "error",
+				});
+			}
+		}
+	})
+}

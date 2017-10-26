@@ -148,7 +148,6 @@ class Codigo(models.Model):
         return etiqueta
 
 
-
 @receiver(post_save, sender=Pote)   # cuando se crea un nuevo pote, se hace un populate de jugadas
 def llenar_jugadas(sender, instance, created, **kwargs):
     if created:
