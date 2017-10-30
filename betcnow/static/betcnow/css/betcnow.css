@@ -162,12 +162,14 @@ padding: 20px 5px 0px 0px;
 	min-height: 90vh;
 }
 
+#try-demo{
+	margin-right: -2px; 
+	border-left: solid 1px #467dbe;
+}
 /*Botón PLAY NOW*/
 
 #B{
   background: #5cb85c;
-	border-left: solid 2px #52a352;
-	border-right: solid 1px #52a352;
 	width: 185px;
 	font-weight: bolder;	
 	font-size: 20pt;

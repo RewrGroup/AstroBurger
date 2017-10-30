@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # El middleware que verifica si el usuario ha ganado
+    'betcnow.middleware.CheckWinner',
 ]
 
 ROOT_URLCONF = 'betc.urls'

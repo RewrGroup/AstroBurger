@@ -152,7 +152,6 @@ def redeem(request):
         return JsonResponse(data)
 
 
-
 def has_paid(request):
     numeros_jugadas = request.GET.getlist('jugadas[]', None)
     player = Profile.objects.select_related('membresia').get(user=request.user)

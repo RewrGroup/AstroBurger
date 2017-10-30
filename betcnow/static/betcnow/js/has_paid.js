@@ -127,6 +127,7 @@ $(document).ready(function(){
 });
 
 function redeem(){
+	console.log(1);
 	veces_pulsado += 1;
 	if (veces_pulsado == 3){
 		$('#code-button').attr('disabled', true);
