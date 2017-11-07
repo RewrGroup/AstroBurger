@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a_9*^5bi&2gc#u6g+gt)3z7j()q41r6qr7o*3ez!g#17*xt!s$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# SECURE_SSL_REDIRECT = True
+DEBUG = False
+SECURE_SSL_REDIRECT = True
 
 
 ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1', '.betcnow.com']
@@ -137,7 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'admin@betcnow.com'
