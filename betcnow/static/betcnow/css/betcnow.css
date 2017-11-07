@@ -869,8 +869,16 @@ h4.puntos-BTCrace{
 	padding: 10px 30px;
 	-webkit-transition: all .2s;
 	-moz-transition: all .2s;
-	transition: all 0.2s;
-	
+	transition: all 0.2s;	
+}
+
+
+div.controls ul{
+	display: none;
+}
+
+.help-block{
+	color: #d80c0c;
 }
 
 /* Propiedades panatalla pequeña*/
