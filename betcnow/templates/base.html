@@ -110,13 +110,13 @@
 			<div class="col-lg-4 col-md-4 col-sm-4" >
 					<ul id="terms-policy">
 						<li>
-							<a href="{% url 'terminos' %}">Terms of use</a>
+							<a href="{% url 'terminos' %}" target="_blank">Terms of use</a>
 						</li>
 						<li>
 						<p>|</p>
 						</li>
 						<li>
-							<a href="{% url 'privacidad' %}">Privacy policy</a>
+							<a href="{% url 'privacidad' %}" target="_blank">Privacy policy</a>
 						</li>
 					</ul>
 			</div>
@@ -124,9 +124,32 @@
 	</div>
   </div>
 </div>
+	
+<!-- Modal notification -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>        
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="{% static 'betcnow/js/sweetalert.min.js' %}"></script>    
+<script>
+	var jsshow_notification;
+	{% if show_notification %}
+	 	jsshow_notification = true;
+	 {% else %}
+	 	jsshow_notification = false;
+	{% endif %}
+	if (jsshow_notification == true){
+		swal({
+			  	html: true,
+				title:'Congratulations!',
+				text: '<img src={% static  "betcnow/img/award.png" %} style="position: absolute; bottom: -90px; left: 0; transform: rotate(-13deg); height: 100px">'
+				+'You are among the <b>winners</b> of the last Betcpot you played in! Please, check the <a target="_blank" href={% url "results" %}>results</a> and then, <a href={% url "testimonios" %}> leave us a comment</a> to let everybody know your experience in Betcnow<br><br>'
+				+'<img src={% static  "betcnow/img/award.png" %} style="position: absolute; bottom: -90px; right: 0; transform: rotate(13deg); height: 100px">',
+			}, function(){
+					$.ajax({						
+						url: {% url 'notification_read' %},						
+				   	}); 
+				});		
+	}
+</script>
 {% block scripts %}
 {% endblock %}
 </body>

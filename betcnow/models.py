@@ -27,6 +27,7 @@ class Profile(models.Model):
                                 default='betcnow', on_delete=models.SET_DEFAULT)
     sponsor_revenue = models.FloatField(blank=True, null=True, default=0)
     puntos = models.IntegerField(blank=True, null=True, default=0)
+    premio = models.BooleanField(default=False)     # Solamente para mostrat la notificacion
 
     def __str__(self):
         return self.user.username
@@ -302,6 +303,7 @@ def sorteo_pote(sender, instance, **kwargs):
                     if podio[p] is not None:
                         jugada_podio = qs.get(numero=podio[p])
                         jugador = Profile.objects.select_related('membresia').get(user=jugada_podio.jugador)
+                        jugador.premio = True
                         jugada_podio.resultado = resultado_podio[p]
                         if jugador.membresia.tipo_membresia == 'Free':
                             jugador.puntos += puntos_podio[p]*0.3
@@ -338,14 +340,15 @@ def sorteo_pote(sender, instance, **kwargs):
             if se_sorteo is True:       # En tal caso que se haya hecho el sorteo en esta misma llamada, se pagan los puntos a los grupos
                 free = Membership.objects.get(tipo_membresia="Free")
                 member = Membership.objects.get(tipo_membresia="Member")
-                qs_gold.update(puntos=Case(When(membresia=free, then=F("puntos") + 8),
-                                           When(membresia=member, then=F("puntos") + 24)))
-                qs_silver.update(puntos=Case(When(membresia=free, then=F("puntos") + 6),
-                                             When(membresia=member, then=F("puntos") + 18)))
-                qs_bronze.update(puntos=Case(When(membresia=free, then=F("puntos") + 4),
-                                             When(membresia=member, then=F("puntos") + 12)))
                 qs_rep.update(puntos=Case(When(membresia=free, then=F("puntos") + 3),
-                                          When(membresia=member, then=F("puntos") + 9)))
+                                          When(membresia=member, then=F("puntos") + 9)), premio=True)
+                qs_bronze.update(puntos=Case(When(membresia=free, then=F("puntos") + 4),
+                                             When(membresia=member, then=F("puntos") + 12)), premio=True)
+                qs_silver.update(puntos=Case(When(membresia=free, then=F("puntos") + 6),
+                                             When(membresia=member, then=F("puntos") + 18)), premio=True)
+                qs_gold.update(puntos=Case(When(membresia=free, then=F("puntos") + 8),
+                                           When(membresia=member, then=F("puntos") + 24)), premio=True)
+
             if cant_jugadas < 135:      # Porque la reparticion de porcentajes de Erick suma 85%
                 total_repartir = instance.total_acumulado
                 nuevo_total = total_repartir

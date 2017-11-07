@@ -7,7 +7,7 @@
 {% block scripts%}
 <script src="{% static 'betcnow/js/detect-scroll.js' %}"></script>
 {% endblock %}
-{% block content %}	
+{% block content %}
 <div id="sticky-social">
 	<ul>
 		<li><a href="https://www.instagram.com/betcnow/?hl=en" class="icon-instagram" target="_blank"><span></span></a></li>
@@ -21,9 +21,9 @@
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"><img src="{% static 'betcnow/img/demo.png' %}"></li>
-      <li data-target="#myCarousel" data-slide-to="1"><img src="{% static 'betcnow/img/results.png' %}"></li>
-      <li data-target="#myCarousel" data-slide-to="2"><img src="{% static 'betcnow/img/member.png' %}"></li>
-		<li data-target="#myCarousel" data-slide-to="3"><img src="{% static 'betcnow/img/win.png' %}"></li>
+      <!--li data-target="#myCarousel" data-slide-to="1"><img src="{% static 'betcnow/img/results.png' %}"></li-->
+      <li data-target="#myCarousel" data-slide-to="1"><img src="{% static 'betcnow/img/member.png' %}"></li>
+		<li data-target="#myCarousel" data-slide-to="2"><img src="{% static 'betcnow/img/win.png' %}"></li>
     </ol>   
     <!-- Wrapper for carousel items -->
     <div class="carousel-inner">
@@ -32,9 +32,9 @@
             <a href="{% url 'demo' %}"><img class="img-corousel" src="{% static 'betcnow/img/demo.png' %}" alt="First Slide"></a>
         </div>
 
-        <div class="item">
+        <!--div class="item">
 			<a href="{% url 'results' %}"><img class="img-corousel" src="{% static 'betcnow/img/results.png' %}" alt="Second Slide"></a>
-        </div>
+        </div-->
 
         <div class="item">
 			<a href="{% url 'membership' %}"><img class="img-corousel" src="{% static 'betcnow/img/member.png' %}" alt="Third Slide"></a>
@@ -99,9 +99,12 @@
 <div style="background: #4F8ED8; margin-top: -18px">
 <center><h2 class="subtitulos color-azul-betcnow" style="font-size: 28pt; color: #fff; padding: 20px 0px 15px 0px">How does it works?</h2></center>
 </div>
-<br>
-
-<div class="container" style="padding-top: 30px;">
+	<div class="container" style="padding-top: 10px;">
+		<center>
+			<iframe width="640" height="360" src="https://www.youtube.com/embed/Gq5Yic9henk">				
+			</iframe>
+		</center>	
+		<br>
 			<div id="animation-igniter" style="height: 2px"></div>
             <div class="row" id="step-1" style="margin-top: 20px">
                 <div class="col-lg-5 col-md-5">
@@ -132,7 +135,8 @@
                  <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-1 textos-explicativos" style="border-left: solid 2px #a6a4be">
                     <h3><span class="label label-primary">STEP 3</span> Pay </h3>
                     <p>
-                        After confirming the information of your purchase, you proceed to pay using your cellphone or sending the funds to the bitcoin address displayed in the payment box</p>
+                        After confirming the information of your purchase, you proceed to pay using your cellphone or sending the funds to the bitcoin address displayed in the payment box. Also, if you have a promotional code you can redeem it and your selection will be free.
+					 </p>
                 </div>        
             </div>
             <hr class="hr-pava2">

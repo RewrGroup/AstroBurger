@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^proccess_testimonial', views.proccess_testimonial, name='proccess_testimonial'),
     url(r'^results/$', views.results, name='results'),
     url(r'^results/betcpot/(?P<pk>[0-9]+)/$', views.resultado_pote, name='betcpot_result'),
-    url(r'^redeem/$', views.redeem, name='redeem')
+    url(r'^redeem/$', views.redeem, name='redeem'),
+    url(r'^notification-read/$', views.notification_read, name='notification_read'),
 ]

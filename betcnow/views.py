@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.template.response import TemplateResponse
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from betcnow.forms import LoginWithPlaceholder
@@ -57,7 +58,7 @@ def play(request):
 
         variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia,
                           'now': str(now), 'today_at_8': str(today_at_8), 'show_timer': show_timer})
-        return render(request, template, variables)
+        return TemplateResponse(request, template, variables)
     except ObjectDoesNotExist:
         return HttpResponse("There are not any Betcpot open. The next one will be available very soon")
 
@@ -245,7 +246,7 @@ def results(request):
     potes = Pote.objects.filter(status='0').filter(fecha_sorteo__gte=lunes).order_by('-fecha_sorteo')
     users = Profile.objects.select_related('user').filter(membresia__tipo_membresia="Member").order_by('-puntos')[:10]
     fecha = timezone.now().date()
-    return render(request, 'betcnow/results.html', {'potes': potes, 'users': users, 'fecha': fecha})
+    return TemplateResponse(request, 'betcnow/results.html', {'potes': potes, 'users': users, 'fecha': fecha})
 
 
 def resultado_pote(request, pk):
@@ -349,7 +350,7 @@ def membership_callback(request, *args, **kwargs):
 
 def testimonios(request):
     testimonios_aprobados = Testimonio.objects.select_related('user').filter(aprobado=True).order_by("-fecha")
-    return render(request, "betcnow/testimonios.html", {'testimonios': testimonios_aprobados})
+    return TemplateResponse(request, "betcnow/testimonios.html", {'testimonios': testimonios_aprobados})
 
 
 def proccess_testimonial(request):
@@ -357,6 +358,14 @@ def proccess_testimonial(request):
         nuevo_testimonio = Testimonio.objects.create(user=request.user, texto=request.POST.get('texto'))
         nuevo_testimonio.save()
     return HttpResponseRedirect(reverse('testimonios'))
+
+
+def notification_read(request):
+    if request.is_ajax:
+        p = Profile.objects.get(user=request.user)
+        p.premio = False
+        p.save()
+    return JsonResponse({})
 
 
 class SendEmailAfterActivate(ActivationView):

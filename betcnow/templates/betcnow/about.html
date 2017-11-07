@@ -24,7 +24,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-body">
-                    	<p align="justify">Betcnow is a low-cost bitcoin gambling website which consists in a lottery system called Betcpot where you can multiply up to 255 times your bet, get passive income through a referral system and participate for one free Bitcoin every month.</p>
+                    	<p align="justify">Betcnow is a low-cost bitcoin gambling website which consists in a lottery system called Betcpot where you can multiply up to 255 times your bet, get passive income through a referral system and participate for a big prize in BTC every month.</p>
                 	</div>
                 </div>
                 <div class="modal-footer">
@@ -47,7 +47,8 @@
                     <center><h4 class="modal-title">How does it works?</h4></center>
                 </div>
                 <div class="modal-body">
-                    <p align="justify">Each Betcpot has 1000 numbers for sale. At 20:00 UTC of every day, the betcpots get closed regardless of how many numbers has been sold. All draws are made considering only the numbers sold, and more than 13% of them will be awarded. Winners will be announced approximately three hours after the closing of each Betcpot.<br><br>On the other hand, Betcnow has a referral system that allows you to win the 5 or 10 percent of each of the bets made by your referrals, depending on the membership you have. <br><br>Our users with the <i>Member</i> membership participate in a points system called Bitcoin Race where the best member of each month will be awarded with 1 Bitcoin for free.</p>
+                    <p align="justify">Each Betcpot has 1000 numbers for sale. At 20:00 UTC of every day, the betcpots get closed regardless of how many numbers has been sold. All draws are made considering only the numbers sold, and more than 13% of them will be awarded. Winners will be announced approximately three hours after the closing of each Betcpot.<br><br>On the other hand, Betcnow has a referral system that allows you to win the 5 or 10 percent of each of the bets made by your referrals, depending on the membership you have. <br><br>Every user will be participating for a monthly prize in BTC, based in a points system, called Bitcoin Race.
+					</p>
                 </div>
                 <div class="modal-footer">
                     <center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>
@@ -88,7 +89,12 @@
                 </div>        
                  <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 textos-explicativos" style="border-left: solid 2px #a6a4be">
                     <h3><span class="label label-primary">STEP 3</span> Pay</h3>
-                    <p>On the check-out page you will see the Betcpot number you are playing in, the quantity of numbers played and the total bitcoins to be paid. Once you have confirmed this information, you must send the bitcoins to the address displayed in the payment box. You can copy and paste this address or you can simply scan the QR code with your mobile device, if you have any bicoin wallet app intalled.</p>
+                    <p>On the check-out page you will see the Betcpot number you are playing in, the quantity of numbers played and the total bitcoins to be paid. Once you have confirmed this information, you must send the bitcoins to the address displayed in the payment box. You can copy and paste this address or you can simply scan the QR code with your mobile device, if you have any bicoin wallet app intalled.
+					</p>
+					 <br>
+					 <p>
+						 if you have a promotional code you can redeem it and your selection will be free.
+					 </p>
                 </div>        
             </div>
             <hr class="hr-pava2">
@@ -605,7 +611,12 @@
                 </div>
 
                 <div class="modal-body">
-                    <p align="justify">Being a <b>FREE</b> user, you can refer as many players as you want and get <b>5%</b> of every bet they make.<br> By becoming a <b>MEMBER</b> user, you will double that in addition to other benefits.</p>
+                    <p align="justify">Being a <b>FREE</b> user, you can refer as many players as you want and get <b>5%</b> of every bet they make.
+					</p>
+					<hr>
+					<p align="justify">
+						By becoming a <b>MEMBER</b> user, you will double that in addition to other benefits.
+					</p>
                 </div>
                 <div class="modal-footer">
                     <center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>
@@ -629,15 +640,39 @@
                  <center><h4 class="modal-title">Memberships</h4></center> 
                 </div>
                 <div class="modal-body">
-					<p align="justify"><br ><b>Free:</b></p>
-                    -Earn 5% of every play made by your referrals
+					<a href="{% url 'membership' %}" target="_blank">							
+						<div class="membership-block">
+							<img src="{% static 'betcnow/img/medalla.jpg' %}">
+							<ul>
+								<li>
+									Earn 5% of every play made by your referrals
+								</li>
+								<li>
+									Jump into the Bitcoin Race
+								</li>
+								<li>
+									Earn instant gifts playing Betcpot's numbers
+								</li>
+							</ul>
+						</div>
+					</a>
 					<hr>
-					<p align="justify"><br ><b>Member:</b></p>
-                    -Earn 10% of every play made by your referrals
-					<br>
-					-Unlock Betcpot's numbers with instant gift prizes
-					<br>
-					-Jump into the Bitcoin Race
+					<a href="{% url 'membership' %}" target="_blank">
+						<div class="membership-block">
+							<img src="{% static 'betcnow/img/member.jpg' %}" class="img-memberships-about">
+							<ul>
+								<li>
+									All the benefits of Free Membership
+								</li>
+								<li>
+									Earn 10% of every play made by your referrals
+								</li>
+								<li>
+									Earn three times more Bitcoin Race points
+								</li>								
+							</ul>
+						</div>
+					</a>
                 </div>
                <div class="modal-footer">
                    <center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>
@@ -663,15 +698,24 @@
                 </div>
 
                 <div class="modal-body">
-					<p align="justify"> The Bitcoin Race is a virtual race which consists in a points system where the best Member of Betcnow in the month will be awarded with 1 free Bitcoin, these points will accumulate throughout the month as follows:</p><br>
+					<p align="justify"> The Bitcoin Race is a virtual race which consists in a points system where the best user in the month will be awarded with a big prize in BTC. These points will accumulate throughout the month as follows:</p>
+					<br>
 					<table class="table table-striped">				
 						<thead>
 							<tr>
-								<td>
+								<td rowspan="2">
 									<b>Action</b>
 								</td>
-								<td>
+								<td colspan="2">
 									<b>Points</b>
+								</td>								
+							</tr>
+							<tr>
+								<td>
+									Free
+								</td>
+								<td>
+									Member
 								</td>
 							</tr>
 						</thead>
@@ -681,23 +725,32 @@
 									Each play of your referrals
 								</td>
 								<td>
-									2
-								</td>                                
+									1
+								</td>
+								<td>
+									3
+								</td>
 							</tr>
 							<tr>
 								<td>
 									Each of your own plays
 								</td>
 								<td>
-									5
-								</td>                                
+									2
+								</td>
+								<td>
+									6
+								</td>
 							</tr>
 							<tr>
 								<td>
 									Entering into the copper group in any Betcpot
 								</td>
 								<td>
-									10
+									3
+								</td>                                
+								<td>
+									9
 								</td>                                
 							</tr>
 							<tr>
@@ -705,7 +758,10 @@
 									Entering into the bronze group in any Betcpot
 								</td>
 								<td>
-									15
+									4
+								</td>                                
+								<td>
+									12
 								</td>                                
 							</tr>
 							<tr>
@@ -713,7 +769,10 @@
 									Entering into the silver group in any Betcpot
 								</td>
 								<td>
-									20
+									6
+								</td>                                
+								<td>
+									18
 								</td>                                
 							</tr>
 							<tr>
@@ -721,13 +780,19 @@
 									Entering into the gold group in any Betcpot
 								</td>
 								<td>
-									25
+									8
+								</td>                                
+								<td>
+									24
 								</td>                                
 							</tr>
 							<tr>
 								<td>
 									Third place
 								</td>
+								<td>
+									9
+								</td>                                
 								<td>
 									30
 								</td>                                
@@ -737,6 +802,9 @@
 									Second place
 								</td>
 								<td>
+									12
+								</td>                                
+								<td>
 									40
 								</td>                                
 							</tr>
@@ -744,6 +812,9 @@
 								<td>
 									First place
 								</td>
+								<td>
+									24
+								</td>                                
 								<td>
 									80
 								</td>                                
@@ -753,7 +824,10 @@
 									Get numbers with instant gifts in Betcpots
 								</td>
 								<td>
-									160, 40, 20 or 10
+									48<br>12<br>6<br>3
+								</td>                                
+								<td>
+									144<br>36<br>18<br>9
 								</td>                                
 							</tr>							
 						</tbody>                

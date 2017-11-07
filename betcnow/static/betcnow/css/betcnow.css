@@ -57,7 +57,7 @@ body{
 
 @font-face {
    font-family: customfont;
-   src: url(../fonts/Rounded_Elegance.ttf);
+   src: url(../fonts/Rounded_Elegance.ttf);	
 }
 
 .letras-betcnow{
@@ -224,9 +224,11 @@ padding: 20px 5px 0px 0px;
 	z-index: 2000;
 }
 .carousel-control{
-  width:15px;  
-	opacity: 1000;
+	opacity: 1;
+	color: #fff;
+	width: 30px;
 }
+
 
 
 /* Indicators list style */
@@ -382,6 +384,18 @@ font-style: bold;
 	background: #4F8ED8;
 	color: #fff;
 }
+.membership-block{
+	display: table;
+}
+.membership-block img{
+	height: 70px;
+	float: left;
+}
+.membership-block ul{
+	float: left;
+	list-style: circle;	
+}
+
 /*FIN DE ABOUT*/
 
 
