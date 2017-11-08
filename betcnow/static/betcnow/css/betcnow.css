@@ -289,6 +289,20 @@ padding: 20px 5px 0px 0px;
 	position: relative;
 }
 
+#iframe-video-wrapper{	
+	position: relative;	
+	overflow: hidden;
+	padding-top: 30px;
+	padding-bottom: 56.25%;	
+}
+#iframe-video-wrapper iframe{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
 @keyframes izq-der {
     0%   {left: -100px}
     100% {left: 0px}
@@ -652,7 +666,15 @@ h4.puntos-BTCrace{
 @media screen and (min-width: 801px){
 	#matriz{
 		width: 90%;
+	}	
+	.bordes-steps-left{
+	border-left: solid 2px #a6a4be;
 	}
+	
+	.bordes-steps-right{
+		border-right: solid 2px #a6a4be;
+	}
+
 }
 
 @media all and (min-width: 801px) and (max-width: 990px){	

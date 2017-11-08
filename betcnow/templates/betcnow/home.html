@@ -99,26 +99,30 @@
 <div style="background: #4F8ED8; margin-top: -18px">
 <center><h2 class="subtitulos color-azul-betcnow" style="font-size: 28pt; color: #fff; padding: 20px 0px 15px 0px">How does it works?</h2></center>
 </div>
-	<div class="container" style="padding-top: 10px;">
-		<center>
-			<iframe width="640" height="360" src="https://www.youtube.com/embed/Gq5Yic9henk">				
-			</iframe>
-		</center>	
+	<div class="container" style="padding-top: 10px;">		
+		<div class="row">
+			<div class="col-xs-12 col-md-8 col-md-offset-2">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/vOlF5YRV8Ow" allowfullscreen="allowfullscreen">
+					</iframe>		
+				</div>				
+			</div>
+		</div>		
 		<br>
 			<div id="animation-igniter" style="height: 2px"></div>
             <div class="row" id="step-1" style="margin-top: 20px">
-                <div class="col-lg-5 col-md-5">
-                    <img class="img-responsive imagenhtp" src="{% static 'betcnow/img/steps/step1.png' %}" alt="join betcnow">
-                </div>
-                <div class="col-lg-5  col-md-5 col-md-offset-2 textos-explicativos" style="border-left: solid 2px #a6a4be">
+				<div class="col-lg-5  col-md-5 col-md-offset-2 textos-explicativos col-md-push-5 bordes-steps-left">
                     <h3><span class="label label-primary">STEP 1</span> Join Betcnow</h3>
                     <p>It's very easy and fast. Enter a username, your email address and an alphanumeric password of at least 8 characters. That's it, you're in!</p>
                 </div>
+                <div class="col-lg-5 col-md-5 col-md-pull-7">
+                    <img class="img-responsive imagenhtp" src="{% static 'betcnow/img/steps/step1.png' %}" alt="join betcnow">
+                </div>                
             </div>
             <hr class="hr-pava2">
 			<div id="animation-igniter-2" style="height: 2px"></div>
             <div class="row" id="step-2">
-                <div class="col-lg-5 col-md-4 textos-explicativos" style="border-right: solid 2px #a6a4be">
+                <div class="col-lg-5 col-md-4 textos-explicativos bordes-steps-right">
                     <h3><span class="label label-primary">STEP 2</span> Pick your favorite numbers</h3>
                     <p>After clicking on the <span><img src="{% static 'betcnow/img/play_now_button.png' %}" alt="Play now button"></span> button, select the numbers of your preference in the Betcpot.</p>
                 </div>
@@ -128,22 +132,22 @@
             </div>      
             <hr class="hr-pava2">
 			<div id="animation-igniter-3" style="height: 2px"></div>
-            <div class="row" id="step-3">
-                <div class="col-lg-5 col-md-6">
-                    <img class="img-responsive imagenhtp" src="{% static 'betcnow/img/steps/step3.png' %}" alt="pay">
-                </div>        
-                 <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-1 textos-explicativos" style="border-left: solid 2px #a6a4be">
+            <div class="row" id="step-3">                
+                 <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-1 textos-explicativos col-md-push-5 bordes-steps-left">
                     <h3><span class="label label-primary">STEP 3</span> Pay </h3>
                     <p>
                         After confirming the information of your purchase, you proceed to pay using your cellphone or sending the funds to the bitcoin address displayed in the payment box. Also, if you have a promotional code you can redeem it and your selection will be free.
 					 </p>
-                </div>        
+                </div>
+				<div class="col-lg-5 col-md-6 col-md-pull-7">
+                    <img class="img-responsive imagenhtp" src="{% static 'betcnow/img/steps/step3.png' %}" alt="pay">
+                </div>
             </div>
             <hr class="hr-pava2">
 			<div id="animation-igniter-4" style="height: 2px"></div>
 			<div id="step-4">
 				<div class="row">
-					<div class="col-lg-5 col-md-3 textos-explicativos" style="border-right: solid 2px #a6a4be">
+					<div class="col-lg-5 col-md-3 textos-explicativos bordes-steps-right">
 						<h3><span class="label label-primary">STEP 4</span> Check results</h3>
 						<p>
                             Once the draw has been made you can review the results, where you can see the podium and the rest of the many winners in each group.
