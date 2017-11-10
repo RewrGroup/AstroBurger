@@ -182,6 +182,7 @@ padding: 20px 5px 0px 0px;
 	-webkit-transition: all .3s;
 	-moz-transition: all .3s;
 	transition: all .3s;	
+	padding: 0 5px;
 }
 
 @media screen and (min-width: 800px){
@@ -857,7 +858,7 @@ h4.puntos-BTCrace{
 	list-style: none;
 }
 #sticky-social ul li a{
-	font-size: 25px;
+	font-size: 16px;
 	display: inline-block;
 	color: #fff;
 	background: #000;
