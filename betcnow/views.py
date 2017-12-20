@@ -36,15 +36,15 @@ def profile_redirect(request):
 
 @login_required()
 def play(request):
+    template = 'betcnow/betcpot.html'
+    variables = {}
     try:
         pote = Pote.objects.get(status='1', demo=False)
         perfil = Profile.objects.get(user=request.user)
         now = datetime.utcnow()
         today_at_8 = datetime(now.year, now.month, now.day, 20)
         difference = (today_at_8 - now).total_seconds() / 3600
-        show_timer = True if 0 < int(difference) < 3 else False
-        template = 'betcnow/betcpot.html'
-        variables = {}
+        show_timer = True if 0 < int(difference) < 3 else False        
         lista_status = []
         for i in Jugada.objects.filter(pote=pote):
             if i.status == '3' and i.premio != '':
@@ -57,10 +57,10 @@ def play(request):
             address_vacia = False
 
         variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia,
-                          'now': str(now), 'today_at_8': str(today_at_8), 'show_timer': show_timer})
-        return TemplateResponse(request, template, variables)
+                          'now': str(now), 'today_at_8': str(today_at_8), 'show_timer': show_timer})        
     except ObjectDoesNotExist:
-        return HttpResponse("There are not any Betcpot open. The next one will be available very soon")
+        template = 'betcnow/not_open.html'        
+    return TemplateResponse(request, template, variables)
 
 
 @login_required()

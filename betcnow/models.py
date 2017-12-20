@@ -286,12 +286,13 @@ def sorteo_pote(sender, instance, **kwargs):
         if cant_jugadas >= 300:
             porcentajes[1] = 0.15
             porcentajes[2] = 0.075
-
+        
         resultado_podio = ['1', '2', '3']
         resultado_grupos = ['G', 'S', 'B', 'R']
         se_sorteo = False
 
         if qs.filter(resultado='1').count() == 0:    # Si no se ha sorteado, Se sortea y guardan las jugadas ganadoras
+            print("Sorteando...")
             se_sorteo = True
             sort = Sorteo(cant_jugadas, lista_jugadas)
             sort.sortear()
@@ -370,7 +371,7 @@ def sorteo_pote(sender, instance, **kwargs):
 
                     for cont2, address in enumerate(lista_address):   # Ahora asigno el monto correspondiente y formo payment_list
                         if cont == 0:
-                            monto = int(total_repartir * porcentajes[cont2])
+                            monto = int(total_repartir * porcentajes[cont2])                            
                         else:
                             monto = int(nuevo_total * porcentajes[cont + 2] / len(index))
                         payment_list.append(

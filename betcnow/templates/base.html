@@ -40,10 +40,15 @@
 <div id="header">
   <div class="container-fluid" id="row-logo-y-botones">  
       <div class="row-fluid">
-          <div class="col-xs-8 col-md-3 col-lg-3 col-sm-6 div-logo">
-			  <a href="{% url 'home' %}"><img class="img-responsive" src="{% static 'betcnow/img/betcnow.png' %}" alt="BETCnow logo" title="Ir a BETCnow"></a>
+          <div class="col-md-3 col-lg-2 col-sm-4 col-xs-8 div-logo">
+			  <a href="{% url 'home' %}"><img class="img-responsive" src="{% static 'betcnow/img/betcnow.png' %}" alt="BETCnow logo" title="Go to BETCnow"></a>
           </div>
-		  <div class="col-xs-4 col-lg-3 col-lg-offset-6 col-sm-4 col-sm-offset-2 col-md-3 col-md-offset-6" id="botones-login">
+		  <div class="col-md-8 col-sm-4 hidden-xs" style="padding: 10px 67px 0 60px; margin: 0; font-size: 1.3em;">
+			  <!--div class="pull-left">
+				  Today's Betcpot number value: ฿<span class="price"></span>
+			  </div-->	  
+		  </div>
+		  <div class="col-xs-4 col-md-3 col-lg-2 pull-right" id="botones-login">
 			<div class="pull-right" id="wrapper-botones-login">
 			  {% if request.user.is_authenticated %}
 						<a href="{% url 'profile' pk=request.user.pk %}" class="btn btn-primary M "><b>{{user}}</b></a>
@@ -61,6 +66,11 @@
 <nav class= "navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
+			<!--div class="visible-xs" style="position: absolute; top: 0; left: 0; color: #fff">
+				<p>
+					 Today's Betcpot number value: ฿<span class="price"></span>
+				</p>				
+			</div-->
             <!-- boton responsive -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
                   <span class="sr-only">Menu</span>
@@ -150,6 +160,21 @@
 				});		
 	}
 </script>
+<script>
+	xhr = new XMLHttpRequest;			
+	xhr.open("GET", "https://api.coindesk.com/v1/bpi/currentprice/USD.json");	
+	xhr.send();		
+	
+	xhr.onload = function(){
+		if(xhr.status == 200){
+			json_response = JSON.parse(xhr.responseText);
+			var usd_price = json_response.bpi.USD.rate_float;
+			
+			$('.price').html((2/usd_price).toFixed(6));	
+		}		
+	}	
+</script>
+
 {% block scripts %}
 {% endblock %}
 </body>

@@ -21,9 +21,10 @@
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"><img src="{% static 'betcnow/img/demo.png' %}"></li>
+	  <li data-target="#myCarousel" data-slide-to="1"><img src="{% static 'betcnow/img/we_dont_acumulate.png' %}"></li>
       <!--li data-target="#myCarousel" data-slide-to="1"><img src="{% static 'betcnow/img/results.png' %}"></li-->
-      <li data-target="#myCarousel" data-slide-to="1"><img src="{% static 'betcnow/img/member.png' %}"></li>
-		<li data-target="#myCarousel" data-slide-to="2"><img src="{% static 'betcnow/img/win.png' %}"></li>
+	  <li data-target="#myCarousel" data-slide-to="2"><img src="{% static 'betcnow/img/win.jpg' %}"></li>
+      <li data-target="#myCarousel" data-slide-to="3"><img src="{% static 'betcnow/img/member.png' %}"></li>		
     </ol>   
     <!-- Wrapper for carousel items -->
     <div class="carousel-inner">
@@ -31,17 +32,19 @@
         <div class="item active">
             <a href="{% url 'demo' %}"><img class="img-corousel" src="{% static 'betcnow/img/demo.png' %}" alt="First Slide"></a>
         </div>
+		<div class="item">
+            <a href="{% url 'demo' %}"><img class="img-corousel" src="{% static 'betcnow/img/we_dont_acumulate.png' %}" alt="First Slide"></a>
+        </div>
 
         <!--div class="item">
 			<a href="{% url 'results' %}"><img class="img-corousel" src="{% static 'betcnow/img/results.png' %}" alt="Second Slide"></a>
         </div-->
-
+		<div class="item">
+			<a href="{% url 'play' %}"><img class="img-responsive" src="{% static 'betcnow/img/win.jpg' %}" alt="demo" ></a>
+		</div>
         <div class="item">
 			<a href="{% url 'membership' %}"><img class="img-corousel" src="{% static 'betcnow/img/member.png' %}" alt="Third Slide"></a>
-        </div>
-		<div class="item">
-			<a href="{% url 'play' %}"><img class="img-responsive" src="{% static 'betcnow/img/win.png' %}" alt="demo" ></a>
-		</div>
+        </div>		
     </div>
     <!-- Carousel controls -->
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">

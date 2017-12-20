@@ -1,12 +1,12 @@
 {% autoescape off %}{% load i18n %}{% blocktrans %}
 {{ notice }}
 
-First of all, we really want to thank you for playing in a Betcpot, and we sincerally wish you all the best of luck!
+First of all, we really want to thank you for your participation in today's Betcpot, and we sincerally wish you all the best of luck!
 
 
-Your Play Summary:
+Your Selection Summary:
 
-Played numbers: {{jugadas}}
+Selected numbers: {{jugadas}}
 Btc amount: {{monto}}
 Transaction Id: {{tx}}
 
