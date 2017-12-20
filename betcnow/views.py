@@ -91,7 +91,7 @@ def demo(request):
         variables.update({"lista_status": lista_status, 'pote': pote, 'address_vacia': address_vacia})
         return render(request, template, variables)
     except ObjectDoesNotExist:
-        return HttpResponse("There are not any Betcpot open. The next one will be available very soon")
+        return render(request, 'betcnow/not_open.html', {})
 
 
 def registrar_demo(request):
@@ -118,7 +118,7 @@ def checkout(request):
     if request.method == 'POST':
         pote = Pote.objects.get(id=request.POST.get('pote', None))
         jugadas = request.POST.getlist('jugadas[]')
-        boxID = 8591
+        boxID = 21210
         tipo_pago = 'jugada'
         user = request.user.username
         orderID = str(pote) + "-" + str(len(jugadas)) + "-" + jugadas[0] + "-" + jugadas[-1]

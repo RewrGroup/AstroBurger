@@ -43,7 +43,7 @@
 										<a class="box-links" href="{% url 'membership' %}" target="_blank">(Upgrade)</a></li>
 										{% endif %}
 										
-                                    <li><b class="identificador-info">Bitcoin Address:</b>
+                                    <li><b class="identificador-info">Bitcoin Cash Address:</b>
 										{% if address_vacia is True %}
 											<br><a class="box-links" href="#" data-toggle="collapse" data-target=".change-address">Add Address</a></li>
 										{% else %}
@@ -130,7 +130,7 @@
                         <thead>
                             <tr>
                                 <th>Referral</th>
-                                <th>Revenue generated (Btc)</th>      
+                                <th>Revenue generated (BCH)</th>      
                             </tr>
                         </thead>
                         <tbody>
@@ -184,7 +184,7 @@
                 <div id="demo" class="col-lg-6 col-lg-offset-3 collapse change-address">
                     <form action="" method="post">
                         {% csrf_token %}
-                        <center><label class="text-muted" for="input_wallet">ONLY BITCOIN wallet addresses allowed</label></center>
+						<center><label class="text-muted" for="input_wallet">ONLY <b>BITCOIN CASH</b> addresses allowed</label></center>
                         <div class="form-group">
                             <input class="form-control" type="text" value="{{perfil.address}}" name="input_wallet">
                         </div>

@@ -2,13 +2,13 @@ import hashlib
 
 
 def hash(boxID, tipo_pago, amount, user, orderID):
-    coin_name = 'bitcoin'
+    coin_name = 'bitcoincash'
     public_key = ''
     private_key = ''
     period = ''
     if tipo_pago == 'jugada':
-        public_key = '8591AAuVNwoBitcoin77BTCPUBZxyHk5A7YNE0bmy2J3gls6vO'
-        private_key = '8591AAuVNwoBitcoin77BTCPRVlBBm1YOY3rLZstduagpNFn6H'
+        public_key = '21210AA0Q9URBitcoincash77BCHPUB2avCPSe9Rbpq8pX41HD'
+        private_key = '21210AA0Q9URBitcoincash77BCHPRVxAI38mYYRe0eD3JKPEw'
         period = '1 MINUTE'
     elif tipo_pago == 'membresia':
         public_key = '8620AAuGSwaBitcoin77BTCPUBPAxu4lidgnTBTSsmuo694DFv'
