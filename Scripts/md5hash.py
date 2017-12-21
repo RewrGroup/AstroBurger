@@ -11,8 +11,8 @@ def hash(boxID, tipo_pago, amount, user, orderID):
         private_key = '21210AA0Q9URBitcoincash77BCHPRVxAI38mYYRe0eD3JKPEw'
         period = '1 MINUTE'
     elif tipo_pago == 'membresia':
-        public_key = '8620AAuGSwaBitcoin77BTCPUBPAxu4lidgnTBTSsmuo694DFv'
-        private_key = '8620AAuGSwaBitcoin77BTCPRVYT5IhY8uakoZyYJI2B9umZBW'
+        public_key = '21215AAZ4HAsBitcoincash77BCHPUBDboZf7ASaFNQRBYwX79'
+        private_key = '21215AAZ4HAsBitcoincash77BCHPRVtXm2NvbObq9LX5OYxC3'
         period = '1 MONTH'
     webdev_key = ''
     amountUSD = 0

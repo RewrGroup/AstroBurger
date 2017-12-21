@@ -223,7 +223,7 @@ def profile(request, pk):
 
 
 def upgrade(request):
-    boxID = 8620
+    boxID = 21215
     tipo_pago = 'membresia'
     user = request.user.username
     """
