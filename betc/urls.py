@@ -27,7 +27,7 @@ from django.contrib.sitemaps.views import sitemap
 from betcnow.sitemaps import ViewSitemap
 
 sitemaps = {'views': ViewSitemap}
-
+"""
 urlpatterns = [
     url(r'', include('betcnow.urls')),
     url(r'^robots.txt/$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'), name="robots"),
@@ -62,7 +62,7 @@ urlpatterns = [
         name='home'),
     url(r'^admin/', admin.site.urls),
 ]
-"""
+
 if settings.DEBUG:
     import debug_toolbar
 
